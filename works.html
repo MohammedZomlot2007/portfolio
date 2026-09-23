@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selected Works — Mohammed Zomlot</title>
+<meta name="description" content="10 honest front-end case studies on an interactive horizontal timeline: dashboards, POS, platforms, stores and creative interfaces." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070A'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='800' font-size='24' fill='%23F5F7FA' text-anchor='middle'%3EMZ%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#05060d;scroll-behavior:smooth}
+body{background:transparent;color:#F5F7FA;font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+#webgl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.page-glow{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.page-glow span{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
+.pg-a{width:560px;height:560px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(47,123,255,.3),transparent 65%)}
+.pg-b{width:480px;height:480px;bottom:-160px;left:-140px;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 65%)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background:rgba(5,6,13,.6)}
+.topbar-in{width:min(1200px,93%);margin:0 auto;height:64px;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:#F5F7FA;text-decoration:none;font-weight:700;font-size:14px}
+[dir="rtl"] .brand{margin-right:0;margin-left:auto}
+.brand-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;background:linear-gradient(135deg,#2f7bff,#7c3aed);color:#fff;font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;font-weight:700;font-size:13.5px;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#F5F7FA;background:rgba(17,22,38,.6);cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#2f7bff,#6d28d9 60%,#06b6d4);border-color:transparent;color:#fff}
+.lead{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:100px 24px 60px;position:relative;z-index:2}
+.eyebrow{font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.3em;color:#22d3ee;text-transform:uppercase}
+.lead h1{font-family:'Space Grotesk';font-size:clamp(36px,6vw,68px);letter-spacing:-.02em;line-height:1.02;max-width:18ch}
+.lead h1 .grad{background:linear-gradient(100deg,#fff 10%,#22d3ee 50%,#7c3aed 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead p{color:#9AA4B2;max-width:56ch}
+.bounce{font-size:26px;color:#22d3ee;animation:bnc 1.6s ease-in-out infinite}
+@keyframes bnc{50%{transform:translateY(10px);opacity:.5}}
+#worksSec{position:relative;height:420vh;z-index:2}
+.sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.track{display:flex;align-items:center;gap:4vw;height:34vw;min-height:360px;width:max-content;padding:0 5vw;will-change:transform}
+.cover-card{width:26vw;min-width:260px;height:100%;border-radius:18px;flex-shrink:0;border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(150deg,#0d1a3a,#3b1d6e 55%,#062a33);display:flex;flex-direction:column;justify-content:flex-end;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.cover-card b{font-family:'Space Grotesk';font-size:5.5vw;line-height:1;background:linear-gradient(100deg,#fff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover-card span{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.25em;color:#9fb3cc;margin-top:8px}
+.zone{position:relative;height:100%;width:305vw;flex-shrink:0}
+.rail{position:absolute;left:0;top:49%;width:100%;display:flex;align-items:center}
+.rail .dot{width:.9vw;min-width:10px;height:.9vw;min-height:10px;border-radius:50%;background:#22d3ee;box-shadow:0 0 16px rgba(34,211,238,.7);flex-shrink:0}
+.rail .line{height:2px;width:100%;background:#22d3ee;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 12px rgba(34,211,238,.5)}
+.half{position:absolute;left:0;width:100%;height:50%;display:flex}
+.half.top{top:0;align-items:flex-end}
+.half.bottom{bottom:0;align-items:flex-start}
+.title-block{flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:2vw;min-width:16vw}
+.half.bottom .title-block{justify-content:flex-start;padding-top:2vw;padding-bottom:0}
+.title-block h2{font-family:'Space Grotesk';font-size:2.6vw;line-height:.95}
+.period{font-size:1.4vw;color:#9AA4B2;font-family:'JetBrains Mono';letter-spacing:.15em}
+.items{display:flex;height:100%}
+.mitem{position:relative;width:27vw;min-width:250px;padding:0 2vw;display:flex;flex-direction:column}
+.half.top .mitem{justify-content:flex-end;padding-bottom:3.2vw}
+.half.bottom .mitem{justify-content:flex-start;padding-top:3.2vw}
+.stem{position:absolute;left:2vw;top:0;bottom:0;width:2px}
+.half.top .stem{top:auto;height:30%}
+.half.bottom .stem{bottom:auto;height:30%}
+.stem i{position:absolute;inset:0;background:#22d3ee;border-radius:2px;transform:scaleY(0)}
+.half.top .stem i{transform-origin:bottom}
+.half.bottom .stem i{transform-origin:top}
+.node{position:absolute;left:2vw;width:14px;height:14px;border-radius:50%;background:#22d3ee;box-shadow:0 0 14px rgba(34,211,238,.8);transform:translateX(-6px) scale(0)}
+.half.top .node{bottom:30%}
+.half.bottom .node{top:30%}
+.mtext .num{font-family:'JetBrains Mono';font-size:1vw;letter-spacing:.2em;color:#22d3ee}
+.mtext h4{font-family:'Space Grotesk';font-size:1.7vw;line-height:1.05;margin:.4vw 0}
+.mtext .cat{font-size:1vw;color:#7db4ff;font-weight:600}
+.mtext p{color:#9AA4B2;font-size:1.15vw;line-height:1.4;margin-top:.5vw;max-width:26ch}
+.mtext .tags{display:flex;flex-wrap:wrap;gap:.4vw;margin-top:.6vw}
+.mtext .tags span{font-family:'JetBrains Mono';font-size:.85vw;padding:.25vw .7vw;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#9fb3cc}
+.outro{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:60px 24px;position:relative;z-index:2}
+.outro h2{font-family:'Space Grotesk';font-size:clamp(26px,4vw,44px)}
+.outro p{color:#9AA4B2;max-width:52ch}
+.mlist{display:none}
+@media(max-width:760px){
+  #worksSec{height:auto}
+  .sticky{display:none}
+  .mlist{display:flex;flex-direction:column;gap:14px;width:min(1200px,93%);margin:0 auto;padding:20px 0 60px;position:relative;z-index:2}
+  .mcard{border-radius:16px;overflow:hidden;background:rgba(17,22,38,.7);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px)}
+  .mcover{height:110px;display:flex;align-items:flex-end;padding:14px 18px;font-family:'Space Grotesk';font-weight:700;font-size:26px;color:#fff}
+  .mcard .mb{padding:18px}
+  .mcard h4{font-family:'Space Grotesk';font-size:18px;margin:4px 0}
+  .mcard .cat{font-size:12px;color:#7db4ff;font-weight:600}
+  .mcard p{color:#9AA4B2;font-size:14px;margin-top:6px}
+  .mcard .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .mcard .tags span{font-family:'JetBrains Mono';font-size:10.5px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#9fb3cc}
+}
+@media(prefers-reduced-motion:reduce){
+  #webgl{display:none}
+  #worksSec{height:auto}
+  .sticky{position:static;height:auto;display:block;overflow:visible}
+  .track{flex-direction:column;width:100%;height:auto;gap:14px;padding:20px 4vw}
+  .cover-card{width:100%;height:180px}
+  .cover-card b{font-size:56px}
+  .zone{width:100%;height:auto}
+  .rail,.stem,.node{display:none}
+  .half{position:static;height:auto;flex-direction:column}
+  .mitem{width:100%;padding:14px 0}
+  .mtext h4{font-size:20px}.mtext p{font-size:15px}
+}
+.pv-1{background:linear-gradient(135deg,#0c162e,#13294f 55%,#0b3b4d)}.pv-2{background:linear-gradient(135deg,#1a1408,#3a2c10 55%,#14100a)}
+.pv-3{background:linear-gradient(135deg,#0b1e3a,#1c3f7a 60%,#0b2a4a)}.pv-4{background:linear-gradient(135deg,#101828,#1d3a5f 60%,#0e2a3a)}
+.pv-5{background:linear-gradient(135deg,#170f2e,#3b1d6e 55%,#0e2a4a)}.pv-6{background:linear-gradient(135deg,#22102e,#5b21b6 55%,#0ea5e9)}
+.pv-7{background:linear-gradient(135deg,#062a2e,#0e5a63 55%,#123a8f)}.pv-8{background:linear-gradient(135deg,#0a0f24,#243b8f 55%,#0ea5e9)}
+.pv-9{background:linear-gradient(135deg,#101a13,#1f4d2e 55%,#0e7490)}.pv-10{background:linear-gradient(135deg,#160b24,#6d28d9 45%,#06b6d4 90%)}
+</style>
+</head>
+<body>
+<canvas id="webgl" aria-hidden="true"></canvas>
+<div class="page-glow" aria-hidden="true"><span class="pg-a"></span><span class="pg-b"></span></div>
+
+<header class="topbar">
+  <nav class="topbar-in" aria-label="Works navigation">
+    <a class="brand" href="index.html"><span class="brand-mark">MZ</span><span>Mohammed Zomlot</span></a>
+    <button class="btn" id="lang-toggle" type="button">عربي</button>
+    <a class="btn btn-primary" href="index.html">← <span data-i18n="back">Back home</span></a>
+  </nav>
+</header>
+
+<section class="lead">
+  <p class="eyebrow" data-i18n="kick">Selected works · 10 case studies</p>
+  <h1><span data-i18n="h1a">Ten works,</span> <span class="grad" data-i18n="h1b">one horizontal scroll.</span></h1>
+  <p data-i18n="lede">Keep scrolling — the track slides sideways and each case study draws its stem as it reaches centre. Honest scope, real interfaces, no fake clients.</p>
+  <span class="bounce" aria-hidden="true">↓</span>
+</section>
+
+<section id="worksSec" aria-label="Works timeline">
+  <div class="sticky">
+    <div class="track" id="track">
+      <div class="cover-card"><b>10</b><span data-i18n="cover">FRONTEND CASE STUDIES</span></div>
+      <div class="zone">
+        <div class="rail" aria-hidden="true"><span class="dot"></span><span class="line" id="railLine"></span><span class="dot"></span></div>
+        <div class="half top">
+          <div class="title-block"><h2 data-i18n="ztitle">Selected Works</h2></div>
+          <div class="items" id="topItems"></div>
+        </div>
+        <div class="half bottom">
+          <div class="title-block"><span class="period" data-i18n="period">10 CASE STUDIES</span></div>
+          <div class="items" id="botItems"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mlist" id="mlist"></div>
+</section>
+
+<section class="outro">
+  <h2 data-i18n="outT">Like what you see?</h2>
+  <p data-i18n="outD">Full case-study details live on the main page — or start your own project right away.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <a class="btn btn-primary" href="index.html#contact"><span data-i18n="outB1">Start a project</span> →</a>
+    <a class="btn" href="achievements.html"><span data-i18n="outB2">My journey</span></a>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script type="module">
+import * as THREE from 'three';
+(function(){
+  var canvas = document.getElementById('webgl');
+  if(!canvas || !window.WebGLRenderingContext) return;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true}); }
+  catch(e){ canvas.style.display='none'; return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.setSize(innerWidth, innerHeight);
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 9);
+  scene.add(new THREE.AmbientLight(0x8899ff, 0.6));
+  var p1 = new THREE.PointLight(0x2f7bff, 60, 40); p1.position.set(-6,3,2); scene.add(p1);
+  var p2 = new THREE.PointLight(0x22d3ee, 50, 40); p2.position.set(6,-2,3); scene.add(p2);
+  var N = 900, pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  var palette = [new THREE.Color(0x2f7bff), new THREE.Color(0x22d3ee), new THREE.Color(0xa78bfa)];
+  for(var i=0;i<N;i++){
+    pos[i*3]=(Math.random()-0.5)*34; pos[i*3+1]=(Math.random()-0.5)*20; pos[i*3+2]=(Math.random()-0.5)*16-2;
+    var c = palette[(Math.random()*3)|0];
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+  }
+  var g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  g.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var pts = new THREE.Points(g, new THREE.PointsMaterial({size:0.05, vertexColors:true, transparent:true, opacity:0.85, depthWrite:false, blending:THREE.AdditiveBlending}));
+  scene.add(pts);
+  var clock = new THREE.Clock();
+  function frame(){
+    pts.rotation.y = clock.getElapsedTime()*0.02;
+    renderer.render(scene, camera);
+    if(!reduced && !document.hidden) requestAnimationFrame(frame);
+  }
+  if(reduced){ renderer.render(scene, camera); } else frame();
+  document.addEventListener('visibilitychange', function(){ if(!reduced && !document.hidden) frame(); });
+  addEventListener('resize', function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+})();
+</script>
+<script>
+/* Works data (same honest case studies as the portfolio) + EN/AR + GSAP timeline */
+(function(){
+'use strict';
+var DATA = [
+  { num:'01', title:'Accounting Pro Enterprise', cat:'Business Dashboard / Accounting Interface',
+    d:{en:'Enterprise accounting interface: dashboards, financial workflows, invoices, customers, purchases and reports.', ar:'واجهة محاسبية للشركات: لوحات تحكم وسير مالي وفواتير وعملاء ومشتريات وتقارير.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'02', title:'Gold Jewelry POS & Accounting', cat:'Retail POS / Specialized Business UI',
+    d:{en:'Gold retail concept: weight, karat, gram price, craftsmanship and sales flow.', ar:'فكرة لمحلات الذهب: الوزن والعيار وسعر الغرام والمصنعية والمبيعات.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Concept UI' },
+  { num:'03', title:'TRADEON', cat:'Business Platform / Social Business Interface',
+    d:{en:'Business platform concept: professional profiles, company experiences and networking.', ar:'منصة أعمال: ملفات مهنية وتجارب شركات وتواصل.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'04', title:'SupplierHub', cat:'Supplier Management Platform',
+    d:{en:'B2B interface for supplier discovery, profiles, categories and dashboards.', ar:'واجهة B2B لاكتشاف الموردين وإدارة ملفاتهم ولوحاتهم.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'05', title:'SAWWER', cat:'AI / Transcription Platform UI',
+    d:{en:'Audio transcription concept: upload, file list, workspace, player and export.', ar:'منصة تفريغ صوتي: رفع الملفات ومساحة العمل والمشغل والتصدير.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Frontend Concept' },
+  { num:'06', title:'E-Commerce Experience', cat:'E-Commerce Front-End',
+    d:{en:'Production-ready store: grid, categories, search, cart, wishlist and filters.', ar:'متجر جاهز: منتجات وتصنيفات وبحث وسلة ومفضلة وفلاتر.'},
+    tech:['HTML','CSS','JavaScript','LocalStorage'], badge:'Portfolio Project' },
+  { num:'07', title:'Analytics Dashboard', cat:'Data Dashboard',
+    d:{en:'Analytics dashboard: KPI cards, charts, filters, date range and data tables.', ar:'لوحة تحليلات: مؤشرات ورسوم وفلاتر ونطاق زمني وجداول.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'08', title:'SaaS Landing Page', cat:'Modern SaaS Website',
+    d:{en:'Conversion landing: hero, features, preview, pricing, FAQ, CTA and footer.', ar:'صفحة هبوط: بطل ومزايا ومعاينة وأسعار وأسئلة ودعوة لاتخاذ إجراء.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'09', title:'Project Management Dashboard', cat:'Productivity / Management UI',
+    d:{en:'PM dashboard: projects, tasks, status, priorities, team, calendar and activity.', ar:'لوحة إدارة مشاريع: مهام وحالات وأولويات وفريق وتقويم ونشاط.'},
+    tech:['HTML','CSS','JavaScript','LocalStorage'], badge:'Portfolio Project' },
+  { num:'10', title:'Creative Developer Showcase', cat:'Interactive Creative Front-End',
+    d:{en:'Experimental piece: advanced CSS, JS animation, 3D touches and scroll effects.', ar:'قطعة تجريبية: CSS متقدم وحركات JS ولمسات 3D وتأثيرات تمرير.'},
+    tech:['HTML','CSS','JavaScript'], badge:'Creative Concept' }
+];
+var T = {
+  en: { back:'Back home', kick:'Selected works · 10 case studies', h1a:'Ten works,', h1b:'one horizontal scroll.', lede:'Keep scrolling — the track slides sideways and each case study draws its stem as it reaches centre. Honest scope, real interfaces, no fake clients.', cover:'FRONTEND CASE STUDIES', ztitle:'Selected Works', period:'10 CASE STUDIES', outT:'Like what you see?', outD:'Full case-study details live on the main page — or start your own project right away.', outB1:'Start a project', outB2:'My journey' },
+  ar: { back:'عودة للرئيسية', kick:'أعمال مختارة · 10 دراسات حالة', h1a:'عشرة أعمال،', h1b:'سكرول أفقي واحد.', lede:'واصل التمرير — ينزلق المسار جانبيًا وترسم كل دراسة ساقها عند المنتصف. نطاق صادق وواجهات حقيقية.', cover:'دراسات حالة واجهات', ztitle:'أعمال مختارة', period:'10 دراسات حالة', outT:'أعجبك ما رأيت؟', outD:'تفاصيل دراسات الحالة الكاملة في الصفحة الرئيسية — أو ابدأ مشروعك فورًا.', outB1:'ابدأ مشروعًا', outB2:'رحلتي' }
+};
+var lang = 'en';
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function txt(o){ return o[lang] || o.en; }
+function build(){
+  var top = document.getElementById('topItems'), bot = document.getElementById('botItems'), ml = document.getElementById('mlist');
+  top.innerHTML = ''; bot.innerHTML = ''; ml.innerHTML = '';
+  DATA.forEach(function(p, i){
+    var host = (i < 5) ? top : bot;
+    var el = document.createElement('div');
+    el.className = 'mitem';
+    el.innerHTML = '<div class="stem" aria-hidden="true"><i></i></div><span class="node" aria-hidden="true"></span>' +
+      '<div class="mtext"><span class="num">' + p.num + ' · ' + esc(p.badge) + '</span><h4>' + esc(p.title) + '</h4>' +
+      '<span class="cat">' + esc(p.cat) + '</span><p>' + esc(txt(p.d)) + '</p>' +
+      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>';
+    host.appendChild(el);
+    var mc = document.createElement('div');
+    mc.className = 'mcard';
+    mc.innerHTML = '<div class="mcover pv-' + (i + 1) + '">' + p.num + '</div><div class="mb"><span class="cat">' + esc(p.cat) + '</span>' +
+      '<h4>' + esc(p.title) + '</h4><p>' + esc(txt(p.d)) + '</p>' +
+      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>';
+    ml.appendChild(mc);
+  });
+}
+function applyLang(l){
+  lang = (l === 'ar') ? 'ar' : 'en';
+  var d = T[lang];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k]) el.textContent = d[k];
+  });
+  document.getElementById('lang-toggle').textContent = (lang === 'ar') ? 'EN' : 'عربي';
+  document.title = (lang === 'ar') ? 'أعمال مختارة — محمد زملوط' : 'Selected Works — Mohammed Zomlot';
+  build();
+  initScroll();
+}
+document.getElementById('lang-toggle').addEventListener('click', function(){ applyLang(lang === 'ar' ? 'en' : 'ar'); });
+
+var st = null;
+function killScroll(){ if(st){ try{ st.kill(); }catch(e){} st = null; } }
+function initScroll(){
+  killScroll();
+  if(matchMedia('(max-width: 760px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  var sec = document.getElementById('worksSec'), track = document.getElementById('track'), line = document.getElementById('railLine');
+  function dist(){ return Math.max(0, track.scrollWidth - innerWidth); }
+  var items = Array.prototype.slice.call(document.querySelectorAll('.mitem'));
+  st = ScrollTrigger.create({
+    trigger: sec, start: 'top top', end: 'bottom bottom', scrub: true,
+    onUpdate: function(self){
+      var p = self.progress, d = dist();
+      gsap.set(track, { x: -d * p });
+      gsap.set(line, { scaleX: p });
+      items.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        var c = (r.left + r.width / 2) / innerWidth;
+        var local = Math.min(1, Math.max(0, (0.72 - c) / 0.3));
+        gsap.set(el.querySelector('.stem i'), { scaleY: local });
+        gsap.set(el.querySelector('.node'), { scale: local });
+        gsap.set(el.querySelector('.mtext'), { opacity: local, y: (1 - local) * 40 });
+      });
+    }
+  });
+  ScrollTrigger.refresh();
+}
+build();
+initScroll();
+var rT = null;
+addEventListener('resize', function(){ clearTimeout(rT); rT = setTimeout(initScroll, 250); });
+})();
+</script>
+</body>
+</html>

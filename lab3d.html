@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>3D Lab — Mohammed Zomlot · Five engines, one page</title>
+<meta name="description" content="Interactive 3D lab: Three.js background, Babylon.js orbit, PlayCanvas PBR scene, A-Frame WebXR and Rapier physics — all live." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070A'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='800' font-size='24' fill='%23F5F7FA' text-anchor='middle'%3EMZ%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:#05060d}
+body{background:transparent;color:#F5F7FA;font-family:'Inter',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+#webgl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.page-glow{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.page-glow span{position:absolute;border-radius:50%;filter:blur(110px);opacity:.55}
+.pg-a{width:560px;height:560px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(47,123,255,.32),transparent 65%)}
+.pg-b{width:480px;height:480px;bottom:-160px;left:-140px;background:radial-gradient(circle,rgba(34,211,238,.2),transparent 65%)}
+header,main,footer{position:relative;z-index:2}
+.topbar{width:min(1200px,93%);margin:0 auto;height:68px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:#F5F7FA;text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;background:linear-gradient(135deg,#2f7bff,#7c3aed);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#F5F7FA;background:rgba(17,22,38,.6);cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#2f7bff,#6d28d9 60%,#06b6d4);border-color:transparent;color:#fff}
+.wrap{width:min(1200px,93%);margin:0 auto;padding:40px 0 90px}
+.eyebrow{display:inline-block;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.25em;color:#22d3ee;margin-bottom:12px}
+h1{font-family:'Space Grotesk';font-size:clamp(32px,5vw,56px);letter-spacing:-.02em;line-height:1.05;max-width:18ch}
+h1 .grad{background:linear-gradient(100deg,#fff 10%,#22d3ee 50%,#7c3aed 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#9AA4B2;max-width:64ch;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.card{background:rgba(17,22,38,.6);border:1px solid rgba(255,255,255,.14);border-radius:20px;overflow:hidden;backdrop-filter:blur(8px)}
+.view{position:relative;height:250px;background:#070b16}
+.view canvas,.view a-scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.note{position:absolute;top:12px;left:14px;z-index:2;font-family:'JetBrains Mono';font-size:11px;color:#9fb3cc;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:100px;pointer-events:none}
+.body{padding:22px}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:6px 13px;border-radius:100px;background:rgba(47,123,255,.14);border:1px solid rgba(47,123,255,.35);color:#22d3ee}
+.body h3{font-family:'Space Grotesk';font-size:18px;margin:10px 0 6px}
+.body p{color:#9AA4B2;font-size:14px}
+footer{border-top:1px solid rgba(255,255,255,.1);padding:26px 0;background:rgba(7,10,19,.6)}
+.foot{width:min(1200px,93%);margin:0 auto;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#6b7686;font-size:13px}
+.foot a{color:#F5F7FA}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#webgl{display:none}}
+</style>
+</head>
+<body>
+<canvas id="webgl" aria-hidden="true"></canvas>
+<div class="page-glow" aria-hidden="true"><span class="pg-a"></span><span class="pg-b"></span></div>
+
+<header>
+  <nav class="topbar" aria-label="Lab navigation">
+    <a class="brand" href="index.html"><span class="brand-mark">MZ</span><strong>Mohammed Zomlot</strong></a>
+    <button class="btn" id="lang-toggle" type="button">عربي</button>
+    <a class="btn btn-primary" href="index.html">← <span data-i18n="back">Back home</span></a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">09 — <span data-i18n="labLabel">3D LAB</span></p>
+  <h1><span data-i18n="labTitleA">Five engines.</span> <span class="grad" data-i18n="labTitleB">One page. All live.</span></h1>
+  <p class="sub" data-i18n="labSub">Three.js powers the page background above. Below, four more libraries run real interactive demos — each engine loads only when you scroll here, so initial load stays fast.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="view"><canvas id="lab-babylon"></canvas><span class="note" data-i18n="labLoad">Loading engine…</span></div>
+      <div class="body"><span class="pill">Babylon.js</span>
+        <h3 data-i18n="labB1t">Drag-to-orbit 3D object</h3>
+        <p data-i18n="labB1d">Advanced engine demo: arc-rotate camera, lights and a torus-knot mesh. Drag to orbit, scroll to zoom.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="view"><canvas id="lab-playcanvas"></canvas><span class="note" data-i18n="labLoad">Loading engine…</span></div>
+      <div class="body"><span class="pill">PlayCanvas</span>
+        <h3 data-i18n="labB2t">High-performance 3D scene</h3>
+        <p data-i18n="labB2d">Game-grade engine demo: PBR materials, directional light and an orbiting satellite around a spinning core.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="view">
+        <a-scene embedded vr-mode-ui="enabled: true" device-orientation-permission-ui="enabled: false" renderer="antialias: true">
+          <a-box position="-1 0.8 -3" rotation="0 45 0" color="#2f7bff" animation="property: rotation; to: 0 405 0; loop: true; dur: 6000"></a-box>
+          <a-sphere position="1 1 -3" radius="0.6" color="#22d3ee" animation="property: position; to: 1 1.6 -3; dir: alternate; loop: true; dur: 1800"></a-sphere>
+          <a-plane position="0 0 -4" rotation="-90 0 0" width="9" height="9" color="#0d1526"></a-plane>
+          <a-sky color="#070b16"></a-sky>
+        </a-scene>
+        <span class="note" data-i18n="labLoad">Loading engine…</span>
+      </div>
+      <div class="body"><span class="pill">A-Frame · WebXR</span>
+        <h3 data-i18n="labB3t">VR-ready declarative scene</h3>
+        <p data-i18n="labB3d">WebXR demo written as plain HTML tags — goggles button appears on supported phones and headsets.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="view"><canvas id="lab-rapier"></canvas><span class="note" data-i18n="labLoad">Loading engine…</span></div>
+      <div class="body"><span class="pill">Rapier Physics</span>
+        <h3 data-i18n="labB4t">Real falling &amp; colliding bodies</h3>
+        <p><span data-i18n="labB4d">True physics simulation: gravity, restitution and collisions —</span> <span data-i18n="labTap">click inside the box to drop more balls.</span></p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <a href="index.html">← Mohammed Zomlot — Portfolio</a>
+    <span>Three.js · Babylon.js · PlayCanvas · A-Frame · Rapier</span>
+  </div>
+</footer>
+
+<script type="module">
+import * as THREE from 'three';
+(function(){
+  var canvas = document.getElementById('webgl');
+  if(!canvas || !window.WebGLRenderingContext) return;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true}); }
+  catch(e){ canvas.style.display='none'; return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setSize(innerWidth, innerHeight);
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x05060d, 0.05);
+  var camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 120);
+  camera.position.set(0, 0, 9.5);
+  scene.add(new THREE.AmbientLight(0x8899ff, 0.6));
+  var d = new THREE.DirectionalLight(0xffffff, 1.15); d.position.set(4,6,6); scene.add(d);
+  var p1 = new THREE.PointLight(0x2f7bff, 70, 45); p1.position.set(-6,3,2); scene.add(p1);
+  var p2 = new THREE.PointLight(0x22d3ee, 60, 45); p2.position.set(6,-2,3); scene.add(p2);
+  var p3 = new THREE.PointLight(0x7c3aed, 65, 45); p3.position.set(0,5,-4); scene.add(p3);
+  var world = new THREE.Group(); scene.add(world);
+  var N = 1500, pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  var palette = [new THREE.Color(0x2f7bff), new THREE.Color(0x22d3ee), new THREE.Color(0xa78bfa)];
+  for(var i=0;i<N;i++){
+    pos[i*3]=(Math.random()-0.5)*36; pos[i*3+1]=(Math.random()-0.5)*22; pos[i*3+2]=(Math.random()-0.5)*20-2;
+    var c = palette[(Math.random()*3)|0];
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+  }
+  var pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  pg.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var pts = new THREE.Points(pg, new THREE.PointsMaterial({size:0.055, vertexColors:true, transparent:true, opacity:0.9, depthWrite:false, blending:THREE.AdditiveBlending}));
+  world.add(pts);
+  var knot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(2.15, 0.55, 140, 24),
+    new THREE.MeshStandardMaterial({color:0x0b1530, emissive:0x112244, emissiveIntensity:0.6, roughness:0.22, metalness:0.88})
+  );
+  knot.position.set(4.6, 0.3, -2.5); world.add(knot);
+  var knotW = new THREE.Mesh(new THREE.TorusKnotGeometry(2.15, 0.55, 90, 12), new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:0.17}));
+  knotW.position.copy(knot.position); world.add(knotW);
+  var grid = new THREE.GridHelper(56, 56, 0x2a5cff, 0x0e1b3d);
+  grid.position.y = -5.4; grid.material.transparent = true; grid.material.opacity = 0.4; scene.add(grid);
+  var mx=0,my=0,tx=0,ty=0;
+  addEventListener('mousemove',function(e){ tx=(e.clientX/innerWidth-0.5)*2; ty=(e.clientY/innerHeight-0.5)*2; },{passive:true});
+  addEventListener('resize',function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+  var clock = new THREE.Clock();
+  function frame(){
+    var t = clock.getElapsedTime();
+    mx += (tx-mx)*0.045; my += (ty-my)*0.045;
+    knot.rotation.x = t*0.12; knot.rotation.y = t*0.16; knotW.rotation.copy(knot.rotation);
+    pts.rotation.y = t*0.02 + mx*0.12;
+    camera.position.x = mx*0.95;
+    camera.position.y = -scrollY*0.0016 + (-my*0.6);
+    camera.lookAt(1.2,0,-2);
+    renderer.render(scene,camera);
+    if(!reduced && !document.hidden) requestAnimationFrame(frame);
+  }
+  if(reduced){ renderer.render(scene,camera); } else frame();
+  document.addEventListener('visibilitychange', function(){ if(!reduced && !document.hidden) frame(); });
+})();
+</script>
+
+<script>
+/* 3D LAB demos — Babylon + PlayCanvas + A-Frame + Rapier (lazy, isolated failures) */
+(function(){
+'use strict';
+var demos = [];
+function isAR(){ return document.documentElement.getAttribute('lang') === 'ar'; }
+function loadScript(src){
+  return new Promise(function(res, rej){
+    var s = document.createElement('script');
+    s.src = src; s.async = true;
+    s.onload = function(){ res(); };
+    s.onerror = function(){ rej(new Error('cdn')); };
+    document.head.appendChild(s);
+  });
+}
+function noteDone(el){ var c = el && el.closest ? el.closest('.card') : null; var n = c && c.querySelector('.note'); if(n) n.remove(); }
+function noteFail(el){ var c = el && el.closest ? el.closest('.card') : null; var n = c && c.querySelector('.note'); if(n) n.textContent = isAR() ? 'تعذر تحميل المحرك (تحقق من الإنترنت)' : 'Engine failed to load (check connection)'; }
+
+function initBabylon(){
+  var canvas = document.getElementById('lab-babylon');
+  return loadScript('https://cdn.jsdelivr.net/npm/babylonjs@6/babylon.js').then(function(){
+    var engine = new BABYLON.Engine(canvas, true, { stencil: true });
+    var scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0.03, 0.04, 0.09, 1);
+    var camera = new BABYLON.ArcRotateCamera('cam', Math.PI/3, Math.PI/3, 8, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+    camera.lowerRadiusLimit = 4; camera.upperRadiusLimit = 14;
+    new BABYLON.HemisphericLight('hemi', new BABYLON.Vector3(0,1,0), scene);
+    var pt = new BABYLON.PointLight('pt', new BABYLON.Vector3(3,4,3), scene);
+    pt.diffuse = new BABYLON.Color3(0.13, 0.83, 0.93);
+    var knot = BABYLON.MeshBuilder.CreateTorusKnot('knot', { radius: 1.4, tube: 0.42, radialSegments: 96, tubularSegments: 48 }, scene);
+    var mat = new BABYLON.StandardMaterial('mat', scene);
+    mat.diffuseColor = new BABYLON.Color3(0.18, 0.48, 1);
+    mat.specularColor = new BABYLON.Color3(0.4, 0.9, 1);
+    knot.material = mat;
+    function loop(){ knot.rotation.y += 0.008; knot.rotation.x += 0.003; scene.render(); }
+    engine.runRenderLoop(loop);
+    if(typeof ResizeObserver !== 'undefined'){ new ResizeObserver(function(){ try{ engine.resize(); }catch(e){} }).observe(canvas.parentElement); }
+    noteDone(canvas);
+    demos.push({ pause: function(){ try{ engine.stopRenderLoop(); }catch(e){} }, play: function(){ try{ engine.runRenderLoop(loop); }catch(e){} } });
+  }).catch(function(){ noteFail(canvas); });
+}
+
+function initPlayCanvas(){
+  var canvas = document.getElementById('lab-playcanvas');
+  return loadScript('https://code.playcanvas.com/playcanvas-stable.min.js').then(function(){
+    var app = new pc.Application(canvas, {});
+    app.start();
+    app.setCanvasFillMode(pc.FILLMODE_NONE);
+    function fit(){ var r = canvas.parentElement.getBoundingClientRect(); try{ app.resizeCanvas(Math.max(2, Math.floor(r.width)), 250); }catch(e){} }
+    fit();
+    if(typeof ResizeObserver !== 'undefined'){ new ResizeObserver(fit).observe(canvas.parentElement); }
+    var cam = new pc.Entity('cam');
+    cam.addComponent('camera', { clearColor: new pc.Color(0.03, 0.04, 0.09) });
+    cam.setPosition(0, 0.6, 4.4); cam.lookAt(0, 0, 0); app.root.addChild(cam);
+    var sun = new pc.Entity('sun');
+    sun.addComponent('light', { type: 'directional', color: new pc.Color(0.55, 0.9, 1), intensity: 1.5 });
+    sun.setEulerAngles(45, 30, 0); app.root.addChild(sun);
+    var amb = new pc.Entity('amb');
+    amb.addComponent('light', { type: 'ambient', color: new pc.Color(0.45, 0.45, 0.6) });
+    app.root.addChild(amb);
+    var coreMat = new pc.StandardMaterial();
+    coreMat.diffuse = new pc.Color(0.18, 0.48, 1); coreMat.metalness = 0.65; coreMat.shininess = 70;
+    coreMat.update();
+    var core = new pc.Entity('core');
+    core.addComponent('model', { type: 'box' });
+    core.model.material = coreMat; app.root.addChild(core);
+    var orbMat = new pc.StandardMaterial();
+    orbMat.diffuse = new pc.Color(0.13, 0.83, 0.93); orbMat.emissive = new pc.Color(0.05, 0.4, 0.45);
+    orbMat.update();
+    var orb = new pc.Entity('orb');
+    orb.addComponent('model', { type: 'sphere' });
+    orb.model.material = orbMat; orb.setLocalScale(0.32, 0.32, 0.32); app.root.addChild(orb);
+    var t = 0;
+    app.on('update', function(dt){
+      t += Math.min(dt, 0.05);
+      core.rotate(12*dt, 24*dt, 0);
+      orb.setPosition(Math.cos(t)*1.7, Math.sin(t*1.3)*0.7, Math.sin(t)*1.7);
+    });
+    noteDone(canvas);
+    demos.push({ pause: function(){ try{ app.timeScale = 0; }catch(e){} }, play: function(){ try{ app.timeScale = 1; }catch(e){} } });
+  }).catch(function(){ noteFail(canvas); });
+}
+
+function initAFrame(){
+  var sceneEl = document.querySelector('a-scene');
+  return loadScript('https://aframe.io/releases/1.5.0/aframe.min.js').then(function(){
+    noteDone(sceneEl);
+    demos.push({ pause: function(){ try{ sceneEl.pause(); }catch(e){} }, play: function(){ try{ sceneEl.play(); }catch(e){} } });
+  }).catch(function(){ noteFail(sceneEl); });
+}
+
+function initRapier(){
+  var canvas = document.getElementById('lab-rapier');
+  function importFirst(urls){ return urls.reduce(function(p, u){ return p.catch(function(){ return import(u); }); }, Promise.reject(new Error('start'))); }
+  return importFirst(['https://esm.sh/@dimforge/rapier2d-compat@0', 'https://cdn.skypack.dev/@dimforge/rapier2d-compat']).then(function(ns){
+    var R = ns.default || ns;
+    return R.init().then(function(){
+      var S = 30, W = 300, H = 250;
+      var ctx = canvas.getContext('2d');
+      var world = new R.World({ x: 0, y: -9.81 });
+      var statics = [];
+      function addStatic(hw, hh, x, y){ statics.push(world.createCollider(R.ColliderDesc.cuboid(hw, hh).setTranslation(x, y))); }
+      function rebuildStatic(){
+        for(var i=0;i<statics.length;i++){ try{ world.removeCollider(statics[i], true); }catch(e){} }
+        statics.length = 0;
+        addStatic(W/S/2 + 1, 0.4, W/S/2, -0.4);
+        addStatic(0.3, H/S, -0.2, H/S/2);
+        addStatic(0.3, H/S, W/S + 0.2, H/S/2);
+      }
+      function size(){
+        var r = canvas.parentElement.getBoundingClientRect();
+        W = Math.max(220, Math.floor(r.width)); H = 250;
+        canvas.width = W; canvas.height = H;
+        rebuildStatic();
+      }
+      size();
+      if(typeof ResizeObserver !== 'undefined'){ new ResizeObserver(function(){ size(); }).observe(canvas.parentElement); }
+      var palette = ['#2f7bff', '#22d3ee', '#a78bfa', '#ec4899', '#34d399', '#fbbf24'];
+      var balls = [];
+      function trim(){
+        while(balls.length > 70){
+          var old = balls.shift();
+          try{ world.removeRigidBody(world.getRigidBody(old.h), true); }catch(e){}
+        }
+      }
+      function spawn(px, n){
+        for(var i=0;i<n;i++){
+          var r = (7 + Math.random()*8) / S;
+          var b = world.createRigidBody(R.RigidBodyDesc.dynamic()
+            .setTranslation(px/S + (Math.random()-0.5)*1.5, H/S - 0.5)
+            .setLinvel((Math.random()-0.5)*2, 0));
+          world.createCollider(R.ColliderDesc.ball(r).setRestitution(0.72).setFriction(0.4), b);
+          balls.push({ h: b.handle, r: r, color: palette[(Math.random()*palette.length)|0] });
+        }
+        trim();
+      }
+      function draw(){
+        ctx.clearRect(0, 0, W, H);
+        for(var i=0;i<balls.length;i++){
+          var b = balls[i], t;
+          try{ t = world.getRigidBody(b.h).translation(); }catch(e){ continue; }
+          ctx.beginPath();
+          ctx.arc(t.x*S, H - t.y*S, Math.max(2, b.r*S), 0, 6.2832);
+          ctx.fillStyle = b.color;
+          ctx.fill();
+        }
+      }
+      var live = true, running = false;
+      function frame(){
+        running = true;
+        if(!live){ running = false; return; }
+        world.step();
+        draw();
+        requestAnimationFrame(frame);
+      }
+      canvas.addEventListener('pointerdown', function(e){
+        var r = canvas.getBoundingClientRect();
+        spawn(e.clientX - r.left, 5);
+      });
+      setInterval(function(){ if(live && !document.hidden && balls.length < 40) spawn(W/2 + (Math.random()-0.5)*W*0.5, 1); }, 900);
+      spawn(W/2, 8);
+      frame();
+      noteDone(canvas);
+      demos.push({ pause: function(){ live = false; }, play: function(){ live = true; if(!running) frame(); } });
+    });
+  }).catch(function(){ noteFail(canvas); });
+}
+
+var started = false;
+if('IntersectionObserver' in window){
+  var starter = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting && !started){
+        started = true;
+        starter.disconnect();
+        initBabylon(); initPlayCanvas(); initAFrame(); initRapier();
+      }
+    });
+  }, { rootMargin: '350px' });
+  starter.observe(document.querySelector('.grid'));
+  var gate = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      demos.forEach(function(dd){ try{ en.isIntersecting ? dd.play() : dd.pause(); }catch(e){} });
+    });
+  }, { threshold: 0.05 });
+  gate.observe(document.querySelector('.grid'));
+}else{
+  initBabylon(); initPlayCanvas(); initAFrame(); initRapier();
+}
+
+/* mini EN/AR toggle */
+var T = {
+  en: { back:'Back home', labLabel:'3D LAB', labTitleA:'Five engines.', labTitleB:'One page. All live.', labSub:'Three.js powers the page background above. Below, four more libraries run real interactive demos — each engine loads only when you scroll here, so initial load stays fast.', labLoad:'Loading engine…', labB1t:'Drag-to-orbit 3D object', labB1d:'Advanced engine demo: arc-rotate camera, lights and a torus-knot mesh. Drag to orbit, scroll to zoom.', labB2t:'High-performance 3D scene', labB2d:'Game-grade engine demo: PBR materials, directional light and an orbiting satellite around a spinning core.', labB3t:'VR-ready declarative scene', labB3d:'WebXR demo written as plain HTML tags — goggles button appears on supported phones and headsets.', labB4t:'Real falling & colliding bodies', labB4d:'True physics simulation: gravity, restitution and collisions —', labTap:'click inside the box to drop more balls.' },
+  ar: { back:'عودة للرئيسية', labLabel:'مختبر ثلاثي الأبعاد', labTitleA:'خمس مكتبات.', labTitleB:'صفحة واحدة. كلها حيّة.', labSub:'Three.js يشغّل خلفية الصفحة أعلاه. بالأسفل أربع مكتبات أخرى بعروض تفاعلية حقيقية — كل محرك يُحمَّل فقط عند الوصول هنا، فيبقى التحميل سريعًا.', labLoad:'جارٍ تحميل المحرك…', labB1t:'جسم ثلاثي الأبعاد بالتدوير بالسحب', labB1d:'عرض بمحرك متقدم: كاميرا مدارية وإضاءة وشبكة torus-knot. اسحب للتدوير وعجلة الفأرة للتقريب.', labB2t:'مشهد ثلاثي الأبعاد عالي الأداء', labB2d:'عرض بمحرك ألعاب: خامات PBR وإضاءة وقمر يدور حول نواة دوّارة.', labB3t:'مشهد جاهز للواقع الافتراضي', labB3d:'عرض WebXR مكتوب كوسوم HTML عادية — زر النظارة يظهر على الهواتف والنظارات الداعمة.', labB4t:'أجسام حقيقية تسقط وتتصادم', labB4d:'محاكاة فيزيائية حقيقية: جاذبية وارتداد وتصادم —', labTap:'اضغط داخل الصندوق لإسقاط كرات أكثر.' }
+};
+var lang = 'en';
+document.getElementById('lang-toggle').addEventListener('click', function(){
+  lang = (lang === 'ar') ? 'en' : 'ar';
+  var d = T[lang];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k]) el.textContent = d[k];
+  });
+  this.textContent = (lang === 'ar') ? 'EN' : 'عربي';
+  document.title = (lang === 'ar') ? 'مختبر 3D — محمد زملوط' : '3D Lab — Mohammed Zomlot · Five engines, one page';
+});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Achievements Timeline — Mohammed Zomlot</title>
+<meta name="description" content="Interactive horizontal-scroll timeline of real front-end milestones: foundations, case studies, UI polish, 3D interfaces and professional identity." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070A'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='800' font-size='24' fill='%23F5F7FA' text-anchor='middle'%3EMZ%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#05060d;scroll-behavior:smooth}
+body{background:transparent;color:#F5F7FA;font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+#webgl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.page-glow{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.page-glow span{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
+.pg-a{width:560px;height:560px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(47,123,255,.3),transparent 65%)}
+.pg-b{width:480px;height:480px;bottom:-160px;left:-140px;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 65%)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);background:rgba(5,6,13,.6)}
+.topbar-in{width:min(1200px,93%);margin:0 auto;height:64px;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:#F5F7FA;text-decoration:none;font-weight:700;font-size:14px}
+[dir="rtl"] .brand{margin-right:0;margin-left:auto}
+.brand-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;background:linear-gradient(135deg,#2f7bff,#7c3aed);color:#fff;font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;font-weight:700;font-size:13.5px;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#F5F7FA;background:rgba(17,22,38,.6);cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#2f7bff,#6d28d9 60%,#06b6d4);border-color:transparent;color:#fff}
+/* lead-in */
+.lead{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:100px 24px 60px;position:relative;z-index:2}
+.eyebrow{font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.3em;color:#22d3ee;text-transform:uppercase}
+.lead h1{font-family:'Space Grotesk';font-size:clamp(36px,6vw,68px);letter-spacing:-.02em;line-height:1.02;max-width:18ch}
+.lead h1 .grad{background:linear-gradient(100deg,#fff 10%,#22d3ee 50%,#7c3aed 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead p{color:#9AA4B2;max-width:52ch}
+.bounce{font-size:26px;color:#22d3ee;animation:bnc 1.6s ease-in-out infinite}
+@keyframes bnc{50%{transform:translateY(10px);opacity:.5}}
+/* pinned horizontal timeline */
+#journeySec{position:relative;height:320vh;z-index:2}
+.sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.track{display:flex;align-items:center;gap:5vw;height:32vw;min-height:340px;width:max-content;padding:0 5vw;will-change:transform}
+.photo-card{width:30vw;min-width:280px;height:100%;border-radius:18px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+.zone{position:relative;height:100%;width:182vw;flex-shrink:0}
+.rail{position:absolute;left:0;top:49%;width:100%;display:flex;align-items:center}
+.rail .dot{width:.9vw;min-width:10px;height:.9vw;min-height:10px;border-radius:50%;background:#22d3ee;box-shadow:0 0 16px rgba(34,211,238,.7);flex-shrink:0}
+.rail .line{height:2px;width:100%;background:#22d3ee;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 12px rgba(34,211,238,.5)}
+.half{position:absolute;left:0;width:100%;height:50%;display:flex}
+.half.top{top:0;align-items:flex-end}
+.half.bottom{bottom:0;align-items:flex-start}
+.title-block{flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:2vw}
+.half.bottom .title-block{justify-content:flex-start;padding-top:2vw;padding-bottom:0}
+.title-block h2{font-family:'Space Grotesk';font-size:3vw;line-height:.95;max-width:12ch}
+.period{font-size:1.6vw;color:#9AA4B2}
+.items{display:flex;height:100%}
+.mitem{position:relative;width:30vw;min-width:250px;padding:0 2.5vw;display:flex;flex-direction:column}
+.half.top .mitem{justify-content:flex-end;padding-bottom:3.5vw}
+.half.bottom .mitem{justify-content:flex-start;padding-top:3.5vw}
+.stem{position:absolute;left:2.5vw;top:0;bottom:0;width:2px}
+.half.top .stem{top:auto;height:34%}
+.half.bottom .stem{bottom:auto;height:34%}
+.stem i{position:absolute;inset:0;background:#22d3ee;border-radius:2px;transform:scaleY(0)}
+.half.top .stem i{transform-origin:bottom}
+.half.bottom .stem i{transform-origin:top}
+.node{position:absolute;left:2.5vw;width:14px;height:14px;border-radius:50%;background:#22d3ee;box-shadow:0 0 14px rgba(34,211,238,.8);transform:translateX(-6px) scale(0)}
+.half.top .node{bottom:34%}
+.half.bottom .node{top:34%}
+.mtext h4{font-family:'Space Grotesk';font-size:2.1vw;line-height:1;margin-bottom:.6vw}
+.mtext h4 small{display:block;font-family:'JetBrains Mono';font-weight:400;font-size:1vw;letter-spacing:.2em;color:#22d3ee;margin-bottom:.4vw}
+.mtext p{color:#9AA4B2;font-size:1.35vw;line-height:1.35;max-width:24ch}
+/* outro */
+.outro{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:60px 24px;position:relative;z-index:2}
+.outro h2{font-family:'Space Grotesk';font-size:clamp(26px,4vw,44px)}
+.outro p{color:#9AA4B2;max-width:52ch}
+/* mobile: vertical, no pin */
+.mlist{display:none}
+@media(max-width:760px){
+  #journeySec{height:auto}
+  .sticky{display:none}
+  .mlist{display:flex;flex-direction:column;gap:14px;width:min(1200px,93%);margin:0 auto;padding:20px 0 60px;position:relative;z-index:2}
+  .mcard{background:rgba(17,22,38,.7);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px;backdrop-filter:blur(8px)}
+  .mcard h4{font-family:'Space Grotesk';font-size:18px;margin-bottom:6px}
+  .mcard h4 small{display:block;font-family:'JetBrains Mono';font-weight:400;font-size:11px;letter-spacing:.2em;color:#22d3ee;margin-bottom:4px}
+  .mcard p{color:#9AA4B2;font-size:14px}
+  .title-block h2,.period,.mtext h4,.mtext p{font-size:inherit}
+}
+@media(prefers-reduced-motion:reduce){
+  #webgl{display:none}
+  #journeySec{height:auto}
+  .sticky{position:static;height:auto;display:block;overflow:visible}
+  .track{flex-direction:column;width:100%;height:auto;gap:14px;padding:20px 4vw}
+  .photo-card{width:100%;height:240px}
+  .zone{width:100%;height:auto}
+  .rail,.stem,.node{display:none}
+  .half{position:static;height:auto;flex-direction:column}
+  .mitem{width:100%;padding:14px 0}
+  .mtext h4{font-size:20px}.mtext p{font-size:15px}
+}
+</style>
+</head>
+<body>
+<canvas id="webgl" aria-hidden="true"></canvas>
+<div class="page-glow" aria-hidden="true"><span class="pg-a"></span><span class="pg-b"></span></div>
+
+<header class="topbar">
+  <nav class="topbar-in" aria-label="Achievements navigation">
+    <a class="brand" href="index.html"><span class="brand-mark">MZ</span><span>Mohammed Zomlot</span></a>
+    <button class="btn" id="lang-toggle" type="button">عربي</button>
+    <a class="btn btn-primary" href="index.html">← <span data-i18n="back">Back home</span></a>
+  </nav>
+</header>
+
+<section class="lead">
+  <p class="eyebrow" data-i18n="kick">Achievements · 6 real milestones</p>
+  <h1><span data-i18n="h1a">Six phases,</span> <span class="grad" data-i18n="h1b">one horizontal scroll.</span></h1>
+  <p data-i18n="lede">Keep scrolling — the timeline pins, the track slides sideways, and each milestone draws its stem and reveals its story as it reaches centre. Real work only, no fake employment.</p>
+  <span class="bounce" aria-hidden="true">↓</span>
+</section>
+
+<section id="journeySec" aria-label="Achievements timeline">
+  <div class="sticky">
+    <div class="track" id="track">
+      <div class="photo-card"><img src="assets/profile.jpg" alt="Mohammed Zomlot" /></div>
+      <div class="zone">
+        <div class="rail" aria-hidden="true"><span class="dot"></span><span class="line" id="railLine"></span><span class="dot"></span></div>
+        <div class="half top">
+          <div class="title-block"><h2 data-i18n="ztitle">Development Journey</h2></div>
+          <div class="items" id="topItems"></div>
+        </div>
+        <div class="half bottom">
+          <div class="title-block"><span class="period" data-i18n="period">PHASE 01 — 06</span></div>
+          <div class="items" id="botItems"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mlist" id="mlist"></div>
+</section>
+
+<section class="outro">
+  <h2 data-i18n="outT">From first tag to full identity.</h2>
+  <p data-i18n="outD">Six honest phases — and the next milestone is the project we build together.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <a class="btn btn-primary" href="index.html#projects"><span data-i18n="outB1">View the projects</span> →</a>
+    <a class="btn" href="index.html#contact"><span data-i18n="outB2">Start yours</span></a>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script type="module">
+import * as THREE from 'three';
+(function(){
+  var canvas = document.getElementById('webgl');
+  if(!canvas || !window.WebGLRenderingContext) return;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true}); }
+  catch(e){ canvas.style.display='none'; return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.setSize(innerWidth, innerHeight);
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 9);
+  scene.add(new THREE.AmbientLight(0x8899ff, 0.6));
+  var p1 = new THREE.PointLight(0x2f7bff, 60, 40); p1.position.set(-6,3,2); scene.add(p1);
+  var p2 = new THREE.PointLight(0x22d3ee, 50, 40); p2.position.set(6,-2,3); scene.add(p2);
+  var N = 900, pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  var palette = [new THREE.Color(0x2f7bff), new THREE.Color(0x22d3ee), new THREE.Color(0xa78bfa)];
+  for(var i=0;i<N;i++){
+    pos[i*3]=(Math.random()-0.5)*34; pos[i*3+1]=(Math.random()-0.5)*20; pos[i*3+2]=(Math.random()-0.5)*16-2;
+    var c = palette[(Math.random()*3)|0];
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+  }
+  var g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  g.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var pts = new THREE.Points(g, new THREE.PointsMaterial({size:0.05, vertexColors:true, transparent:true, opacity:0.85, depthWrite:false, blending:THREE.AdditiveBlending}));
+  scene.add(pts);
+  var clock = new THREE.Clock();
+  function frame(){
+    pts.rotation.y = clock.getElapsedTime()*0.02;
+    renderer.render(scene, camera);
+    if(!reduced && !document.hidden) requestAnimationFrame(frame);
+  }
+  if(reduced){ renderer.render(scene, camera); } else frame();
+  document.addEventListener('visibilitychange', function(){ if(!reduced && !document.hidden) frame(); });
+  addEventListener('resize', function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+})();
+</script>
+<script>
+/* Achievements data (honest phases) + EN/AR + GSAP horizontal timeline */
+(function(){
+'use strict';
+var DATA = [
+  { phase: {en:'PHASE 01', ar:'المرحلة 01'}, t: {en:'Foundations', ar:'الأساسيات'}, d: {en:'HTML semantics, CSS layout, JavaScript basics and responsive thinking.', ar:'دلالات HTML وتخطيط CSS وأساسيات جافاسكربت والتفكير المتجاوب.'}, row: 'top' },
+  { phase: {en:'PHASE 02', ar:'المرحلة 02'}, t: {en:'Real case studies', ar:'دراسات حالة حقيقية'}, d: {en:'10 front-end projects: dashboards, stores, landing pages and business interfaces.', ar:'10 مشاريع واجهات: لوحات تحكم ومتاجر وصفحات هبوط وواجهات أعمال.'}, row: 'top' },
+  { phase: {en:'PHASE 03', ar:'المرحلة 03'}, t: {en:'Interactive depth', ar:'عمق تفاعلي'}, d: {en:'3D touches, motion, filtering, modals, themes and client-side architecture.', ar:'لمسات ثلاثية الأبعاد وحركة وفلاتر ونوافذ وسمات وبنية واجهات.'}, row: 'top' },
+  { phase: {en:'PHASE 04', ar:'المرحلة 04'}, t: {en:'UI / UX polish', ar:'صقل الواجهات'}, d: {en:'Hierarchy, spacing systems, accessibility and interaction polish.', ar:'تسلسل بصري وأنظمة تباعد وسهولة وصول وصقل التفاعلات.'}, row: 'bot' },
+  { phase: {en:'PHASE 05', ar:'المرحلة 05'}, t: {en:'Direct contact system', ar:'منظومة تواصل مباشرة'}, d: {en:'Brief form with direct send, FAQ answers, offline PWA and downloadable CV.', ar:'نموذج تواصل بإرسال مباشر وأسئلة شائعة ودعم دون إنترنت وسيرة قابلة للتحميل.'}, row: 'bot' },
+  { phase: {en:'PHASE 06', ar:'المرحلة 06'}, t: {en:'Professional identity', ar:'هوية احترافية'}, d: {en:'This portfolio, 3D lab experiments and open work on GitHub.', ar:'هذا الموقع وتجارب مختبر 3D وأعمال مفتوحة على GitHub.'}, row: 'bot' }
+];
+var T = {
+  en: { back:'Back home', kick:'Achievements · 6 real milestones', h1a:'Six phases,', h1b:'one horizontal scroll.', lede:'Keep scrolling — the timeline pins, the track slides sideways, and each milestone draws its stem and reveals its story as it reaches centre. Real work only, no fake employment.', ztitle:'Development Journey', period:'PHASE 01 — 06', outT:'From first tag to full identity.', outD:'Six honest phases — and the next milestone is the project we build together.', outB1:'View the projects', outB2:'Start yours' },
+  ar: { back:'عودة للرئيسية', kick:'الإنجازات · 6 محطات حقيقية', h1a:'ست مراحل،', h1b:'سكرول أفقي واحد.', lede:'واصل التمرير — يثبت الخط الزمني وينزلق المسار جانبيًا وترسم كل محطة ساقها وتكشف قصتها عند المنتصف. عمل حقيقي فقط.', ztitle:'رحلة التطور', period:'المرحلة 01 — 06', outT:'من أول وسم إلى هوية كاملة.', outD:'ست مراحل صادقة — والمحطة التالية مشروع نبنيه معًا.', outB1:'شاهد المشاريع', outB2:'ابدأ مشروعك' }
+};
+var lang = 'en';
+function txt(o){ return o[lang] || o.en; }
+function build(){
+  var top = document.getElementById('topItems'), bot = document.getElementById('botItems'), ml = document.getElementById('mlist');
+  top.innerHTML = ''; bot.innerHTML = ''; ml.innerHTML = '';
+  DATA.forEach(function(it, i){
+    var host = (it.row === 'top') ? top : bot;
+    var el = document.createElement('div');
+    el.className = 'mitem';
+    el.setAttribute('data-i', i);
+    el.innerHTML = '<div class="stem" aria-hidden="true"><i></i></div><span class="node" aria-hidden="true"></span>' +
+      '<div class="mtext"><h4><small>' + txt(it.phase) + '</small>' + txt(it.t) + '</h4><p>' + txt(it.d) + '</p></div>';
+    host.appendChild(el);
+    var mc = document.createElement('div');
+    mc.className = 'mcard';
+    mc.innerHTML = '<h4><small>' + txt(it.phase) + '</small>' + txt(it.t) + '</h4><p>' + txt(it.d) + '</p>';
+    ml.appendChild(mc);
+  });
+}
+function applyLang(l){
+  lang = (l === 'ar') ? 'ar' : 'en';
+  var d = T[lang];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'), function(el){
+    var k = el.getAttribute('data-i18n');
+    if(d[k]) el.textContent = d[k];
+  });
+  document.getElementById('lang-toggle').textContent = (lang === 'ar') ? 'EN' : 'عربي';
+  document.title = (lang === 'ar') ? 'الخط الزمني للإنجازات — محمد زملوط' : 'Achievements Timeline — Mohammed Zomlot';
+  build();
+  initScroll();
+}
+document.getElementById('lang-toggle').addEventListener('click', function(){ applyLang(lang === 'ar' ? 'en' : 'ar'); });
+
+var st = null;
+function killScroll(){ if(st){ try{ st.kill(); }catch(e){} st = null; } }
+function initScroll(){
+  killScroll();
+  if(matchMedia('(max-width: 760px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  var sec = document.getElementById('journeySec'), track = document.getElementById('track'), line = document.getElementById('railLine');
+  function dist(){ return Math.max(0, track.scrollWidth - innerWidth); }
+  var items = Array.prototype.slice.call(document.querySelectorAll('.mitem'));
+  st = ScrollTrigger.create({
+    trigger: sec, start: 'top top', end: 'bottom bottom', scrub: true,
+    onUpdate: function(self){
+      var p = self.progress, d = dist();
+      gsap.set(track, { x: -d * p });
+      gsap.set(line, { scaleX: p });
+      items.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        var c = (r.left + r.width / 2) / innerWidth; // 0..1 across viewport
+        var local = Math.min(1, Math.max(0, (0.72 - c) / 0.3)); // reveal near centre-left
+        var stem = el.querySelector('.stem i'), node = el.querySelector('.node'), tx = el.querySelector('.mtext');
+        gsap.set(stem, { scaleY: local });
+        gsap.set(node, { scale: local });
+        gsap.set(tx, { opacity: local, y: (1 - local) * 40 });
+      });
+    }
+  });
+  ScrollTrigger.refresh();
+}
+build();
+initScroll();
+var rT = null;
+addEventListener('resize', function(){ clearTimeout(rT); rT = setTimeout(initScroll, 250); });
+})();
+</script>
+</body>
+</html>

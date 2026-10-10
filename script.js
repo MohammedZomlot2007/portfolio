@@ -37,20 +37,22 @@ setTimeout(function () { /* hard fallback: never trap user */
   loader.classList.add('done');
 }, 3500);
 
-/* ---------- Theme (localStorage + prefers-color-scheme) ---------- */
+/* ---------- Theme (dark-first, explicit user preference persists) ---------- */
 var root = document.documentElement;
 function currentTheme() {
   var saved = null;
-  try { saved = localStorage.getItem('mz-theme'); } catch (e) {}
-  if (saved) return saved;
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  /* v2 intentionally ignores the old system-preference/legacy key once, so the
+     redesign opens in its intended dark palette instead of inheriting old light mode. */
+  try { saved = localStorage.getItem('mz-theme-v2'); } catch (e) {}
+  return saved === 'light' ? 'light' : 'dark';
 }
 function applyTheme(t) {
-  root.setAttribute('data-theme', t);
+  root.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
   var moon = $('#icon-moon'), sun = $('#icon-sun');
   if (moon && sun) { moon.style.display = t === 'dark' ? '' : 'none'; sun.style.display = t === 'dark' ? 'none' : ''; }
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#06070A' : '#f4f6fb');
-  try { localStorage.setItem('mz-theme', t); } catch (e) {}
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeMeta) themeMeta.setAttribute('content', t === 'dark' ? '#06070A' : '#f4f6fb');
+  try { localStorage.setItem('mz-theme-v2', t === 'light' ? 'light' : 'dark'); } catch (e) {}
 }
 applyTheme(currentTheme());
 $('#theme-toggle').addEventListener('click', function () {

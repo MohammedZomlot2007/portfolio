@@ -1,87 +1,805 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1020"><meta name="author" content="Mohammed Zomlot">
-<meta name="description" content="محمد زملط — مطوّر واجهات وتجارب ويب. مواقع متجاوبة، لوحات أعمال، وتجارب ثلاثية الأبعاد بتفاصيل مدروسة.">
-<meta property="og:type" content="website"><meta property="og:title" content="محمد زملط | مطوّر واجهات وتجارب ويب"><meta property="og:description" content="واجهات واضحة، منتجات رقمية عملية، وتجارب ويب بتفاصيل مدروسة."><meta property="og:image" content="assets/profile.jpg">
-<title>محمد زملط | مطوّر واجهات وتجارب ويب</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Ctext x='32' y='40' fill='%234bdcf2' text-anchor='middle' font-family='Arial' font-size='25' font-weight='bold'%3EMZ%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0b1020;--panel:#121b2d;--panel2:#172338;--text:#eaf1fa;--muted:#9aaac0;--line:rgba(172,201,225,.13);--cyan:#4bdcf2;--green:#4ee2ad;--blue:#83aaff;--violet:#b3aaff;--gold:#f2ce84;--max:1160px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:radial-gradient(ellipse at 80% 10%,rgba(24,111,139,.12),transparent 32%),radial-gradient(ellipse at 8% 38%,rgba(78,65,160,.1),transparent 28%),var(--bg);color:var(--text);font:15px/1.8 Cairo,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}::selection{background:#277d92;color:white}.container{width:min(var(--max),calc(100% - 44px));margin:auto}.progress{height:3px;width:0;position:fixed;inset:0 auto auto 0;z-index:101;background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet))}.skip{position:fixed;z-index:200;top:10px;inset-inline-start:10px;transform:translateY(-150%);background:var(--cyan);color:#06141d;padding:8px 13px;border-radius:8px}.skip:focus{transform:none}
-header{position:sticky;top:0;z-index:100;background:rgba(7,12,24,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(172,201,225,.08)}nav{min-height:76px;display:flex;align-items:center;gap:27px}.brand{display:flex;align-items:center;gap:10px;white-space:nowrap}.mark{width:39px;height:39px;display:grid;place-items:center;border:1px solid #2a8196;border-radius:12px;color:var(--cyan);font:800 14px Manrope;position:relative;background:#112337}.mark:after{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);position:absolute;top:5px;inset-inline-start:5px}.brand-copy{display:grid;line-height:1.4}.brand-copy strong{font-size:13px}.brand-copy small{color:#8195ad;font-size:9px}.links{display:flex;align-items:center;gap:23px;margin:auto}.links a{font-size:11px;color:#aebdd0;transition:color .2s}.links a:hover,.links a.active{color:var(--cyan)}.nav-actions{display:flex;gap:10px;align-items:center}.lang{background:transparent;border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:#c2d0df;font:700 10px "Space Mono";direction:ltr}.btn{min-height:45px;padding:10px 18px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:1px solid transparent;border-radius:10px;font-size:12px;font-weight:800;transition:transform .2s,border-color .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px)}.primary{color:#04141c;background:linear-gradient(110deg,#58e1ed,#38c4df);box-shadow:0 8px 28px #18a6bc25}.outline{background:#ffffff05;border-color:#9db7cc30;color:var(--text)}.outline:hover{border-color:#4bdcf270}.small{min-height:36px;padding:7px 12px;font-size:10px}.burger{display:none;background:#ffffff05;border:1px solid var(--line);border-radius:9px;width:39px;height:39px;place-content:center;gap:5px}.burger span{display:block;width:17px;height:2px;background:#d0dfeb}
-.hero{padding:78px 0 28px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#8cb1d00d 1px,transparent 1px),linear-gradient(90deg,#8cb1d00d 1px,transparent 1px);background-size:62px 62px;mask-image:linear-gradient(#000,transparent 86%)}.hero-layout{position:relative;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:68px}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #4ee2ad2a;background:#4ee2ad0c;color:#b3e6d3;border-radius:30px;padding:5px 12px;font-size:10px;margin-bottom:24px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px #4ee2ad80}.eyebrow{margin:0 0 14px;display:flex;align-items:center;gap:9px;color:var(--cyan);font-size:10px;font-weight:800}.eyebrow:before{content:"";width:20px;height:1px;background:var(--cyan)}.num{font:10px "Space Mono";color:#71859d;direction:ltr}.hero h1,.section-title{margin:0;font-size:clamp(34px,4vw,54px);line-height:1.45;letter-spacing:-.04em;font-weight:900}.gradient{color:var(--cyan);background:linear-gradient(100deg,#68e3f1,#42d5d2,#75e2b2);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}.intro{max-width:610px;color:var(--muted);font-size:13px;line-height:2.2;margin:20px 0 24px}.hero-buttons{display:flex;gap:11px;flex-wrap:wrap}.socials{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px}.socials a{font:11px Manrope;color:#aabbd0;display:flex;align-items:center;gap:7px}.socials a:hover{color:var(--cyan)}.social-icon{border:1px solid var(--line);width:24px;height:24px;display:grid;place-items:center;border-radius:7px;color:var(--cyan);font-size:9px}.hero-visual{width:100%;max-width:455px;justify-self:center}.visual-top,.visual-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.mono{font:9px "Space Mono";letter-spacing:.08em;color:#7189a2;direction:ltr}.status{display:flex;align-items:center;gap:7px;font-size:9px;color:#93a9bd}.portrait-box{position:relative;height:420px;margin-top:12px;overflow:visible;border:1px solid #7caecc35;border-radius:25px;background:radial-gradient(ellipse at 55% 30%,#1a77952a,transparent 52%),radial-gradient(ellipse at 28% 75%,#6860bb25,transparent 52%),linear-gradient(145deg,#1b3043,#0b1424);box-shadow:0 25px 90px #0005}.portrait-box:before{content:"";position:absolute;inset:0;border-radius:25px;background-image:linear-gradient(#93cde314 1px,transparent 1px),linear-gradient(90deg,#93cde314 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(#000,transparent)}.ring{position:absolute;inset:12% 7%;border:1px solid #4bdcf228;border-radius:50%;transform:rotate(-25deg) scaleY(.77)}.ring:before,.ring:after{content:"";position:absolute;inset:15%;border:1px solid #4bdcf21c;border-radius:50%}.ring:after{inset:30%;border-color:#b3aaff26}.portrait{position:absolute;right:7%;bottom:0;width:86%;height:89%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 24px #0007);mask-image:linear-gradient(#000 80%,transparent)}.fallback{position:absolute;inset:0;display:grid;place-items:center;color:#4bdcf2;font:900 120px Manrope;letter-spacing:-.12em;text-shadow:0 0 70px #4bdcf244}.portrait-label{position:absolute;z-index:2;inset:auto 15px 15px;display:flex;align-items:center;gap:11px;border:1px solid #b0cfe326;border-radius:13px;padding:11px;background:#080f1bd9;backdrop-filter:blur(12px)}.mini-mark{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;color:var(--cyan);background:#4bdcf219;border:1px solid #4bdcf233;font:800 12px Manrope}.portrait-label div{display:grid;line-height:1.4}.portrait-label strong{font:700 12px Manrope;direction:ltr;text-align:right}.portrait-label small{font:9px Manrope;color:#8fa3bb;direction:ltr;text-align:right}.portrait-label .spark{margin-inline-start:auto;color:var(--green);font-size:20px}.float-chip{position:absolute;z-index:4;display:flex;align-items:center;gap:8px;padding:9px 11px;background:#0b1424ed;border:1px solid #8db9d12c;border-radius:11px;box-shadow:0 15px 40px #0004}.chip-a{top:75px;inset-inline-start:-25px}.chip-b{bottom:98px;inset-inline-end:-24px}.chip-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:#4bdcf21a;color:var(--cyan);font:700 11px "Space Mono"}.chip-b .chip-icon{color:var(--green);background:#4ee2ad16}.float-chip div{display:grid;line-height:1.35}.float-chip strong{font:700 10px Manrope}.float-chip small{font:9px Manrope;color:#8b9fb5}.visual-bottom{margin-top:15px}.visual-bottom span:first-child{font-size:9px;color:#92a6bc;display:flex;align-items:center;gap:8px}.tiny-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}.scroll-note{margin-top:58px;display:flex;align-items:center;justify-content:center;gap:13px;color:#71849d;font-size:9px}.scroll-note i{width:40px;height:1px;background:linear-gradient(90deg,transparent,#6d95b45c)}
-.stats{border-block:1px solid #a5c3df16;background:linear-gradient(90deg,#111a2b,#182237,#111a2b)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:27px 0}.stat{padding:8px 24px;border-inline-start:1px solid var(--line);display:grid;gap:2px}.stat:first-child{border-inline-start:0}.stat strong{font:800 30px/1.3 Manrope;letter-spacing:-1.5px;direction:ltr;text-align:right}.stat strong span{font-size:.65em}.cyan{color:var(--cyan)}.violet{color:var(--violet)}.green{color:var(--green)}.blue{color:var(--blue)}.stat b{font-size:11px}.stat small{font-size:9px;color:#7f93aa}
-section.content{padding:100px 0}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:34px}.section-title{font-size:clamp(29px,3.2vw,42px)}.section-desc{margin:10px 0 0;max-width:630px;color:var(--muted);font-size:12px;line-height:2.1}.link{display:inline-flex;gap:10px;align-items:center;color:var(--cyan);font-size:11px;font-weight:800;padding-bottom:7px;border-bottom:1px solid #4bdcf244;white-space:nowrap}.link:hover{gap:15px;border-color:var(--cyan)}.projects{background:linear-gradient(180deg,transparent,#0d1423b0)}.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{overflow:hidden;min-width:0;border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,#151f32,#101827);transition:transform .25s,border-color .25s,box-shadow .25s}.card:hover{transform:translateY(-5px);border-color:#4bdcf249;box-shadow:0 22px 60px #0003}.art{height:235px;position:relative;overflow:hidden;border-bottom:1px solid #9bb9d11a;background:radial-gradient(ellipse at center,#153448,#0a1425)}.art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08101dc9,transparent 55%);pointer-events:none}.art-tag{position:absolute;top:14px;inset-inline-start:14px;z-index:4;border:1px solid #a3c2dc24;background:#0a1427a6;border-radius:6px;padding:5px 8px;color:#9ab1c8;font:8px "Space Mono";direction:ltr}.corner{position:absolute;bottom:13px;inset-inline-end:13px;z-index:5;width:30px;height:30px;display:grid;place-items:center;border:1px solid #a3c2dc27;border-radius:8px;background:#0a1427bd;color:var(--cyan)}.card-body{padding:19px 21px}.meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#9be0d0;font-size:10px;font-weight:700}.meta>span:first-child:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-inline-end:7px}.count{font:9px "Space Mono";color:#687f99;direction:ltr}.card h3{font-size:20px;margin:3px 0 6px;font-weight:900;letter-spacing:-.03em}.card p{font-size:11px;color:#9aabc0;line-height:2.05;margin:0;min-height:47px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.tags span{font:9px Manrope;color:#b3c3d7;border:1px solid #9dbbd11b;background:#ffffff04;border-radius:6px;padding:5px 8px;direction:ltr}.card-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #9bb9d114;margin-top:16px;padding-top:13px}.card-foot a{font-size:11px;font-weight:800;color:var(--cyan)}.card-foot small{font-size:9px;color:#71869e}.wide{grid-column:1/-1;display:grid;grid-template-columns:1.08fr .92fr}.wide .art{height:100%;min-height:285px;border-bottom:0;border-inline-end:1px solid #9bb9d114}.wide .card-body{padding:28px;align-self:center}.wide .card p{max-width:450px}
-.trade-window{position:absolute;inset:42px 9% 22px;background:#0a1728;border:1px solid #62b5d33d;border-radius:9px;overflow:hidden;box-shadow:0 20px 50px #0004;transform:perspective(900px) rotateY(-5deg);transition:transform .3s}.card:hover .trade-window{transform:perspective(900px) rotateY(0) translateY(-3px)}.winbar{height:23px;display:flex;align-items:center;gap:4px;padding:0 9px;background:#223a502e;border-bottom:1px solid #8db7d31b}.winbar i{width:4px;height:4px;background:#53728a;border-radius:50%}.winbar b{font:7px "Space Mono";color:#7ad1e4;margin-inline-start:7px}.winbar em{font-style:normal;margin-inline-start:auto;color:#7ad1e4}.trade-ui{display:flex;height:calc(100% - 23px)}.trade-side{width:34px;background:#13253a;border-inline-end:1px solid #9bb9d117;display:grid;align-content:start;justify-items:center;gap:13px;padding:12px 7px}.trade-side b{width:16px;height:16px;border-radius:5px;background:linear-gradient(135deg,#4bdcf2,#227fa0)}.trade-side i{width:14px;height:4px;border-radius:4px;background:#2d4966}.trade-main{padding:14px 19px;flex:1}.trade-main small{font:7px "Space Mono";color:#6fc7db;direction:ltr;display:block}.trade-main strong{font:700 24px/1.15 Manrope;display:block;text-align:left;direction:ltr;margin-top:7px}.trade-main strong em{color:var(--cyan);font-style:normal}.bars{display:flex;align-items:end;gap:6px;height:43px;margin-top:8px;border-bottom:1px solid #71bed31e}.bars i{flex:1;height:var(--h,50%);background:linear-gradient(0deg,#1a839d26,#4bdcf2b8);border-radius:3px 3px 0 0}.bars i:nth-child(2){height:70%}.bars i:nth-child(3){height:46%}.bars i:nth-child(4){height:82%}.bars i:nth-child(5){height:58%}.bars i:nth-child(6){height:93%}.bars i:nth-child(7){height:70%}.bars i:nth-child(8){height:86%}.micro-cards{display:flex;gap:7px;margin-top:10px}.micro-cards i{height:22px;flex:1;background:#4bdcf20b;border:1px solid #82bdd51b;border-radius:4px}
-.dashboard{position:absolute;inset:40px 8% 20px;display:flex;background:#0e1729;border:1px solid #a1b0eb37;border-radius:9px;overflow:hidden;transform:perspective(900px) rotateY(5deg);transition:transform .3s}.card:hover .dashboard{transform:perspective(900px) rotateY(0) translateY(-3px)}.dash-side{width:36px;background:#152138;border-inline-end:1px solid #9baee71c;display:grid;align-content:start;justify-items:center;gap:12px;padding:10px 7px}.dash-side b{width:17px;height:17px;background:#7076e9;border-radius:5px}.dash-side i{width:15px;height:4px;background:#344564;border-radius:4px}.dash-main{padding:12px;flex:1;min-width:0}.dash-line{display:flex;justify-content:space-between;gap:10px}.dash-line i{height:7px;width:50px;border-radius:4px;background:#cbd8ec}.dash-line b{width:11px;height:11px;background:#28344c;border-radius:4px}.kpis{display:flex;gap:6px;margin-top:11px}.kpis i{flex:1;height:25px;border-radius:4px;background:#182b48;border:1px solid #9aaceb1b}.chart{height:80px;margin-top:10px;border:1px solid #9ca8e622;position:relative;background:repeating-linear-gradient(0deg,transparent,transparent 17px,#8e9ab11a 18px)}.chart svg{position:absolute;inset:10px 0 0;width:100%;height:85%}.chart path{fill:none;stroke:#858af5;stroke-width:2;vector-effect:non-scaling-stroke}.gold-visual{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse,#b1884530,transparent 62%)}.gold-orbit{position:absolute;width:220px;height:130px;border:1px solid #f2ce8433;border-radius:50%;transform:rotate(-28deg)}.gold-orbit.two{width:190px;height:115px;transform:rotate(36deg)}.gold-ring{width:130px;height:130px;border:17px solid #d3ab5d;border-radius:50%;box-shadow:0 0 40px #e9c67128,inset 0 0 15px #0006;transform:rotateX(60deg) rotate(-23deg);background:linear-gradient(135deg,#fff3ba,#91642e,#f7da90)}.gold-label{position:absolute;text-align:center;display:grid;z-index:2}.gold-label b{font:800 42px Manrope;color:#f0d18b;line-height:1}.gold-label small{font:8px "Space Mono";color:#c9aa70}.gold-label i{font:7px "Space Mono";color:#95805a;font-style:normal}.school-scene{position:absolute;inset:0;background:radial-gradient(ellipse at 55% 32%,#4dd7ad23,transparent 53%)}.school-sun{position:absolute;right:34%;top:26px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#5be0bb35,transparent 70%)}.school-building{position:absolute;bottom:39px;left:24%;width:53%;height:105px}.roof{position:absolute;top:0;left:-4%;width:108%;height:38px;background:#24505a;clip-path:polygon(50% 0,100% 100%,0 100%)}.school-front{position:absolute;inset:33px 7% 0;background:#183646;border:1px solid #67d4b62c;display:flex;justify-content:space-around;padding:13px 10px 5px}.school-front i{width:14px;background:linear-gradient(#0b1b2c,#247b80);border:1px solid #66d4b62e}.school-front b{position:absolute;left:calc(50% - 11px);bottom:5px;color:#71dfbd}.book{position:absolute;bottom:16px;right:22%;display:flex;transform:rotate(-12deg)}.book i{width:31px;height:20px;background:#328b84;border:1px solid #6fddbd;transform:skewY(-8deg)}.book i+i{background:#b9a16d}.phone-art{background:radial-gradient(ellipse,#187ca33d,transparent 64%),linear-gradient(130deg,#091523,#131d2e)}.phone-part{position:absolute;top:50%;left:50%;width:116px;height:218px;border-radius:19px;border:1px solid #88bed55c;box-shadow:0 20px 40px #0005}.phone-back{transform:translate(-110%,-53%) rotate(-12deg);background:#1b2b42;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:9px}.phone-back i{width:25px;height:25px;border-radius:50%;border:5px solid #40566c;background:#091321}.phone-mid{transform:translate(-18%,-51%) rotate(6deg);background:linear-gradient(135deg,#7897a9,#1b2f44);display:grid;align-content:center;justify-items:center;gap:18px}.phone-mid i{width:80px;height:22px;border:1px solid #96cadb;border-radius:4px;background:#19364a}.phone-front{transform:translate(28%,-48%) rotate(17deg);background:linear-gradient(140deg,#36465a,#121c2b);display:grid;place-items:center}.phone-screen{position:absolute;inset:7px;border-radius:13px;background:radial-gradient(ellipse,#19496b,#080f1e 72%);border:1px solid #526b84;display:grid;place-content:center;text-align:center}.phone-screen b{font:800 36px Manrope;letter-spacing:-4px;color:var(--cyan)}.phone-screen small{font:8px "Space Mono";color:#8dcde0;letter-spacing:.15em}.phone-lens{position:absolute;width:22px;height:22px;border-radius:50%;top:17px;left:15px;background:radial-gradient(circle at 35% 30%,#9edff5,#132a45 45%,#050e1c 65%,#5d7891 70%);border:2px solid #6e8ca7}
-.services{border-block:1px solid #9bbbd013;background:#0d142380}.service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.service{position:relative;border:1px solid var(--line);border-radius:16px;padding:22px 19px;background:linear-gradient(150deg,#172237,#111a2a);transition:transform .2s,border-color .2s}.service:hover{transform:translateY(-4px);border-color:#4bdcf244}.service-icon{height:39px;width:39px;display:grid;place-items:center;border-radius:10px;margin-bottom:17px;font:800 14px Manrope;background:#4bdcf21a;color:var(--cyan)}.service:nth-child(2) .service-icon{background:#b3aaff1a;color:var(--violet)}.service:nth-child(3) .service-icon{background:#4ee2ad17;color:var(--green)}.service:nth-child(4) .service-icon{background:#83aaff1b;color:var(--blue)}.service-number{position:absolute;top:22px;inset-inline-end:19px;color:#60758f;font:9px "Space Mono"}.service h3{font-size:14px;margin:0 0 7px}.service p{margin:0 0 16px;color:#95a7bd;font-size:10px;line-height:2.15}.service small{display:block;font:8px "Space Mono";color:#84b6c6;direction:ltr;text-align:right}
-.about-grid{display:grid;grid-template-columns:1fr .78fr;gap:75px;align-items:center}.about-copy .section-title{font-size:clamp(29px,3.2vw,42px)}.about-copy p{font-size:12px;color:var(--muted);line-height:2.2}.about-copy p.lead{font-size:14px;color:#d2dfed;font-weight:700}.about-buttons{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:23px}.toolbox{border:1px solid var(--line);border-radius:18px;padding:23px;background:linear-gradient(140deg,#1a2940,#101827);box-shadow:0 22px 65px #0002}.toolbox-title{display:flex;align-items:center;gap:12px;padding-bottom:17px;border-bottom:1px solid var(--line)}.tool-symbol{width:40px;height:40px;display:grid;place-items:center;border:1px solid #4bdcf233;background:#4bdcf215;border-radius:10px;color:var(--cyan);font:800 15px "Space Mono"}.toolbox-title div{display:grid;line-height:1.4}.toolbox-title strong{font-size:13px}.toolbox-title small{font-size:9px;color:#8297ae}.toolbox-title .dot{margin-inline-start:auto}.tool-group{padding:16px 0 0;border-bottom:1px solid #a5c3df12}.tool-group>span{font-size:10px;color:#839bb4;display:block;margin-bottom:9px}.pills{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:15px}.pills b{font:9px Manrope;color:#b8c8da;background:#ffffff06;border:1px solid #a6c1db19;border-radius:6px;padding:5px 8px;direction:ltr}.toolbox-foot{display:flex;gap:8px;align-items:center;padding-top:17px;font-size:10px;color:#92a8bd}
-.contact{padding-top:45px;padding-bottom:90px}.contact-panel{position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;padding:47px;border-radius:23px;border:1px solid #76d4e22e;background:linear-gradient(115deg,#1a2a40,#111b2d 58%,#1a2d3d);box-shadow:0 25px 70px #0002}.contact-panel:before{content:"";position:absolute;top:-250px;inset-inline-start:-80px;width:550px;height:420px;border-radius:50%;background:radial-gradient(circle,#38c4df1a,transparent 70%)}.contact-copy,.contact-side{position:relative;z-index:1}.contact-copy .section-title{font-size:clamp(29px,3.2vw,42px)}.contact-copy>p:not(.eyebrow){font-size:11px;color:#a2b5c8;line-height:2.2;max-width:530px;margin:13px 0 22px}.contact-buttons{display:flex;flex-wrap:wrap;gap:9px}.copy-status{min-height:18px;color:var(--green);font-size:10px;margin:7px 0 0}.contact-side{align-self:center;padding:8px 15px;border:1px solid #a5c5df1d;border-radius:15px;background:#080f1e35}.orbit{height:85px;position:relative;display:grid;place-items:center;border-bottom:1px solid var(--line);margin-bottom:3px}.orbit span{position:absolute;width:130px;height:55px;border:1px solid #4bdcf238;border-radius:50%;transform:rotate(-20deg)}.orbit span+span{transform:rotate(40deg);border-color:#4ee2ad30}.orbit b{font:900 23px Manrope;color:var(--cyan);text-shadow:0 0 25px #4bdcf244;z-index:1}.contact-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #a5c5df17}.contact-row:last-child{border-bottom:0}.contact-symbol{width:32px;height:32px;display:grid;place-items:center;border:1px solid #4bdcf22a;background:#4bdcf20e;border-radius:8px;color:var(--cyan);font:700 9px Manrope;flex-shrink:0}.contact-row>div{display:grid;line-height:1.4;min-width:0}.contact-row small{font-size:9px;color:#879bb1}.contact-row a{font:10px Manrope;color:#d7e3f0;direction:ltr;text-align:right;overflow-wrap:anywhere}.contact-row a:hover{color:var(--cyan)}.copy-mini{margin-inline-start:auto;background:transparent;border:1px solid var(--line);color:#9fb3c8;border-radius:7px;width:28px;height:28px}.footer{border-top:1px solid #9bbbd016;background:#070c16a8}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:25px 0}.footer-main p{font-size:10px;color:#7f93a9;margin:0}.footer-social{display:flex;gap:17px}.footer-social a{font-size:10px;color:#9eafc2}.footer-social a:hover{color:var(--cyan)}.footer-bottom{border-top:1px solid #9bbbd010;display:flex;align-items:center;justify-content:space-between;padding:13px 0;color:#687c94;font-size:9px}.footer-bottom a{color:#8ca2b9}
-html[dir=ltr] body{font-family:Manrope,Cairo,sans-serif}html[dir=ltr] .hero h1,html[dir=ltr] .section-title{text-align:left;letter-spacing:-.04em}html[dir=ltr] .eyebrow:before{display:none}html[dir=ltr] .eyebrow{flex-direction:row-reverse}html[dir=ltr] .portrait-label strong,html[dir=ltr] .portrait-label small{text-align:left}html[dir=ltr] .project-wide .art{border-inline-end:0;border-inline-start:1px solid #9bb9d114}html[dir=ltr] .stat{border-inline-start:0;border-inline-end:1px solid var(--line)}html[dir=ltr] .stat:first-child{border-inline-end:0}html[dir=ltr] .service small{text-align:left}html[dir=ltr] .contact-row a{text-align:left}html[dir=ltr] .footer-bottom,html[dir=ltr] .footer-main{direction:ltr}
-.reveal{opacity:1;transform:none}.motion .reveal{opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease}.motion .reveal.show{opacity:1;transform:none}
-@media(max-width:1020px){nav{gap:15px}.links{gap:13px}.links a{font-size:10px}.hero-layout{gap:40px}.service-grid{grid-template-columns:repeat(2,1fr)}.about-grid{gap:40px}.contact-panel{padding:35px;gap:30px}}
-@media(max-width:760px){.container{width:calc(100% - 34px)}.section{padding:76px 0}nav{min-height:68px}.burger{display:grid}.nav-actions{margin-inline-start:auto}.nav-actions>.small{display:none}.links{display:none;position:absolute;top:68px;left:17px;right:17px;background:#0a1120f7;border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 20px 55px #0007;align-items:stretch;flex-direction:column;gap:2px}.links.open{display:flex}.links a{padding:10px 11px;font-size:13px;border-radius:8px}.links a:hover{background:#4bdcf210}.hero{padding-top:49px}.hero-layout{grid-template-columns:1fr;gap:39px}.hero h1{font-size:clamp(33px,7.7vw,50px)}.intro{font-size:12px}.hero-visual{max-width:420px}.portrait-box{height:370px}.chip-a{inset-inline-start:-8px}.chip-b{inset-inline-end:-8px}.scroll-note{margin-top:42px}.stats-grid{grid-template-columns:repeat(2,1fr);padding:14px 0}.stat{padding:15px 18px;border-inline-start:0}.stat:nth-child(even){border-inline-start:1px solid var(--line)}.stat:nth-child(n+3){border-top:1px solid #9bbbd015}.stat strong{font-size:26px}.section-head{align-items:flex-start;flex-direction:column;gap:16px}.project-grid{gap:14px}.art{height:210px}.card-body{padding:16px}.card h3{font-size:18px}.card p{min-height:70px}.wide{grid-template-columns:1fr}.wide .art{height:230px;min-height:230px;border-inline-end:0;border-bottom:1px solid #9bb9d114}.wide .card-body{padding:20px 16px}.about-grid{grid-template-columns:1fr;gap:30px}.toolbox{max-width:600px}.contact-panel{grid-template-columns:1fr;gap:24px;padding:29px 23px}.footer-main{flex-wrap:wrap}.footer-main p{order:3;width:100%}}
-@media(max-width:500px){.container{width:calc(100% - 28px)}.section{padding:62px 0}.brand-copy strong{font-size:12px}.brand-copy small{font-size:8px}.mark{width:35px;height:35px}.hero{padding-top:40px}.hero h1{font-size:32px;line-height:1.52}.pill{font-size:9px}.hero-buttons{display:grid;grid-template-columns:1fr 1fr}.hero-buttons .btn{padding-inline:10px;font-size:10px}.socials{gap:13px}.socials a{font-size:10px}.portrait-box{height:330px}.portrait{width:92%;right:4%}.float-chip{padding:7px 8px;gap:6px}.chip-a{top:65px}.chip-b{bottom:87px}.float-chip strong{font-size:9px}.float-chip small{font-size:8px}.chip-icon{width:26px;height:26px}.stat{padding:12px 10px}.stat strong{font-size:24px}.stat b{font-size:10px}.stat small{font-size:8px}.project-grid{grid-template-columns:1fr}.wide{grid-column:auto}.art{height:225px}.card p{min-height:0}.service-grid{grid-template-columns:1fr}.service{padding:19px}.service p{margin-bottom:13px}.about-copy .section-title,.contact-copy .section-title,.section-title{font-size:29px}.toolbox{padding:17px}.contact{padding-top:10px;padding-bottom:60px}.contact-panel{padding:24px 17px;border-radius:18px}.contact-buttons{display:grid;grid-template-columns:1fr}.contact-buttons .btn{width:100%}.footer-main{display:grid;grid-template-columns:1fr auto;gap:15px}.footer-social{gap:10px;justify-content:end}.footer-social a{font-size:9px}.footer-bottom{align-items:flex-start;flex-direction:column;gap:7px}.gold-ring{width:112px;height:112px}.phone-front{transform:translate(12%,-48%) rotate(17deg)}.phone-mid{transform:translate(-25%,-51%) rotate(6deg)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.motion .reveal{opacity:1;transform:none}}
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mohammed Zomlot","alternateName":"محمد زملط","jobTitle":"Front-End & Full-Stack Web Developer","email":"mailto:mhzomlot@gmail.com","sameAs":["https://github.com/MohammedZomlot2007","https://www.linkedin.com/in/mohammed-zomlot-02315a435/"]}</script>
-</head>
-<body>
-<a class="skip" href="#main" data-t="skip">تخطّي إلى المحتوى</a><div class="progress" id="progress"></div>
-<header><nav class="container" aria-label="التنقل الرئيسي"><a href="#home" class="brand"><span class="mark">MZ</span><span class="brand-copy"><strong>محمد زملط</strong><small data-t="role">مطوّر واجهات وتجارب ويب</small></span></a>
-<button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
-<div class="links" id="links"><a class="active" href="#home" data-t="home">الرئيسية</a><a href="#projects" data-t="projects">المشاريع</a><a href="#services" data-t="services">ما أقدّمه</a><a href="#about" data-t="about">نبذة عني</a><a href="#contact" data-t="contact">تواصل معي</a></div>
-<div class="nav-actions"><button class="lang" id="lang" type="button">EN ↗</button><a class="btn primary small" href="#contact"><span data-t="talk">خلّينا نحكي</span> ↗</a></div></nav></header>
-<main id="main">
-<section class="hero" id="home"><div class="container hero-layout"><div class="hero-copy"><div class="pill"><i class="dot"></i><span data-t="available">متاح لمشاريع العمل الحر والتعاون</span></div><p class="eyebrow"><span data-t="from">مطوّر ويب من فلسطين</span><span class="num">/ 01</span></p>
-<h1 data-html="heroTitle">أبني تجارب رقمية <span class="gradient">عصرية ومدروسة</span> تجمع بين التصميم الواضح والكود العملي.</h1>
-<p class="intro" data-t="intro">أنا محمد زملط، مطوّر واجهات وتجارب ويب. أحوّل الأفكار إلى مواقع سريعة ومتجاوبة، ولوحات أعمال عملية، وتجارب تفاعلية تهتم بالتفاصيل من أول نقرة.</p>
-<div class="hero-buttons"><a href="#projects" class="btn primary"><span data-t="seeWork">استكشف مشاريعي</span> <b>↙</b></a><a href="#contact" class="btn outline"><span data-t="getInTouch">تواصل معي</span> ↗</a></div>
-<div class="socials"><a href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener noreferrer"><span class="social-icon">GH</span> GitHub ↗</a><a href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener noreferrer"><span class="social-icon">in</span> LinkedIn ↗</a><a href="mailto:mhzomlot@gmail.com"><span class="social-icon">@</span> Email ↗</a></div></div>
-<div class="hero-visual"><div class="visual-top"><span class="mono">PROFILE / 001</span><span class="status"><i class="dot"></i><span data-t="status">جاهز للبناء</span></span></div><div class="portrait-box"><div class="ring"></div><img class="portrait" src="assets/profile.jpg" alt="محمد زملط" fetchpriority="high" onerror="this.hidden=true;document.getElementById('fallback').hidden=false"><div class="fallback" id="fallback" hidden>MZ</div><div class="portrait-label"><span class="mini-mark">MZ</span><div><strong>Mohammed Zomlot</strong><small>Front-End · Full-Stack · 3D Web</small></div><span class="spark">✳</span></div><div class="float-chip chip-a"><span class="chip-icon">&lt;/&gt;</span><div><strong>Clean code</strong><small>Built with purpose</small></div></div><div class="float-chip chip-b"><span class="chip-icon">✳</span><div><strong>Responsive UI</strong><small>Made for every screen</small></div></div></div><div class="visual-bottom"><span><i class="tiny-dot"></i><span data-t="detail">التفاصيل تصنع الفرق</span></span><span class="mono">GAZA, PALESTINE</span></div></div></div><div class="container scroll-note"><i></i><span data-t="scroll">انزل لتتعرف على بعض الأعمال</span><i></i></div></section>
-<section class="stats" aria-label="لمحة سريعة"><div class="container stats-grid"><div class="stat"><strong class="cyan">05<span>+</span></strong><b data-t="s1">مشاريع متنوعة</b><small data-t="s1n">منتجات وواجهات وتجارب</small></div><div class="stat"><strong class="violet">UI<span>/</span>UX</strong><b data-t="s2">تفكير يبدأ من المستخدم</b><small data-t="s2n">وضوح قبل التعقيد</small></div><div class="stat"><strong class="green">Web<span>+</span></strong><b data-t="s3">من الواجهة إلى التكامل</b><small data-t="s3n">تطبيقات وواجهات عملية</small></div><div class="stat"><strong class="blue">3D</strong><b data-t="s4">تجارب بُعد ثالث</b><small data-t="s4n">حركة وتفاعل وسرد بصري</small></div></div></section>
-<section class="content projects" id="projects"><div class="container"><div class="section-head"><div><p class="eyebrow"><span data-t="selected">مختارات من أعمالي</span><span class="num">/ 02</span></p><h2 class="section-title" data-html="pTitle">مشاريع صمّمتها <span class="gradient">لتُحلّ مشكلة.</span></h2><p class="section-desc" data-t="pIntro">أنظمة أعمال وواجهات وتجربة ثلاثية الأبعاد. أوضّح نوع كل مشروع بدل الادعاء بأن كل فكرة منتج منشور.</p></div><a class="link" href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener noreferrer"><span data-t="allCode">استكشف الكود على GitHub</span> ↗</a></div>
-<div class="project-grid">
-<article class="card reveal"><a class="art" href="https://github.com/MohammedZomlot2007/Tradeon" target="_blank" rel="noopener noreferrer" aria-label="Tradeon على GitHub"><span class="art-tag">B2B / PLATFORM</span><div class="trade-window"><div class="winbar"><i></i><i></i><i></i><b>TRADEON</b><em>⌕</em></div><div class="trade-ui"><aside class="trade-side"><b></b><i></i><i></i><i></i><i></i></aside><div class="trade-main"><small>GLOBAL BUSINESS NETWORK</small><strong>Build your<br><em>next connection.</em></strong><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="micro-cards"><i></i><i></i><i></i></div></div></div></div><span class="corner">↗</span></a><div class="card-body"><div class="meta"><span data-t="tradeType">منصة أعمال</span><span class="count">01 / 05</span></div><h3>Tradeon</h3><p data-t="tradeDesc">شبكة أعمال B2B تساعد الشركات على عرض ملفاتها ومنتجاتها واكتشاف فرص التوريد وبناء العلاقات المهنية.</p><div class="tags"><span>Laravel</span><span>React</span><span>Inertia</span><span>MySQL</span></div><div class="card-foot"><a href="https://github.com/MohammedZomlot2007/Tradeon" target="_blank" rel="noopener noreferrer" data-t="source">الكود المصدري ↗</a><small data-t="onGithub">متاح على GitHub</small></div></div></article>
-<article class="card reveal"><a class="art" href="#contact" aria-label="Accounting Pro"><span class="art-tag">FINANCE / ERP</span><div class="dashboard"><aside class="dash-side"><b></b><i></i><i></i><i></i></aside><div class="dash-main"><div class="dash-line"><i></i><b></b></div><div class="kpis"><i></i><i></i><i></i></div><div class="chart"><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 75 C30 65 40 72 60 49 S90 58 117 38 150 47 173 30 200 36 222 15 260 31 300 6"/></svg></div></div></div><span class="corner">↗</span></a><div class="card-body"><div class="meta"><span data-t="special">نظام متخصص</span><span class="count">02 / 05</span></div><h3>Accounting Pro</h3><p data-t="accounting">واجهة نظام محاسبي للشركات، مع تخصيص الوحدات حسب طبيعة النشاط التجاري وسير العمل المالي.</p><div class="tags"><span>React</span><span>Laravel</span><span>MySQL</span></div><div class="card-foot"><a href="#contact" data-t="ask">اسألني عن المشروع ↗</a><small data-t="inBuild">تطوير وتكامل</small></div></div></article>
-<article class="card reveal"><a class="art" href="#contact" aria-label="Gold Jewelry POS"><span class="art-tag">RETAIL / GOLD</span><div class="gold-visual"><span class="gold-orbit"></span><span class="gold-orbit two"></span><div class="gold-ring"></div><div class="gold-label"><small>JEWELRY POS</small><b>24K</b><i>WEIGHT · KARAT · CRAFT</i></div></div><span class="corner">↗</span></a><div class="card-body"><div class="meta"><span data-t="solution">حل متخصص</span><span class="count">03 / 05</span></div><h3>Gold Jewelry POS</h3><p data-t="goldDesc">تصوّر لنقطة بيع ومحاسبة لمحلات الذهب، مبني حول العيار والوزن وسعر الغرام والمصنعية والأحجار.</p><div class="tags"><span>Business Logic</span><span>React</span><span>POS</span></div><div class="card-foot"><a href="#contact" data-t="ask">اسألني عن المشروع ↗</a><small data-t="concept">تصوّر منتج</small></div></div></article>
-<article class="card reveal"><a class="art" href="#contact" aria-label="MADRASATI"><span class="art-tag">EDUCATION / ADMIN</span><div class="school-scene"><div class="school-sun"></div><div class="school-building"><div class="roof"></div><div class="school-front"><i></i><i></i><i></i><i></i><b>✦</b></div></div><div class="book"><i></i><i></i></div></div><span class="corner">↗</span></a><div class="card-body"><div class="meta"><span data-t="education">إدارة تعليمية</span><span class="count">04 / 05</span></div><h3>MADRASATI</h3><p data-t="schoolDesc">نظام لإدارة المدرسة وتنظيم الطلبة والصفوف والحضور والعمليات اليومية في مكان واحد.</p><div class="tags"><span>Laravel</span><span>React</span><span>MySQL</span></div><div class="card-foot"><a href="#contact" data-t="ask">اسألني عن المشروع ↗</a><small data-t="developing">مشروع قيد التطوير</small></div></div></article>
-<article class="card wide reveal"><a class="art phone-art" href="lab3d.html" aria-label="Xiaomi 17 Ultra ثلاثي الأبعاد"><span class="art-tag">3D / INTERACTIVE</span><div class="phone-part phone-back"><i></i><i></i><i></i></div><div class="phone-part phone-mid"><i></i><i></i><i></i></div><div class="phone-part phone-front"><div class="phone-screen"><b>17</b><small>ULTRA</small></div><i class="phone-lens"></i></div><span class="corner">↗</span></a><div class="card-body"><div class="meta"><span data-t="3dType">تجربة ثلاثية الأبعاد</span><span class="count">05 / 05</span></div><h3>Xiaomi 17 Ultra · 3D Experience</h3><p data-t="phoneDesc">تجربة بصرية سينمائية تستكشف تقديم المنتج بالعمق والحركة وفكرة عرض المكونات الداخلية بأسلوب exploded view.</p><div class="tags"><span>Three.js</span><span>GSAP</span><span>3D Motion</span><span>WebGL</span></div><div class="card-foot"><a href="lab3d.html" data-t="openLab">افتح المختبر ثلاثي الأبعاد ↗</a><small data-t="experiment">تجربة تفاعلية</small></div></div></article>
-</div></div></section>
-<section class="content services" id="services"><div class="container"><div class="section-head"><div><p class="eyebrow"><span data-t="help">كيف يمكنني مساعدتك؟</span><span class="num">/ 03</span></p><h2 class="section-title" data-html="serviceTitle">من الفكرة إلى تجربة <span class="gradient">تستحق الاستخدام.</span></h2><p class="section-desc" data-t="serviceIntro">أركّز على بناء تجربة سهلة الفهم، متناسقة بصريًا، وقابلة للتطوير لاحقًا.</p></div></div><div class="service-grid">
-<article class="service reveal"><div class="service-icon">&lt;/&gt;</div><span class="service-number">01</span><h3 data-t="serv1">واجهات ويب متجاوبة</h3><p data-t="serv1d">مواقع تعمل بشكل مدروس على الهاتف والكمبيوتر، مع اهتمام بالطباعة والمسافات وسهولة الاستخدام.</p><small>HTML · CSS · JavaScript</small></article>
-<article class="service reveal"><div class="service-icon">▦</div><span class="service-number">02</span><h3 data-t="serv2">لوحات تحكم للأعمال</h3><p data-t="serv2d">واجهات منظمة للبيانات والفواتير والمنتجات وسير العمل بحسب احتياج المشروع.</p><small>React · Dashboards · APIs</small></article>
-<article class="service reveal"><div class="service-icon">✳</div><span class="service-number">03</span><h3 data-t="serv3">تفاعل وحركة ثلاثية الأبعاد</h3><p data-t="serv3d">تجارب تفاعلية تعرض المنتجات بشكل جذاب من دون التضحية بالوضوح.</p><small>Three.js · GSAP · WebGL</small></article>
-<article class="service reveal"><div class="service-icon">⌘</div><span class="service-number">04</span><h3 data-t="serv4">تحسين وتجديد الواجهات</h3><p data-t="serv4d">توحيد المكونات، تحسين تجربة الهاتف، وصقل تفاصيل الاستخدام.</p><small>UI Systems · Accessibility</small></article>
-</div></div></section>
-<section class="content" id="about"><div class="container about-grid"><div class="about-copy"><p class="eyebrow"><span data-t="aboutMe">نبذة عني</span><span class="num">/ 04</span></p><h2 class="section-title" data-html="aboutTitle">أهتم أن يكون الموقع <span class="gradient">جميلًا ومفيدًا.</span></h2><p class="lead" data-t="aboutLead">أحب تفاصيل الواجهة وتجربة المستخدم، لكن الجمال وحده لا يكفي. أهدف إلى بناء منتجات سهلة الاستخدام، منطقية في عملها، وواضحة عند صيانتها وتطويرها.</p><p data-t="aboutDesc">أعمل على الواجهات باستخدام HTML وCSS وJavaScript وReact، وأطوّر معرفتي بتكامل الواجهات مع APIs والأنظمة الخلفية. كما أستكشف طرقًا جديدة لدمج الرسوم ثلاثية الأبعاد داخل الويب.</p><div class="about-buttons"><a class="btn outline" href="resume.html"><span data-t="resume">عرض السيرة الذاتية</span> ↗</a><a class="link" href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><aside class="toolbox"><div class="toolbox-title"><span class="tool-symbol">{ }</span><div><strong data-t="toolTitle">أدوات أستخدمها</strong><small data-t="toolSub">واجهة · منطق · تجربة</small></div><i class="dot"></i></div><div class="tool-group"><span data-t="tool1">الواجهة</span><div class="pills"><b>HTML5</b><b>CSS3</b><b>JavaScript</b><b>React</b><b>Tailwind CSS</b></div></div><div class="tool-group"><span data-t="tool2">التطبيق والتكامل</span><div class="pills"><b>Node.js</b><b>Laravel</b><b>REST APIs</b><b>MySQL</b></div></div><div class="tool-group"><span data-t="tool3">التجربة والإنتاج</span><div class="pills"><b>Three.js</b><b>GSAP</b><b>Git</b><b>GitHub</b><b>Responsive UI</b></div></div><div class="toolbox-foot"><i class="dot"></i><span data-t="learning">أتعلّم وأطوّر مهاراتي باستمرار</span></div></aside></div></section>
-<section class="contact" id="contact"><div class="container"><div class="contact-panel"><div class="contact-copy"><p class="eyebrow"><span data-t="idea">هل لديك فكرة؟</span><span class="num">/ 05</span></p><h2 class="section-title" data-html="contactTitle">خلّينا نحول فكرتك إلى <span class="gradient">شيء ملموس.</span></h2><p data-t="contactDesc">سواء كنت تبدأ مشروعًا جديدًا أو تحتاج إلى تحسين واجهة موجودة، يسعدني أن أسمع منك ونناقش الخطوة التالية.</p><div class="contact-buttons"><a class="btn primary" href="mailto:mhzomlot@gmail.com?subject=Project%20Inquiry"><span data-t="start">ابدأ محادثة</span> ↗</a><button class="btn outline" id="copy-email"><span data-t="copy">انسخ البريد الإلكتروني</span> ▣</button></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div><aside class="contact-side"><div class="orbit"><span></span><span></span><b>MZ</b></div><div class="contact-row"><span class="contact-symbol">@</span><div><small data-t="email">البريد الإلكتروني</small><a href="mailto:mhzomlot@gmail.com">mhzomlot@gmail.com</a></div><button class="copy-mini" id="copy-mini" aria-label="نسخ البريد الإلكتروني">⧉</button></div><div class="contact-row"><span class="contact-symbol">in</span><div><small>LinkedIn</small><a href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener noreferrer">mohammed-zomlot ↗</a></div></div><div class="contact-row"><span class="contact-symbol">GH</span><div><small>GitHub</small><a href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener noreferrer">MohammedZomlot2007 ↗</a></div></div></aside></div></div></section>
-</main>
-<footer class="footer"><div class="container footer-main"><a href="#home" class="brand"><span class="mark">MZ</span><span class="brand-copy"><strong>محمد زملط</strong><small data-t="role">مطوّر واجهات وتجارب ويب</small></span></a><p data-t="footerQuote">كود واضح. تجربة أفضل. تفاصيل تصنع الفرق.</p><div class="footer-social"><a href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:mhzomlot@gmail.com">Email ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Mohammed Zomlot. <span data-t="rights">جميع الحقوق محفوظة.</span></span><a href="#home"><span data-t="top">العودة للأعلى</span> ↑</a></div></footer>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammed Zomlot — Front-End &amp; Full-Stack Developer</title>
+<meta name="description" content="Mohammed Zomlot — Front-End & Full-Stack Developer building modern web applications, responsive interfaces, business platforms, and 3D web experiences." />
+<meta name="theme-color" content="#0a0d12" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mohammed Zomlot","jobTitle":"Front-End & Full-Stack Developer","email":"mailto:mhzomlot@gmail.com","sameAs":["https://github.com/MohammedZomlot2007","https://www.linkedin.com/in/mohammed-zomlot-02315a435/"]}</script>
+<meta name="author" content="Mohammed Zomlot" />
+<meta name="theme-color" content="#06070A" />
+<meta property="og:title" content="Mohammed Zomlot — Front-End Web Developer" />
+<meta property="og:description" content="Front-End & Full-Stack Developer building modern web applications with React, JavaScript and Laravel." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/profile.jpg" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070A'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%232979FF' stroke-width='2'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-weight='800' font-size='24' fill='%23F5F7FA' text-anchor='middle'%3EMZ%3C/text%3E%3Ccircle cx='48' cy='16' r='4' fill='%2322D3EE'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" />
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
 <script>
-(function(){
-'use strict';
-var d=document,root=d.documentElement,burger=d.getElementById('burger'),links=d.getElementById('links'),langBtn=d.getElementById('lang'),progress=d.getElementById('progress'),copyStatus=d.getElementById('copy-status');
-var dict={
-ar:{title:'محمد زملط | مطوّر واجهات وتجارب ويب',skip:'تخطّي إلى المحتوى',role:'مطوّر واجهات وتجارب ويب',home:'الرئيسية',projects:'المشاريع',services:'ما أقدّمه',about:'نبذة عني',contact:'تواصل معي',talk:'خلّينا نحكي',available:'متاح لمشاريع العمل الحر والتعاون',from:'مطوّر ويب من فلسطين',heroTitle:'أبني تجارب رقمية <span class="gradient">عصرية ومدروسة</span> تجمع بين التصميم الواضح والكود العملي.',intro:'أنا محمد زملط، مطوّر واجهات وتجارب ويب. أحوّل الأفكار إلى مواقع سريعة ومتجاوبة، ولوحات أعمال عملية، وتجارب تفاعلية تهتم بالتفاصيل من أول نقرة.',seeWork:'استكشف مشاريعي',getInTouch:'تواصل معي',status:'جاهز للبناء',detail:'التفاصيل تصنع الفرق',scroll:'انزل لتتعرف على بعض الأعمال',s1:'مشاريع متنوعة',s1n:'منتجات وواجهات وتجارب',s2:'تفكير يبدأ من المستخدم',s2n:'وضوح قبل التعقيد',s3:'من الواجهة إلى التكامل',s3n:'تطبيقات وواجهات عملية',s4:'تجارب بُعد ثالث',s4n:'حركة وتفاعل وسرد بصري',selected:'مختارات من أعمالي',pTitle:'مشاريع صمّمتها <span class="gradient">لتُحلّ مشكلة.</span>',pIntro:'أنظمة أعمال وواجهات وتجربة ثلاثية الأبعاد. أوضّح نوع كل مشروع بدل الادعاء بأن كل فكرة منتج منشور.',allCode:'استكشف الكود على GitHub',tradeType:'منصة أعمال',tradeDesc:'شبكة أعمال B2B تساعد الشركات على عرض ملفاتها ومنتجاتها واكتشاف فرص التوريد وبناء العلاقات المهنية.',source:'الكود المصدري ↗',onGithub:'متاح على GitHub',special:'نظام متخصص',accounting:'واجهة نظام محاسبي للشركات، مع تخصيص الوحدات حسب طبيعة النشاط التجاري وسير العمل المالي.',ask:'اسألني عن المشروع ↗',inBuild:'تطوير وتكامل',solution:'حل متخصص',goldDesc:'تصوّر لنقطة بيع ومحاسبة لمحلات الذهب، مبني حول العيار والوزن وسعر الغرام والمصنعية والأحجار.',concept:'تصوّر منتج',education:'إدارة تعليمية',schoolDesc:'نظام لإدارة المدرسة وتنظيم الطلبة والصفوف والحضور والعمليات اليومية في مكان واحد.',developing:'مشروع قيد التطوير','3dType':'تجربة ثلاثية الأبعاد',phoneDesc:'تجربة بصرية سينمائية تستكشف تقديم المنتج بالعمق والحركة وفكرة عرض المكونات الداخلية بأسلوب exploded view.',openLab:'افتح المختبر ثلاثي الأبعاد ↗',experiment:'تجربة تفاعلية',help:'كيف يمكنني مساعدتك؟',serviceTitle:'من الفكرة إلى تجربة <span class="gradient">تستحق الاستخدام.</span>',serviceIntro:'أركّز على بناء تجربة سهلة الفهم، متناسقة بصريًا، وقابلة للتطوير لاحقًا.',serv1:'واجهات ويب متجاوبة',serv1d:'مواقع تعمل بشكل مدروس على الهاتف والكمبيوتر، مع اهتمام بالطباعة والمسافات وسهولة الاستخدام.',serv2:'لوحات تحكم للأعمال',serv2d:'واجهات منظمة للبيانات والفواتير والمنتجات وسير العمل بحسب احتياج المشروع.',serv3:'تفاعل وحركة ثلاثية الأبعاد',serv3d:'تجارب تفاعلية تعرض المنتجات بشكل جذاب من دون التضحية بالوضوح.',serv4:'تحسين وتجديد الواجهات',serv4d:'توحيد المكونات، تحسين تجربة الهاتف، وصقل تفاصيل الاستخدام.',aboutMe:'نبذة عني',aboutTitle:'أهتم أن يكون الموقع <span class="gradient">جميلًا ومفيدًا.</span>',aboutLead:'أحب تفاصيل الواجهة وتجربة المستخدم، لكن الجمال وحده لا يكفي. أهدف إلى بناء منتجات سهلة الاستخدام، منطقية في عملها، وواضحة عند صيانتها وتطويرها.',aboutDesc:'أعمل على الواجهات باستخدام HTML وCSS وJavaScript وReact، وأطوّر معرفتي بتكامل الواجهات مع APIs والأنظمة الخلفية. كما أستكشف طرقًا جديدة لدمج الرسوم ثلاثية الأبعاد داخل الويب.',resume:'عرض السيرة الذاتية',toolTitle:'أدوات أستخدمها',toolSub:'واجهة · منطق · تجربة',tool1:'الواجهة',tool2:'التطبيق والتكامل',tool3:'التجربة والإنتاج',learning:'أتعلّم وأطوّر مهاراتي باستمرار',idea:'هل لديك فكرة؟',contactTitle:'خلّينا نحول فكرتك إلى <span class="gradient">شيء ملموس.</span>',contactDesc:'سواء كنت تبدأ مشروعًا جديدًا أو تحتاج إلى تحسين واجهة موجودة، يسعدني أن أسمع منك ونناقش الخطوة التالية.',start:'ابدأ محادثة',copy:'انسخ البريد الإلكتروني',email:'البريد الإلكتروني',footerQuote:'كود واضح. تجربة أفضل. تفاصيل تصنع الفرق.',rights:'جميع الحقوق محفوظة.',top:'العودة للأعلى',copyOk:'تم نسخ البريد الإلكتروني.',copyErr:'تعذّر النسخ. استخدم: mhzomlot@gmail.com',menuOpen:'فتح القائمة',menuClose:'إغلاق القائمة'},
-en:{title:'Mohammed Zomlot | Web Interface & Experience Developer',skip:'Skip to content',role:'Web Interface & Experience Developer',home:'Home',projects:'Projects',services:'Services',about:'About',contact:'Contact',talk:\"Let's talk\",available:'Available for freelance projects and collaboration',from:'Web developer from Palestine',heroTitle:'I build <span class="gradient">modern, considered digital experiences</span> that bring clear design and practical code together.',intro:'I’m Mohammed Zomlot, a web interface and experience developer. I turn ideas into responsive websites, useful business dashboards, and interactive experiences with thoughtful details from the first click.',seeWork:'Explore my work',getInTouch:'Get in touch',status:'Ready to build',detail:'Details make a difference',scroll:'Scroll to explore selected work',s1:'A range of projects',s1n:'Products, interfaces and experiments',s2:'User-first thinking',s2n:'Clarity before complexity',s3:'From UI to integration',s3n:'Practical application interfaces',s4:'Third-dimension experiences',s4n:'Motion, interaction and visual story',selected:'Selected work',pTitle:'Projects designed <span class="gradient">to solve a problem.</span>',pIntro:'A mix of business systems, web interfaces and a 3D experiment. Each project is labeled honestly instead of presenting every concept as a launched product.',allCode:'Explore code on GitHub',tradeType:'Business platform',tradeDesc:'A B2B business network for company profiles, product discovery, sourcing opportunities and professional connections.',source:'Source code ↗',onGithub:'Available on GitHub',special:'Specialized system',accounting:'An accounting interface focused on adapting modules to business type, reporting needs and financial workflows.',ask:'Ask about this project ↗',inBuild:'Development & integration',solution:'Specialized solution',goldDesc:'A point-of-sale and accounting concept for gold retailers, built around karat, weight, gram price, craftsmanship and stones.',concept:'Product concept',education:'Education management',schoolDesc:'A school management concept for organizing students, classes, attendance and daily operations in one place.',developing:'In development','3dType':'3D experience',phoneDesc:'A cinematic visual experiment exploring product presentation through depth, motion and an exploded-view approach to internal components.',openLab:'Open the 3D lab ↗',experiment:'Interactive experiment',help:'How I can help',serviceTitle:'From an idea to an experience <span class="gradient">worth using.</span>',serviceIntro:'I focus on experiences that are easy to understand, visually consistent and ready to grow.',serv1:'Responsive web interfaces',serv1d:'Websites thoughtfully built for mobile and desktop, with attention to typography, spacing and usability.',serv2:'Business dashboards',serv2d:'Structured interfaces for data, invoices, products and workflows tailored to the project’s needs.',serv3:'3D motion and interaction',serv3d:'Interactive experiences that present products in engaging ways without sacrificing clarity.',serv4:'Interface refinement',serv4d:'Unify components, improve mobile layouts and polish everyday interactions.',aboutMe:'About me',aboutTitle:'I want a website to be <span class="gradient">beautiful and useful.</span>',aboutLead:'I enjoy the details of interface design and user experience, but visual polish alone is not enough. I aim to build products that are easy to use, logical in behavior and clear to maintain.',aboutDesc:'I work with HTML, CSS, JavaScript and React, while expanding my knowledge of API integration and backend systems. I also explore ways to bring 3D visuals into the web.',resume:'View résumé',toolTitle:'Tools I use',toolSub:'Interface · Logic · Experience',tool1:'Frontend',tool2:'Application & integration',tool3:'Experience & delivery',learning:'Continuously learning and improving',idea:'Have an idea?',contactTitle:'Let’s turn your idea into <span class="gradient">something real.</span>',contactDesc:'Whether you are starting a new project or improving an existing interface, I’d be glad to hear from you and discuss the next step.',start:'Start a conversation',copy:'Copy email address',email:'Email address',footerQuote:'Clear code. Better experiences. Details make a difference.',rights:'All rights reserved.',top:'Back to top',copyOk:'Email address copied.',copyErr:'Copy failed. Use: mhzomlot@gmail.com',menuOpen:'Open menu',menuClose:'Close menu'}
-};
-function setLang(l){var t=dict[l];root.lang=l;root.dir=l==='ar'?'rtl':'ltr';d.title=t.title;d.querySelectorAll('[data-t]').forEach(function(el){var k=el.getAttribute('data-t');if(Object.prototype.hasOwnProperty.call(t,k))el.textContent=t[k]});d.querySelectorAll('[data-html]').forEach(function(el){var k=el.getAttribute('data-html');if(Object.prototype.hasOwnProperty.call(t,k))el.innerHTML=t[k]});langBtn.textContent=l==='ar'?'EN ↗':'عربي ↗';langBtn.setAttribute('aria-label',l==='ar'?'Switch language to English':'تغيير اللغة إلى العربية');burger.setAttribute('aria-label',burger.getAttribute('aria-expanded')==='true'?t.menuClose:t.menuOpen);if(copyStatus)copyStatus.textContent=''}
-langBtn.addEventListener('click',function(){setLang(root.lang==='ar'?'en':'ar')});
-function closeMenu(){links.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label',dict[root.lang].menuOpen)}
-burger.addEventListener('click',function(){var open=burger.getAttribute('aria-expanded')!=='true';burger.setAttribute('aria-expanded',String(open));links.classList.toggle('open',open);burger.setAttribute('aria-label',open?dict[root.lang].menuClose:dict[root.lang].menuOpen)});
-links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
-d.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
-d.addEventListener('click',function(e){if(links.classList.contains('open')&&!links.contains(e.target)&&!burger.contains(e.target))closeMenu()});
-function onScroll(){var max=d.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?Math.max(0,Math.min(100,scrollY/max*100)):0)+'%'}addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});onScroll();
-var reveal=d.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.body.classList.add('motion');var io=new IntersectionObserver(function(entries,obs){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});reveal.forEach(function(el){io.observe(el)})}
-var sectionLinks=Array.from(d.querySelectorAll('.links a'));if('IntersectionObserver'in window){var so=new IntersectionObserver(function(entries){var visible=entries.filter(function(e){return e.isIntersecting}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio})[0];if(visible)sectionLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+visible.target.id)})},{rootMargin:'-20% 0px -65% 0px',threshold:[0,.15,.35]});sectionLinks.forEach(function(a){var s=d.querySelector(a.getAttribute('href'));if(s)so.observe(s)})}
-async function copy(){try{if(navigator.clipboard&&isSecureContext)await navigator.clipboard.writeText('mhzomlot@gmail.com');else{var ta=d.createElement('textarea');ta.value='mhzomlot@gmail.com';ta.style.position='fixed';ta.style.opacity='0';d.body.appendChild(ta);ta.select();var ok=d.execCommand('copy');ta.remove();if(!ok)throw new Error('copy failed')}copyStatus.textContent=dict[root.lang].copyOk}catch(e){copyStatus.textContent=dict[root.lang].copyErr}}
-d.getElementById('copy-email').addEventListener('click',copy);d.getElementById('copy-mini').addEventListener('click',copy);d.getElementById('year').textContent=String(new Date().getFullYear());
+/* ============================================================
+   MZ_CONFIG — single place to tune every new 3D / motion effect
+   without touching engine code. Safe to edit these numbers only.
+   ============================================================ */
+window.MZ_CONFIG = Object.assign({
+  fxDefault: 'full',          // 'full' | 'lite' — first-run default, user toggle overrides & persists
+  heroBloom: { strength: .55, radius: .85, threshold: .15 },
+  heroOutline: { enabled: true, strength: 3.2, glow: 1.1, thickness: 1.6, pulseSeconds: 2.4, colorA: 0x22d3ee, colorB: 0x2f7bff },
+  heroSMAA: { enabled: true },
+  stackFx:   { count: 220, countLite: 90, speed: 1 },
+  contactParticles: { enabled: true, count: 46, countLite: 0, linkDistance: 130, color: '#2f7bff', color2: '#22d3ee' },
+  splitText: { enabled: true, staggerMs: 22 }
+}, window.MZ_CONFIG || {});
+</script>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="assets/profile.jpg" />
+</head>
+<body class="ultra3d">
+<canvas id="webgl" aria-hidden="true"></canvas>
+<div class="content-veil" aria-hidden="true"></div>
+<div class="page-glow" aria-hidden="true"><span class="pg-a"></span><span class="pg-b"></span><span class="pg-c"></span><span class="pg-d"></span></div>
+<div class="float-shapes" aria-hidden="true"><i class="fs fs1"></i><i class="fs fs2"></i><i class="fs fs3"></i><i class="fs fs4"></i><i class="fs fs5"></i><i class="fs fs6"></i></div>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- LOADER -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-logo"><span>MZ</span></div>
+    <div class="loader-name">MOHAMMED ZOMLOT</div>
+    <div class="loader-sub" data-i18n="loaderSub">FRONT-END DEVELOPER</div>
+    <div class="loader-bar"><span id="loader-progress"></span></div>
+    <div class="loader-pct" id="loader-pct">0%</div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="navbar">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="#home" class="brand" aria-label="Mohammed Zomlot home">
+      <span class="brand-mark">MZ</span>
+      <span class="brand-text"><strong>Mohammed Zomlot</strong><small data-i18n="brandSub">Front-End Developer</small></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active" data-i18n="navHome">Home</a></li>
+      <li><a href="#about" class="nav-link" data-i18n="navAbout">About</a></li>
+      <li><a href="#projects" class="nav-link" data-i18n="navProjects">Projects</a></li>
+      <li><a href="#skills" class="nav-link" data-i18n="navSkills">Skills</a></li>
+      <li><a href="#journey" class="nav-link" data-i18n="navExperience">Experience</a></li>
+      <li><a href="#contact" class="nav-link" data-i18n="navContact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="lang-toggle" class="icon-btn" aria-label="Switch language / تغيير اللغة" title="EN / عربي">عربي</button>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+        <svg id="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button id="fx-toggle" class="icon-btn" aria-label="Toggle visual effects intensity / تقليل المؤثرات البصرية" title="Full FX / Lite FX">
+        <svg id="icon-fx-full" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        <svg id="icon-fx-lite" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" opacity=".35"/><path d="M4 4l16 16" stroke-width="2"/></svg>
+      </button>
+      <a href="resume.html" class="nav-resume">CV ↗</a><a href="#contact" class="btn btn-primary btn-sm" data-i18n="navCta">Let's Talk</a>
+      <button id="menu-btn" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" hidden>
+    <a href="#home" data-i18n="navHome">Home</a>
+    <a href="#about" data-i18n="navAbout">About</a>
+    <a href="#projects" data-i18n="navProjects">Projects</a>
+    <a href="#skills" data-i18n="navSkills">Skills</a>
+    <a href="#journey" data-i18n="navExperience">Experience</a>
+    <a href="#services" data-i18n="navServices">Services</a>
+    <a href="lab3d.html" data-i18n="navLab">3D Lab</a>
+    <a href="#faq" data-i18n="navFaq">FAQ</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+    <a href="resume.html" class="nav-resume">CV ↗</a><a href="mailto:mhzomlot@gmail.com" class="btn btn-primary">mhzomlot@gmail.com</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-a"></div>
+    <div class="hero-glow glow-b"></div>
+    <div class="hero-noise"></div>
+  </div>
+  <div class="container hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><span class="pulse"></span><span data-i18n="heroLabel">FRONT-END & FULL-STACK DEVELOPER</span></p>
+      <h1 class="hero-title">
+        <span class="line reveal" data-i18n="heroNamePrefix">Hi, I’m</span>
+        <span class="line outline reveal" data-i18n="heroName">Mohammed Zomlot</span>
+      </h1>
+      <p class="hero-tag reveal" data-i18n="heroTag">TURNING IDEAS INTO DIGITAL PRODUCTS.</p>
+      <p class="hero-rot reveal"><span data-i18n="heroRotPre">Specialized in</span> <span class="typer" id="typer"></span><span class="caret" aria-hidden="true">|</span></p>
+      <p class="hero-desc reveal" data-i18n="heroDesc">I build modern web applications and responsive interfaces with React, JavaScript and Laravel — focused on clean UI, useful features and thoughtful details.</p>
+      <div class="hero-btns reveal">
+        <a href="works.html" class="btn btn-primary"><span data-i18n="heroBtn1">View My Work</span><span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#contact" class="btn btn-ghost"><span data-i18n="heroBtn2">Let's Connect</span></a>
+        <a href="Mohammed-Zomlot-CV.pdf" download class="btn btn-ghost"><span data-i18n="cvBtn">Download CV</span><span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-socials reveal" aria-label="Social links">
+        <a href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><span aria-hidden="true">GH</span> GitHub</a>
+        <a href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><span aria-hidden="true">in</span> LinkedIn</a>
+        <a href="mailto:mhzomlot@gmail.com" aria-label="Email Mohammed"><span aria-hidden="true">✉</span> Email</a>
+      </div>
+      <div class="hero-meta reveal">
+        <div class="meta-item"><strong>5+ Projects</strong><small data-i18n="heroMeta1">Projects built</small></div>
+        <div class="meta-item"><strong>React · Laravel</strong><small data-i18n="heroMeta2">Modern web stack</small></div>
+        <div class="meta-item"><strong>OPEN TO WORK</strong><small data-i18n="heroMeta3">Freelance & collaboration</small></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-photo" id="hero-photo">
+        <div class="hp-rings" aria-hidden="true"><span class="hp-ring r1"></span><span class="hp-ring r2"></span><span class="hp-ring r3"></span></div>
+        <div class="hp-frame">
+          <img class="hp-img" src="assets/profile.jpg" alt="Mohammed Zomlot — Front-End Web Developer" fetchpriority="high" onerror="this.closest('.hp-frame').classList.add('no-img');this.remove()" />
+          <span class="hp-fallback" aria-hidden="true">MZ</span>
+        </div>
+        <span class="hp-status"><i></i><b data-i18n="aboutCardStatus">Available for projects</b></span>
+        <div class="hp-badge hp-a" aria-hidden="true"><span class="pf-ic">&lt;/&gt;</span><span class="pf-tx"><strong>Clean Code</strong><small>Semantic HTML</small></span></div>
+        <div class="hp-badge hp-b" aria-hidden="true"><span class="pf-ic">#</span><span class="pf-tx"><strong>Responsive</strong><small>All devices</small></span></div>
+        <div class="hp-badge hp-c" aria-hidden="true"><span class="pf-ic">JS</span><span class="pf-tx"><strong>Interactive</strong><small>JavaScript UI</small></span></div>
+      </div>
+      <p class="scene-hint" data-i18n="heroHint">Move your cursor — the 3D background responds · Scroll for depth</p>
+    </div>
+  </div>
+  <a href="#stack" class="scroll-indicator" aria-label="Scroll to technology stack"><span></span></a>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="section" data-3d-zone style="position:relative;overflow:hidden">
+  <canvas id="webgl-stack" aria-hidden="true" data-lazy3d></canvas>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="section-label reveal"><span data-i18n="stackLabel">MY TECH STACK</span></p>
+    <h2 class="section-title reveal" data-i18n="stackTitle">Tools I use to build real products.</h2>
+    <div class="stack-wall reveal" id="stack-wall">
+      <button type="button">HTML5</button><button type="button">CSS3</button><button type="button">JavaScript</button><button type="button">React</button><button type="button">Node.js</button><button type="button">Laravel</button><button type="button">PHP</button><button type="button">MySQL</button><button type="button">Tailwind CSS</button><button type="button">Inertia.js</button><button type="button">Git</button><button type="button">GitHub</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section section-alt featured-projects" data-3d-zone>
+  <div class="container">
+    <div class="projects-heading reveal">
+      <div>
+        <p class="section-label">02 — <span data-i18n="projLabel">FEATURED PROJECTS</span></p>
+        <h2 class="section-title" data-i18n="projTitle">Selected work, built for real use.</h2>
+        <p class="section-sub" data-i18n="projSub">A selection of product interfaces and platform concepts I’ve been building.</p>
+      </div>
+      <a href="works.html" class="projects-all-link"><span data-i18n="wkBtn">Explore all projects</span><span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="portfolio-project-grid">
+      <article class="portfolio-project-card reveal">
+        <a class="project-preview pv-tradeon" href="projects/tradeon.html" aria-label="Open Tradeon project case study">
+          <div class="preview-window">
+            <div class="preview-top"><span></span><span></span><span></span><b>TRADEON · BUSINESS NETWORK</b></div>
+            <div class="preview-layout">
+              <div class="preview-side"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="preview-main"><strong>Global trade<br><em>starts here.</em></strong><div class="preview-chart"></div><div class="preview-mini-row"><i></i><i></i><i></i></div></div>
+            </div>
+          </div><span class="preview-index">01 / FEATURED</span>
+        </a>
+        <div class="project-card-body">
+          <div class="project-card-kicker"><span data-i18n="projectFeatured">Featured project</span><span class="project-status"><i></i><span data-i18n="projectCaseStudy">Case study</span></span></div>
+          <h3>Tradeon</h3>
+          <p data-i18n="projectTradeonDesc">A B2B business network for company profiles, product discovery, sourcing requests and professional connections.</p>
+          <div class="project-tags"><span>Laravel</span><span>React</span><span>Inertia.js</span><span>MySQL</span></div>
+          <div class="project-card-actions"><a class="project-primary" href="projects/tradeon.html"><span data-i18n="projectDetails">View project</span> ↗</a><a class="project-secondary" href="https://github.com/MohammedZomlot2007/Tradeon" target="_blank" rel="noopener noreferrer"><span data-i18n="projectSource">Source code</span> ↗</a></div>
+        </div>
+      </article>
+      <article class="portfolio-project-card reveal">
+        <a class="project-preview pv-accounting" href="works.html" aria-label="Explore Accounting Pro case study">
+          <div class="preview-window">
+            <div class="preview-top"><span></span><span></span><span></span><b>ACCOUNTING PRO</b></div>
+            <div class="preview-dashboard"><aside><i></i><i></i><i></i><i></i></aside><div class="preview-dashboard-content"><strong>Financial overview</strong><div class="preview-kpis"><i></i><i></i><i></i></div><div class="preview-bars"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div></div>
+          </div><span class="preview-index">02 / BUSINESS SYSTEM</span>
+        </a>
+        <div class="project-card-body">
+          <div class="project-card-kicker"><span data-i18n="projectCaseStudy">Case study</span><span class="project-status status-blue"><i></i><span data-i18n="projectConcept">Product concept</span></span></div>
+          <h3>Accounting Pro</h3>
+          <p data-i18n="projectAccountingDesc">An enterprise accounting interface concept for financial workflows, invoices, purchases and reports.</p>
+          <div class="project-tags"><span>Laravel</span><span>React</span><span>Tailwind CSS</span><span>MySQL</span></div>
+          <div class="project-card-actions"><a class="project-primary" href="works.html"><span data-i18n="projectExplore">Explore work</span> ↗</a></div>
+        </div>
+      </article>
+      <article class="portfolio-project-card reveal">
+        <a class="project-preview pv-gold" href="works.html" aria-label="Explore Gold Jewelry POS case study">
+          <div class="gold-scene"><div class="gold-rings"><i></i><i></i><i></i></div><div class="gold-panel"><span>GOLD / POS</span><b>24K</b><small>JEWELRY MANAGEMENT</small></div></div><span class="preview-index">03 / RETAIL SYSTEM</span>
+        </a>
+        <div class="project-card-body">
+          <div class="project-card-kicker"><span data-i18n="projectCaseStudy">Case study</span><span class="project-status status-gold"><i></i><span data-i18n="projectConcept">Product concept</span></span></div>
+          <h3>Gold Jewelry POS</h3>
+          <p data-i18n="projectGoldDesc">A specialized retail workflow concept built around karat, weight, gram price, craftsmanship and sales.</p>
+          <div class="project-tags"><span>Laravel</span><span>React</span><span>MySQL</span></div>
+          <div class="project-card-actions"><a class="project-primary" href="works.html"><span data-i18n="projectExplore">Explore work</span> ↗</a></div>
+        </div>
+      </article>
+      <article class="portfolio-project-card reveal">
+        <a class="project-preview pv-school" href="works.html" aria-label="Explore MADRASATI school management case study">
+          <div class="school-scene"><div class="school-sun"></div><div class="school-building"><i></i><i></i><i></i><b>✦</b></div><div class="school-book"></div></div><span class="preview-index">04 / EDUCATION</span>
+        </a>
+        <div class="project-card-body">
+          <div class="project-card-kicker"><span data-i18n="projectCaseStudy">Case study</span><span class="project-status status-green"><i></i><span data-i18n="projectConcept">Product concept</span></span></div>
+          <h3>MADRASATI</h3>
+          <p data-i18n="projectMadrasatiDesc">A school management system concept for organizing students, classes, attendance and day-to-day school workflows.</p>
+          <div class="project-tags"><span>Laravel</span><span>React</span><span>MySQL</span></div>
+          <div class="project-card-actions"><a class="project-primary" href="works.html"><span data-i18n="projectExplore">Explore work</span> ↗</a></div>
+        </div>
+      </article>
+      <article class="portfolio-project-card reveal">
+        <a class="project-preview pv-phone" href="lab3d.html" aria-label="Open 3D lab project">
+          <div class="phone-scene"><div class="phone-layer layer-back"></div><div class="phone-layer layer-mid"></div><div class="phone-layer layer-front"><i></i><i></i><i></i><b>X</b></div><span class="phone-glow"></span></div><span class="preview-index">05 / 3D EXPERIENCE</span>
+        </a>
+        <div class="project-card-body">
+          <div class="project-card-kicker"><span data-i18n="projectCaseStudy">Case study</span><span class="project-status status-purple"><i></i><span data-i18n="projectConcept">3D experiment</span></span></div>
+          <h3>Xiaomi 17 Ultra · 3D</h3>
+          <p data-i18n="projectPhoneDesc">A cinematic 3D phone experience exploring product presentation, depth, motion and exploded-view storytelling.</p>
+          <div class="project-tags"><span>React</span><span>Three.js</span><span>GSAP</span></div>
+          <div class="project-card-actions"><a class="project-primary" href="lab3d.html"><span data-i18n="projectExplore">Explore work</span> ↗</a></div>
+        </div>
+      </article>
+    </div>
+    <div class="projects-bottom reveal"><span data-i18n="projectFootnote">Project pages distinguish working previews from concepts and case studies.</span><a href="works.html"><span data-i18n="wkBtn">Explore all projects</span> ↗</a></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">03 — <span data-i18n="aboutLabel">ABOUT ME</span></p>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title reveal" data-i18n="aboutTitle">Front-end focused. Detail obsessed.</h2>
+        <p class="lead reveal" data-i18n="aboutLead">I'm Mohammed Zomlot, a Front-End Web Developer focused on building modern, responsive, and user-friendly websites using HTML, CSS, and JavaScript. I enjoy turning ideas into clean, functional web experiences and continuously improving through real-world projects.</p>
+        <ul class="about-points">
+          <li class="reveal"><strong data-i18n="aboutP1t">UI-focused developer</strong><span data-i18n="aboutP1d">Interfaces with clear hierarchy, spacing systems and readable typography.</span></li>
+          <li class="reveal"><strong data-i18n="aboutP2t">Responsive by default</strong><span data-i18n="aboutP2d">Desktop, tablet and mobile layouts designed intentionally — not compressed.</span></li>
+          <li class="reveal"><strong data-i18n="aboutP3t">JavaScript interaction</strong><span data-i18n="aboutP3d">DOM, LocalStorage, API integration, filters, dashboards and dynamic UI.</span></li>
+        </ul>
+        <div class="about-badges reveal">
+          <span class="badge">Responsive Design</span><span class="badge">UI Design</span><span class="badge">Dashboards</span><span class="badge">Interactions</span><span class="badge">Git / GitHub</span>
+        </div>
+        <div class="about-cv reveal">
+          <a href="Mohammed-Zomlot-CV.pdf" download class="btn btn-ghost btn-sm"><span data-i18n="cvBtn">Download CV</span><span aria-hidden="true">↓</span></a>
+          <a href="resume.html" class="mini-btn">Online CV ↗</a>
+        </div>
+      </div>
+      <div class="id-card-wrap reveal">
+        <div class="id-card" id="tilt-card">
+          <div class="id-top"><span class="id-mark">MZ</span><span class="id-status"><i></i><span data-i18n="aboutCardStatus">Available for projects</span></span></div>
+          <div class="id-photo-wrap">
+            <img class="id-photo" src="assets/profile.jpg" alt="Mohammed Zomlot — Front-End Web Developer" loading="lazy" fetchpriority="low" onerror="this.closest('.id-photo-wrap').classList.add('no-photo');this.remove()" />
+            <span class="id-photo-fallback" aria-hidden="true">MZ</span>
+          </div>
+          <div class="id-name">Mohammed Zomlot<small data-i18n="aboutCardRole">Front-End Web Developer · HTML / CSS / JS</small></div>
+          <pre class="id-code" dir="ltr"><code><span class="k">const</span> <span class="v">developer</span> = {
+  focus: <span class="s">'front-end'</span>,
+  stack: [<span class="s">'HTML'</span>, <span class="s">'CSS'</span>, <span class="s">'JS'</span>],
+  responsive: <span class="b">true</span>,
+  detail: <span class="s">'obsessed'</span>
+};</code></pre>
+          <div class="id-row">
+            <a class="mini-btn" href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="mini-btn" href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <button class="mini-btn" id="copy-email-2" type="button" data-i18n="copyEmail">Copy email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section section-alt" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">04 — <span data-i18n="skillsLabel">SKILLS</span></p>
+    <h2 class="section-title reveal" data-i18n="skillsTitle">Categorized capability, no fake scores.</h2>
+    <p class="section-sub reveal" data-i18n="skillsSub">Honest grouping of what I use to design and build real interfaces.</p>
+    <div class="skills-grid">
+      <article class="skill-card reveal">
+        <h3 data-i18n="skillsC1">CORE FRONT-END</h3>
+        <ul><li>HTML5 <em data-i18n="lvlA">Advanced</em></li><li>CSS3 <em data-i18n="lvlA2">Advanced</em></li><li>JavaScript <em data-i18n="lvlB">Intermediate–Advanced</em></li><li>Responsive Design <em data-i18n="lvlA3">Advanced</em></li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <h3 data-i18n="skillsC2">DESIGN</h3>
+        <ul><li>Responsive UI</li><li>UI Design</li><li>UX Principles</li><li>Design Systems</li><li>Animations</li></ul>
+      </article>
+      <article class="skill-card reveal">
+        <h3 data-i18n="skillsC3">DEVELOPMENT</h3>
+        <ul><li>DOM Manipulation</li><li>LocalStorage</li><li>REST API Integration</li><li>Git / GitHub</li><li>Performance Optimization</li></ul>
+      </article>
+    </div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee-track">
+      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span><span>Dashboards</span><span>UI Systems</span><span>Animations</span><span>LocalStorage</span><span>APIs</span><span>Git</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="section" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">05 — <span data-i18n="expLabel">FRONT-END EXPERTISE</span></p>
+    <h2 class="section-title reveal" data-i18n="expTitle">What I build best.</h2>
+    <div class="exp-grid">
+      <article class="exp-card reveal"><div class="exp-icon">◈</div><h3 data-i18n="exp1t">Interactive Websites</h3><p data-i18n="exp1d">Modern responsive interfaces with animations and polished interactions.</p></article>
+      <article class="exp-card reveal"><div class="exp-icon">▦</div><h3 data-i18n="exp2t">Business Dashboards</h3><p data-i18n="exp2d">Professional dashboards for workflows, finance and data visualization.</p></article>
+      <article class="exp-card reveal"><div class="exp-icon">⬣</div><h3 data-i18n="exp3t">Responsive Interfaces</h3><p data-i18n="exp3d">Interfaces optimized for desktop, tablet and mobile.</p></article>
+      <article class="exp-card reveal"><div class="exp-icon">⬔</div><h3 data-i18n="exp4t">UI Systems</h3><p data-i18n="exp4d">Reusable components, spacing, typography and consistent visual language.</p></article>
+      <article class="exp-card reveal"><div class="exp-icon">⟨⟩</div><h3 data-i18n="exp5t">JavaScript Experiences</h3><p data-i18n="exp5d">Filters, search, forms, CRUD interfaces and client-side functionality.</p></article>
+      <article class="exp-card reveal"><div class="exp-icon">✦</div><h3 data-i18n="exp6t">Premium Landing Pages</h3><p data-i18n="exp6d">High-conversion landing pages with strong visual hierarchy.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">06 — <span data-i18n="servLabel">SERVICES</span></p>
+    <h2 class="section-title reveal" data-i18n="servTitle">What I can build for you.</h2>
+    <div class="serv-grid">
+      <article class="serv-card reveal"><span class="serv-n">01</span><h3 data-i18n="serv1t">Responsive Websites</h3><p data-i18n="serv1d">Modern websites that adapt across devices.</p></article>
+      <article class="serv-card reveal"><span class="serv-n">02</span><h3 data-i18n="serv2t">Landing Pages</h3><p data-i18n="serv2d">Premium high-conversion landing pages.</p></article>
+      <article class="serv-card reveal"><span class="serv-n">03</span><h3 data-i18n="serv3t">Business Dashboards</h3><p data-i18n="serv3d">Professional dashboards for business applications.</p></article>
+      <article class="serv-card reveal"><span class="serv-n">04</span><h3 data-i18n="serv4t">Interactive UI</h3><p data-i18n="serv4d">Dynamic interfaces with JavaScript.</p></article>
+      <article class="serv-card reveal"><span class="serv-n">05</span><h3 data-i18n="serv5t">Website Redesign</h3><p data-i18n="serv5d">Modernize outdated web interfaces.</p></article>
+      <article class="serv-card reveal"><span class="serv-n">06</span><h3 data-i18n="serv6t">Front-End Prototyping</h3><p data-i18n="serv6d">Turn ideas into polished interactive prototypes.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section section-alt" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">07 — <span data-i18n="procLabel">HOW I BUILD</span></p>
+    <h2 class="section-title reveal" data-i18n="procTitle">Design philosophy & process.</h2>
+    <p class="section-sub reveal" data-i18n="procSub">Goal: clean code · clear UI · responsive design · smooth interaction · good usability.</p>
+    <ol class="process-grid">
+      <li class="reveal"><span>01</span><strong data-i18n="proc1t">Understand</strong><p data-i18n="proc1d">Clarify goals, users and content first.</p></li>
+      <li class="reveal"><span>02</span><strong data-i18n="proc2t">Plan</strong><p data-i18n="proc2d">Structure pages, components and states.</p></li>
+      <li class="reveal"><span>03</span><strong data-i18n="proc3t">Design</strong><p data-i18n="proc3d">Spacing, type and color systems.</p></li>
+      <li class="reveal"><span>04</span><strong data-i18n="proc4t">Build</strong><p data-i18n="proc4d">Semantic HTML, clean CSS, vanilla JS.</p></li>
+      <li class="reveal"><span>05</span><strong data-i18n="proc5t">Test</strong><p data-i18n="proc5d">Devices, keyboard, contrast, motion.</p></li>
+      <li class="reveal"><span>06</span><strong data-i18n="proc6t">Refine</strong><p data-i18n="proc6d">Polish micro-interactions & performance.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="section section-alt" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">08 — <span data-i18n="jourLabel">JOURNEY</span></p>
+    <h2 class="section-title reveal" data-i18n="jourTitle">A development journey, not fake employment.</h2>
+    <ol class="timeline">
+      <li class="reveal"><span class="t-dot"></span><div><strong data-i18n="jour1t">Learning the fundamentals</strong><p data-i18n="jour1d">HTML semantics, CSS layout, JavaScript basics and responsive thinking.</p></div></li>
+      <li class="reveal"><span class="t-dot"></span><div><strong data-i18n="jour2t">Building real projects</strong><p data-i18n="jour2d">Dashboards, stores, landing pages and business interfaces as portfolio case studies.</p></div></li>
+      <li class="reveal"><span class="t-dot"></span><div><strong data-i18n="jour3t">Improving UI / UX</strong><p data-i18n="jour3d">Hierarchy, spacing systems, accessibility and interaction polish.</p></div></li>
+      <li class="reveal"><span class="t-dot"></span><div><strong data-i18n="jour4t">Advanced front-end interfaces</strong><p data-i18n="jour4d">3D touches, motion, filtering, modals, themes and client-side architecture.</p></div></li>
+      <li class="reveal"><span class="t-dot"></span><div><strong data-i18n="jour5t">Professional portfolio</strong><p data-i18n="jour5d">This site — a cohesive identity for a serious front-end developer.</p></div></li>
+    </ol>
+    <div class="reveal" style="margin-top:26px">
+      <a href="achievements.html" class="btn btn-primary"><span data-i18n="achBtn">Open the interactive timeline</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" data-3d-zone>
+  <div class="container">
+    <p class="section-label reveal">09 — <span data-i18n="faqLabel">FAQ</span></p>
+    <h2 class="section-title reveal" data-i18n="faqTitle">Questions, answered upfront.</h2>
+    <p class="section-sub reveal" data-i18n="faqSub">Quick answers before you send a project brief.</p>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq1q">What services do you offer?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a"><p data-i18n="faq1a">Responsive websites, premium landing pages, business dashboards, e-commerce front-ends, website redesigns and interactive JavaScript interfaces.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq2q">Which technologies do you use?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a"><p data-i18n="faq2a">HTML, CSS and JavaScript with DOM, LocalStorage, REST API integration and Git/GitHub — responsive-first on every project.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq3q">Will my website work on mobile?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a"><p data-i18n="faq3a">Yes. Every layout is designed responsive by default — desktop, tablet and mobile are planned intentionally, not compressed afterwards.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq4q">Can you redesign my existing website?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a"><p data-i18n="faq4a">Yes. I modernize outdated interfaces with cleaner hierarchy, spacing systems, readable typography and smooth interactions.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq5q">How do we start a project?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a"><p data-i18n="faq5a">Send a brief through the contact form below — type, goals and budget range. You will get an email reply to discuss scope and next steps.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section" data-3d-zone style="position:relative">
+  <div id="tsparticles-contact" aria-hidden="true"></div>
+  <div class="container contact-grid" style="position:relative;z-index:1">
+    <div>
+      <p class="section-label reveal">10 — <span data-i18n="contactLabel">CONTACT</span></p>
+      <h2 class="contact-title reveal" data-i18n="contactTitle">LET'S BUILD SOMETHING GREAT.</h2>
+      <p class="lead reveal" data-i18n="contactSub">Have a project, idea, or website that needs a modern frontend experience? Let's talk.</p>
+      <div class="contact-btns reveal">
+        <a class="btn btn-primary" href="mailto:mhzomlot@gmail.com"><span>mhzomlot@gmail.com</span><span aria-hidden="true">↗</span></a>
+        <button class="btn btn-ghost" id="copy-email" type="button"><span data-i18n="copyEmail">Copy email</span></button>
+      </div>
+      <div class="social-row reveal">
+        <a class="social" href="https://www.linkedin.com/in/mohammed-zomlot-02315a435/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z"/></svg><span>LinkedIn</span></a>
+        <a class="social" href="https://github.com/MohammedZomlot2007" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.8 1 .8 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg><span>GitHub</span></a>
+      </div>
+      <p class="copy-note" id="copy-note" role="status" aria-live="polite"></p>
+    </div>
+    <form class="contact-form reveal" id="contact-form" novalidate>
+      <h3 data-i18n="formTitle">Project brief</h3>
+      <p class="form-hint" data-i18n="formHint">This form prepares an email in your mail app. No form data is stored on this site.</p>
+      <label><span data-i18n="formName">Your name</span><input name="name" type="text" autocomplete="name" required placeholder="Your name" /></label>
+      <label><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="you@example.com" /></label>
+      <div class="form-row">
+        <label><span>Project type</span><select name="projectType" required><option value="">Select one</option><option>Website</option><option>Landing Page</option><option>Dashboard</option><option>E-Commerce</option><option>UI Redesign</option><option>Other Front-End Work</option></select></label>
+        <label><span>Budget</span><select name="budget"><option value="">Prefer not to say</option><option>Under $300</option><option>$300 - $700</option><option>$700 - $1,500</option><option>$1,500+</option></select></label>
+      </div>
+      <label><span data-i18n="formMsg">Project idea</span><textarea name="message" rows="5" required placeholder="Tell me what you want to build, redesign, or improve..."></textarea></label>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button class="btn btn-primary" type="submit"><span data-i18n="formSend">Send message</span><span aria-hidden="true">→</span></button>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <p class="form-success" id="form-success" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container foot-grid">
+    <a href="#home" class="brand"><span class="brand-mark">MZ</span><span class="brand-text"><strong>Mohammed Zomlot</strong><small>Front-End Web Developer</small></span></a>
+    <nav aria-label="Footer"><a href="#about">About</a><a href="works.html">Projects</a><a href="#services">Services</a><a href="lab3d.html">3D Lab</a><a href="achievements.html">Achievements</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="resume.html">CV</a></nav>
+    <div class="foot-meta"><span>HTML • CSS • JavaScript</span><span>© 2026 Mohammed Zomlot</span></div>
+  </div>
+  <button id="to-top" aria-label="Back to top">↑</button>
+</footer>
+
+<div class="mail-float" aria-label="Quick email actions">
+  <button id="mail-copy" type="button" title="Copy email" aria-label="Copy email">⧉</button>
+  <a id="mail-compose" href="mailto:mhzomlot@gmail.com" title="mhzomlot@gmail.com" aria-label="Compose email">✉</a>
+</div>
+
+<!-- PROJECT MODAL -->
+<div id="modal-backdrop" hidden>
+  <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button id="modal-close" aria-label="Close case study">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script type="module">
+import * as THREE from 'three';
+(async function(){
+  const canvas = document.getElementById('webgl');
+  if(!canvas || !window.WebGLRenderingContext) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cfg = (window.MZ_CONFIG && window.MZ_CONFIG.heroBloom) || {strength:.55,radius:.85,threshold:.15};
+  const isLite = document.documentElement.getAttribute('data-fx') === 'lite';
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true}); }
+  catch(e){ canvas.style.display='none'; return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setSize(innerWidth, innerHeight);
+
+  /* Optional cinematic bloom — additive, never blocks the base scene.
+     Skipped entirely on reduced-motion, lite-FX mode, or if the addon
+     fails to load (offline / blocked CDN / older browser). */
+  let composer = null, bloomPass = null, outlinePass = null, RenderPassCls = null;
+  const outlineCfg = (window.MZ_CONFIG && window.MZ_CONFIG.heroOutline) || { enabled:true, strength:3.2, glow:1.1, thickness:1.6, pulseSeconds:2.4, colorA:0x22d3ee, colorB:0x2f7bff };
+  const smaaCfg = (window.MZ_CONFIG && window.MZ_CONFIG.heroSMAA) || { enabled:true };
+  if (!reduced && !isLite){
+    try {
+      const imports = [
+        import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js'),
+        import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js'),
+        import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js'),
+        outlineCfg.enabled ? import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/OutlinePass.js') : Promise.resolve(null),
+        smaaCfg.enabled ? import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/SMAAPass.js') : Promise.resolve(null)
+      ];
+      const [ECMod, RPMod, BloomMod, OutlineMod, SMAAMod] = await Promise.all(imports);
+      composer = new ECMod.EffectComposer(renderer);
+      RenderPassCls = RPMod.RenderPass;
+      bloomPass = new BloomMod.UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), cfg.strength, cfg.radius, cfg.threshold);
+      if (OutlineMod){
+        outlinePass = new OutlineMod.OutlinePass(new THREE.Vector2(innerWidth, innerHeight), null, null); // scene/camera wired in below
+        outlinePass.edgeStrength = outlineCfg.strength;
+        outlinePass.edgeGlow = outlineCfg.glow;
+        outlinePass.edgeThickness = outlineCfg.thickness;
+        outlinePass.pulsePeriod = outlineCfg.pulseSeconds;
+        outlinePass.visibleEdgeColor.set(outlineCfg.colorA);
+        outlinePass.hiddenEdgeColor.set(outlineCfg.colorB);
+      }
+      if (SMAAMod) window.__mzSMAAPassCls = SMAAMod.SMAAPass; // built after camera exists (needs no scene ref, just pixel size)
+    } catch(e){ composer = null; outlinePass = null; } // silent fallback to plain renderer.render()
+  }
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x05060d, 0.05);
+  const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 120);
+  camera.position.set(0, 0, 9.5);
+  if (composer && RenderPassCls){
+    composer.addPass(new RenderPassCls(scene, camera));
+    if (outlinePass){
+      outlinePass.renderScene = scene;
+      outlinePass.renderCamera = camera;
+      composer.addPass(outlinePass);
+    }
+    composer.addPass(bloomPass);
+    if (window.__mzSMAAPassCls){
+      composer.addPass(new window.__mzSMAAPassCls(innerWidth * renderer.getPixelRatio(), innerHeight * renderer.getPixelRatio()));
+      delete window.__mzSMAAPassCls;
+    }
+  }
+  scene.add(new THREE.AmbientLight(0x8899ff, .6));
+  const d = new THREE.DirectionalLight(0xffffff, 1.15); d.position.set(4,6,6); scene.add(d);
+  const p1 = new THREE.PointLight(0x2f7bff, 70, 45); p1.position.set(-6,3,2); scene.add(p1);
+  const p2 = new THREE.PointLight(0x22d3ee, 60, 45); p2.position.set(6,-2,3); scene.add(p2);
+  const p3 = new THREE.PointLight(0x7c3aed, 65, 45); p3.position.set(0,5,-4); scene.add(p3);
+  const p4 = new THREE.PointLight(0xec4899, 35, 40); p4.position.set(-3,-4,4); scene.add(p4);
+  const world = new THREE.Group(); scene.add(world);
+  // SAME background as Ibrahim site: particles + knot + rings + floaters + grid
+  const N = isLite ? 900 : 1900, pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  const cA = new THREE.Color(0x2f7bff), cB = new THREE.Color(0x22d3ee), cC = new THREE.Color(0xa78bfa), cD = new THREE.Color(0xec4899);
+  for(let i=0;i<N;i++){
+    pos[i*3]=(Math.random()-.5)*36; pos[i*3+1]=(Math.random()-.5)*22; pos[i*3+2]=(Math.random()-.5)*20-2;
+    const r = Math.random(), c = r<.4?cA:(r<.65?cB:(r<.85?cC:cD));
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+  }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  pg.setAttribute('color', new THREE.BufferAttribute(col,3));
+  const pts = new THREE.Points(pg, new THREE.PointsMaterial({size:.055, vertexColors:true, transparent:true, opacity:.9, depthWrite:false, blending:THREE.AdditiveBlending}));
+  world.add(pts);
+  // second layer: far golden dust
+  const N2 = isLite ? 180 : 400, pos2 = new Float32Array(N2*3);
+  for(let i=0;i<N2;i++){ pos2[i*3]=(Math.random()-.5)*44; pos2[i*3+1]=(Math.random()-.5)*26; pos2[i*3+2]=(Math.random()-.5)*10-8; }
+  const pg2 = new THREE.BufferGeometry(); pg2.setAttribute('position', new THREE.BufferAttribute(pos2,3));
+  const pts2 = new THREE.Points(pg2, new THREE.PointsMaterial({size:.09, color:0xfbbf24, transparent:true, opacity:.35, depthWrite:false, blending:THREE.AdditiveBlending}));
+  world.add(pts2);
+  const knot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(2.15,.55,220,32),
+    new THREE.MeshStandardMaterial({color:0x0b1530, emissive:0x112244, emissiveIntensity:.6, roughness:.22, metalness:.88})
+  );
+  knot.position.set(4.6,.3,-2.5); world.add(knot);
+  const knotW = new THREE.Mesh(new THREE.TorusKnotGeometry(2.15,.55,120,16), new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:.17}));
+  knotW.position.copy(knot.position); knotW.scale.setScalar(1.002); world.add(knotW);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(3.1,.03,12,140), new THREE.MeshBasicMaterial({color:0x2f7bff, transparent:true, opacity:.55}));
+  ring.position.copy(knot.position); ring.rotation.x = 1.2; world.add(ring);
+  const ring2 = ring.clone(); ring2.material = new THREE.MeshBasicMaterial({color:0xa78bfa, transparent:true, opacity:.38});
+  ring2.scale.setScalar(1.22); ring2.rotation.x = .6; world.add(ring2);
+  const ring3 = ring.clone(); ring3.material = new THREE.MeshBasicMaterial({color:0xec4899, transparent:true, opacity:.22});
+  ring3.scale.setScalar(1.45); ring3.rotation.x = 2.1; world.add(ring3);
+  // EXTRA vs Ibrahim: left-side icosa + orbiting moons
+  const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15,1), new THREE.MeshStandardMaterial({color:0x13224d, emissive:0x2f7bff, emissiveIntensity:.35, roughness:.3, metalness:.8, wireframe:false}));
+  ico.position.set(-5.4,-.6,-3); world.add(ico);
+  const icoW = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15,1), new THREE.MeshBasicMaterial({color:0x7dd3fc, wireframe:true, transparent:true, opacity:.28}));
+  icoW.position.copy(ico.position); icoW.scale.setScalar(1.01); world.add(icoW);
+  if (outlinePass) outlinePass.selectedObjects = [knot, ico];
+  const moons = [];
+  for(let i=0;i<3;i++){
+    const m = new THREE.Mesh(new THREE.SphereGeometry(.12+i*.05, 16, 16), new THREE.MeshBasicMaterial({color:[0x22d3ee,0xa78bfa,0xfbbf24][i]}));
+    m.userData = {r:1.9+i*.45, s:.5+i*.25, o:i*2.1}; world.add(m); moons.push(m);
+  }
+  const floaters = [];
+  const geos = [new THREE.IcosahedronGeometry(.5,0), new THREE.OctahedronGeometry(.55,0), new THREE.BoxGeometry(.6,.6,.6), new THREE.TetrahedronGeometry(.6,0), new THREE.TorusGeometry(.32,.11,10,24)];
+  const cols = [0x22d3ee,0x7c3aed,0x2f7bff,0x34d399,0xec4899];
+  for(let i=0;i<22;i++){
+    const m = new THREE.Mesh(geos[i%geos.length], new THREE.MeshStandardMaterial({color:cols[i%cols.length], roughness:.28, metalness:.72, emissive:cols[i%cols.length], emissiveIntensity:.18, transparent:true, opacity:.92}));
+    m.position.set((Math.random()-.5)*24,(Math.random()-.5)*12,(Math.random()-.5)*9-1);
+    m.userData = {s:.4+Math.random()*.9, o:Math.random()*10};
+    world.add(m); floaters.push(m);
+  }
+  const grid = new THREE.GridHelper(56, 56, 0x2a5cff, 0x0e1b3d);
+  grid.position.y = -5.4; grid.material.transparent = true; grid.material.opacity = .4; scene.add(grid);
+  const grid2 = new THREE.GridHelper(56, 28, 0x22d3ee, 0x0e1b3d);
+  grid2.position.y = 7.5; grid2.rotation.x = Math.PI; grid2.material.transparent = true; grid2.material.opacity = .12; scene.add(grid2);
+  let mx=0,my=0,tx=0,ty=0;
+  addEventListener('mousemove',e=>{ tx=(e.clientX/innerWidth-.5)*2; ty=(e.clientY/innerHeight-.5)*2; },{passive:true});
+  addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); if(composer) composer.setSize(innerWidth,innerHeight); });
+  const clock = new THREE.Clock();
+  function frame(){
+    const t = clock.getElapsedTime();
+    mx += (tx-mx)*.045; my += (ty-my)*.045;
+    knot.rotation.x = t*.12; knot.rotation.y = t*.16; knotW.rotation.copy(knot.rotation);
+    ring.rotation.z = t*.2; ring2.rotation.z = -t*.15; ring3.rotation.z = t*.1;
+    ico.rotation.y = t*.3; ico.rotation.x = t*.18; icoW.rotation.copy(ico.rotation);
+    ico.position.y = -.6 + Math.sin(t*.8)*.25;
+    icoW.position.copy(ico.position);
+    moons.forEach(m=>{ const a = t*m.userData.s + m.userData.o; m.position.set(ico.position.x + Math.cos(a)*m.userData.r, ico.position.y + Math.sin(a*1.2)*.7, ico.position.z + Math.sin(a)*m.userData.r*.6); });
+    floaters.forEach(m=>{ m.rotation.x=t*m.userData.s*.6; m.rotation.y=t*m.userData.s*.8; m.position.y += Math.sin(t*1.2+m.userData.o)*.0038; });
+    pts.rotation.y = t*.02 + mx*.12; pts2.rotation.y = -t*.012 + mx*.06;
+    world.rotation.x = my*.06;
+    camera.position.x = mx*.95;
+    camera.position.y = -scrollY*.0016 + (-my*.6);
+    camera.lookAt(1.2,0,-2);
+    if (composer) composer.render(); else renderer.render(scene,camera);
+    if(!reduced && !document.hidden) requestAnimationFrame(frame);
+  }
+  if(reduced){ renderer.render(scene,camera); } else frame();
+  // pause GPU work while tab is hidden — zero visual change
+  document.addEventListener('visibilitychange', function(){
+    if(!reduced && !document.hidden) frame();
+  });
 })();
 </script>
+
+<!-- SECOND 3D SCENE — lazy, section-scoped, pauses off-screen -->
+<script type="module">
+import * as THREE from 'three';
+(function(){
+  const canvas = document.getElementById('webgl-stack');
+  const section = document.getElementById('stack');
+  if (!canvas || !section || !window.WebGLRenderingContext) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  let started = false, renderer, scene, camera, group, raf = null, frame = null;
+  const clock = new THREE.Clock();
+  let mx = 0, tx = 0;
+
+  function build(){
+    const cfg = (window.MZ_CONFIG && window.MZ_CONFIG.stackFx) || {count:220,countLite:90,speed:1};
+    const isLite = document.documentElement.getAttribute('data-fx') === 'lite';
+    const count = Math.round((isLite ? cfg.countLite : cfg.count) * (innerWidth < 640 ? .55 : 1));
+    try { renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:false}); }
+    catch(e){ return false; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+    renderer.setSize(canvas.clientWidth || section.clientWidth, canvas.clientHeight || section.clientHeight);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(55, (section.clientWidth||1)/(section.clientHeight||1), .1, 60);
+    camera.position.set(0, 0, 14);
+    scene.add(new THREE.AmbientLight(0xffffff, .7));
+    const dl = new THREE.DirectionalLight(0x66aaff, 1); dl.position.set(3,4,5); scene.add(dl);
+    group = new THREE.Group(); scene.add(group);
+
+    // Instanced low-poly shapes = one draw call for the whole field (cheap on any device)
+    const geo = new THREE.IcosahedronGeometry(.34, 0);
+    const mat = new THREE.MeshStandardMaterial({color:0x2f7bff, emissive:0x22d3ee, emissiveIntensity:.35, roughness:.35, metalness:.6, transparent:true, opacity:.75});
+    const mesh = new THREE.InstancedMesh(geo, mat, count);
+    const dummy = new THREE.Object3D();
+    const seeds = [];
+    for (let i=0;i<count;i++){
+      const x=(Math.random()-.5)*20, y=(Math.random()-.5)*10, z=(Math.random()-.5)*10-2;
+      dummy.position.set(x,y,z); dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+      const s = .4 + Math.random()*.8; dummy.scale.setScalar(s);
+      dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
+      seeds.push({x,y,z,s,o:Math.random()*10,sp:.3+Math.random()*.5});
+    }
+    mesh.userData.seeds = seeds;
+    group.add(mesh);
+
+    // faint connecting line network for a "tech stack" web feel
+    const linePts = [];
+    for (let i=0;i<Math.min(count,140);i+=2){ if(seeds[i+1]){ linePts.push(seeds[i].x,seeds[i].y,seeds[i].z, seeds[i+1].x,seeds[i+1].y,seeds[i+1].z); } }
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePts, 3));
+    const lines = new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({color:0x2f7bff, transparent:true, opacity:.14}));
+    group.add(lines);
+
+    addEventListener('mousemove', e => { tx = (e.clientX/innerWidth - .5) * 2; }, {passive:true});
+
+    frame = function(){
+      const t = clock.getElapsedTime();
+      mx += (tx - mx) * .04;
+      const dummy2 = new THREE.Object3D();
+      for (let i=0;i<count;i++){
+        const s = seeds[i];
+        dummy2.position.set(s.x, s.y + Math.sin(t*s.sp + s.o)*.5, s.z);
+        dummy2.rotation.set(t*s.sp*.4, t*s.sp*.6, 0);
+        dummy2.scale.setScalar(s.s);
+        dummy2.updateMatrix();
+        mesh.setMatrixAt(i, dummy2.matrix);
+      }
+      mesh.instanceMatrix.needsUpdate = true;
+      group.rotation.y = mx * .25 + t*.015;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(frame);
+    }
+    frame();
+    canvas.classList.add('is-ready');
+
+    addEventListener('resize', () => {
+      if (!renderer) return;
+      const w = section.clientWidth, h = section.clientHeight;
+      camera.aspect = w/h; camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+    return true;
+  }
+
+  function stop(){ if (raf) cancelAnimationFrame(raf); raf = null; }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting){
+        if (!started){ started = build(); }
+        else if (!raf && renderer && frame) { frame(); }
+      } else {
+        stop();
+      }
+    });
+  }, { rootMargin: '120px' });
+  io.observe(section);
+})();
+</script>
+
+<!-- THIRD-PARTY 3D/2D LIB — tsParticles, lazy-loaded only for Contact section -->
+<script type="module">
+(function(){
+  const host = document.getElementById('tsparticles-contact');
+  const section = document.getElementById('contact');
+  if (!host || !section) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cfg = (window.MZ_CONFIG && window.MZ_CONFIG.contactParticles) || { enabled:true, count:46, countLite:0, linkDistance:130, color:'#2f7bff', color2:'#22d3ee' };
+  if (reduced || !cfg.enabled) return;
+
+  let loaded = false;
+  async function boot(){
+    const isLite = document.documentElement.getAttribute('data-fx') === 'lite';
+    const count = isLite ? cfg.countLite : cfg.count;
+    if (!count) return; // lite mode: skip entirely, zero cost
+    try {
+      const [{ tsParticles }, { loadSlim }] = await Promise.all([
+        import('https://cdn.jsdelivr.net/npm/@tsparticles/engine@3/+esm'),
+        import('https://cdn.jsdelivr.net/npm/@tsparticles/slim@3/+esm')
+      ]);
+      await loadSlim(tsParticles);
+      await tsParticles.load({
+        id: 'tsparticles-contact',
+        options: {
+          fullScreen: { enable: false },
+          detectRetina: true,
+          fpsLimit: 60,
+          background: { color: 'transparent' },
+          particles: {
+            number: { value: count },
+            color: { value: [cfg.color, cfg.color2] },
+            opacity: { value: .5 },
+            size: { value: { min: 1, max: 2.6 } },
+            links: { enable: true, distance: cfg.linkDistance, color: cfg.color, opacity: .18, width: 1 },
+            move: { enable: true, speed: .35, outModes: { default: 'out' } }
+          },
+          interactivity: {
+            detectsOn: 'window',
+            events: { onHover: { enable: true, mode: 'grab' }, resize: true },
+            modes: { grab: { distance: 140, links: { opacity: .35 } } }
+          }
+        }
+      });
+    } catch (e) { /* offline / blocked CDN — section stays fully usable without it */ }
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting && !loaded){ loaded = true; boot(); io.disconnect(); } });
+  }, { rootMargin: '150px' });
+  io.observe(section);
+})();
+</script>
+<script src="script.js" defer></script>
 </body>
 </html>
+\n

@@ -1,9 +1,8 @@
 /* MZ Portfolio — offline cache (same-origin GET only) */
-var CACHE = 'mz-portfolio-v5';
+var CACHE = 'mz-portfolio-v3';
 var CORE = [
   './',
   'index.html',
-  'projects/tradeon.html',
   'lab3d.html',
   'achievements.html',
   'works.html',

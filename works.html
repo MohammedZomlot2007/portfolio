@@ -70,6 +70,7 @@ body{background:transparent;color:#F5F7FA;font-family:'Inter',system-ui,sans-ser
 .mtext p{color:#9AA4B2;font-size:1.15vw;line-height:1.4;margin-top:.5vw;max-width:26ch}
 .mtext .tags{display:flex;flex-wrap:wrap;gap:.4vw;margin-top:.6vw}
 .mtext .tags span{font-family:'JetBrains Mono';font-size:.85vw;padding:.25vw .7vw;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#9fb3cc}
+.project-link{display:inline-flex;align-items:center;margin-top:12px;padding:8px 11px;border:1px solid #22d3ee55;border-radius:9px;color:#8be9f7;background:#22d3ee0a;font-size:12px;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s}.project-link:hover{background:#22d3ee18;border-color:#22d3ee}
 .outro{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:60px 24px;position:relative;z-index:2}
 .outro h2{font-family:'Space Grotesk';font-size:clamp(26px,4vw,44px)}
 .outro p{color:#9AA4B2;max-width:52ch}
@@ -86,6 +87,7 @@ body{background:transparent;color:#F5F7FA;font-family:'Inter',system-ui,sans-ser
   .mcard p{color:#9AA4B2;font-size:14px;margin-top:6px}
   .mcard .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   .mcard .tags span{font-family:'JetBrains Mono';font-size:10.5px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#9fb3cc}
+  .mcard .project-link{margin:13px 0 0;font-size:12px;padding:8px 11px}
 }
 @media(prefers-reduced-motion:reduce){
   #webgl{display:none}
@@ -208,9 +210,9 @@ var DATA = [
   { num:'02', title:'Gold Jewelry POS & Accounting', cat:'Retail POS / Specialized Business UI',
     d:{en:'Gold retail concept: weight, karat, gram price, craftsmanship and sales flow.', ar:'فكرة لمحلات الذهب: الوزن والعيار وسعر الغرام والمصنعية والمبيعات.'},
     tech:['HTML','CSS','JavaScript'], badge:'Concept UI' },
-  { num:'03', title:'TRADEON', cat:'Business Platform / Social Business Interface',
-    d:{en:'Business platform concept: professional profiles, company experiences and networking.', ar:'منصة أعمال: ملفات مهنية وتجارب شركات وتواصل.'},
-    tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
+  { num:'03', title:'TRADEON — Global Business Network', cat:'B2B Business Network / Laravel + React',
+    d:{en:'B2B networking platform for companies, suppliers, manufacturers, product showcases, sourcing requests and professional connections.', ar:'منصة أعمال بين الشركات للتواصل مع الموردين والمصنّعين وعرض المنتجات وطلبات التوريد والعلاقات المهنية.'},
+    tech:['Laravel','PHP','React','Inertia.js','Vite'], badge:'Featured Project', link:'projects/tradeon.html' },
   { num:'04', title:'SupplierHub', cat:'Supplier Management Platform',
     d:{en:'B2B interface for supplier discovery, profiles, categories and dashboards.', ar:'واجهة B2B لاكتشاف الموردين وإدارة ملفاتهم ولوحاتهم.'},
     tech:['HTML','CSS','JavaScript'], badge:'Portfolio Project' },
@@ -245,18 +247,19 @@ function build(){
   top.innerHTML = ''; bot.innerHTML = ''; ml.innerHTML = '';
   DATA.forEach(function(p, i){
     var host = (i < 5) ? top : bot;
+    var action = p.link ? '<a class="project-link" href="' + p.link + '">' + (lang === 'ar' ? 'عرض تفاصيل المشروع ↗' : 'View project details ↗') + '</a>' : '';
     var el = document.createElement('div');
     el.className = 'mitem';
     el.innerHTML = '<div class="stem" aria-hidden="true"><i></i></div><span class="node" aria-hidden="true"></span>' +
       '<div class="mtext"><span class="num">' + p.num + ' · ' + esc(p.badge) + '</span><h4>' + esc(p.title) + '</h4>' +
       '<span class="cat">' + esc(p.cat) + '</span><p>' + esc(txt(p.d)) + '</p>' +
-      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>';
+      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' + action + '</div>';
     host.appendChild(el);
     var mc = document.createElement('div');
     mc.className = 'mcard';
     mc.innerHTML = '<div class="mcover pv-' + (i + 1) + '">' + p.num + '</div><div class="mb"><span class="cat">' + esc(p.cat) + '</span>' +
       '<h4>' + esc(p.title) + '</h4><p>' + esc(txt(p.d)) + '</p>' +
-      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div></div>';
+      '<div class="tags">' + p.tech.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' + action + '</div>';
     ml.appendChild(mc);
   });
 }

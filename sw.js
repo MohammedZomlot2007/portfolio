@@ -1,5 +1,5 @@
 /* MZ Portfolio — offline cache (same-origin GET only) */
-var CACHE = 'mz-portfolio-v4';
+var CACHE = 'mz-portfolio-v5';
 var CORE = [
   './',
   'index.html',

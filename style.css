@@ -1076,3 +1076,10 @@ footer{background:color-mix(in srgb,var(--bg2) 88%,transparent)}
   .portfolio-project-card,.preview-window,.hero-socials a,.stack-wall button{transition:none}
   .portfolio-project-card:hover{transform:none}
 }
+
+
+/* Headline fit on wide and mid-sized screens */
+@media(min-width:761px){
+  .hero-title{font-size:clamp(42px,4.9vw,68px);line-height:1.02;letter-spacing:-.05em}
+  .hero-title .line{white-space:normal}
+}

@@ -37,22 +37,20 @@ setTimeout(function () { /* hard fallback: never trap user */
   loader.classList.add('done');
 }, 3500);
 
-/* ---------- Theme (dark-first, explicit user preference persists) ---------- */
+/* ---------- Theme (localStorage + prefers-color-scheme) ---------- */
 var root = document.documentElement;
 function currentTheme() {
   var saved = null;
-  /* v2 intentionally ignores the old system-preference/legacy key once, so the
-     redesign opens in its intended dark palette instead of inheriting old light mode. */
-  try { saved = localStorage.getItem('mz-theme-v2'); } catch (e) {}
-  return saved === 'light' ? 'light' : 'dark';
+  try { saved = localStorage.getItem('mz-theme'); } catch (e) {}
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 function applyTheme(t) {
-  root.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+  root.setAttribute('data-theme', t);
   var moon = $('#icon-moon'), sun = $('#icon-sun');
   if (moon && sun) { moon.style.display = t === 'dark' ? '' : 'none'; sun.style.display = t === 'dark' ? 'none' : ''; }
-  var themeMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeMeta) themeMeta.setAttribute('content', t === 'dark' ? '#06070A' : '#f4f6fb');
-  try { localStorage.setItem('mz-theme-v2', t === 'light' ? 'light' : 'dark'); } catch (e) {}
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#06070A' : '#f4f6fb');
+  try { localStorage.setItem('mz-theme', t); } catch (e) {}
 }
 applyTheme(currentTheme());
 $('#theme-toggle').addEventListener('click', function () {
@@ -91,61 +89,6 @@ var I18N = {
 en:{skip:'Skip to content',loaderSub:'FRONT-END DEVELOPER',brandSub:'Front-End Developer',navHome:'Home',navAbout:'About',navSkills:'Skills',navProjects:'Projects',navServices:'Services',navContact:'Contact',navCta:"Let's Talk",heroLabel:'FRONT-END WEB DEVELOPER',heroTag:'I BUILD MODERN WEB EXPERIENCES.',heroDesc:'Front-End Web Developer focused on creating modern, responsive, interactive, and user-friendly websites using HTML, CSS, and JavaScript.',heroBtn1:'View My Work',heroBtn2:"Let's Connect",heroMeta1:'Core specialization',heroMeta2:'Frontend case studies',heroMeta3:'Responsive-first interfaces',heroHint:'Move your cursor — the scene responds · Scroll for depth',heroRotPre:'Specialized in',aboutLabel:'ABOUT ME',aboutTitle:'Front-end focused. Detail obsessed.',aboutLead:"I'm Mohammed Zomlot, a Front-End Web Developer focused on building modern, responsive, and user-friendly websites using HTML, CSS, and JavaScript. I enjoy turning ideas into clean, functional web experiences and continuously improving through real-world projects.",aboutP1t:'UI-focused developer',aboutP1d:'Interfaces with clear hierarchy, spacing systems and readable typography.',aboutP2t:'Responsive by default',aboutP2d:'Desktop, tablet and mobile layouts designed intentionally — not compressed.',aboutP3t:'JavaScript interaction',aboutP3d:'DOM, LocalStorage, API integration, filters, dashboards and dynamic UI.',aboutCardStatus:'Available for projects',aboutCardRole:'Front-End Web Developer · HTML / CSS / JS',copyEmail:'Copy email',skillsLabel:'SKILLS',skillsTitle:'Categorized capability, no fake scores.',skillsSub:'Honest grouping of what I use to design and build real interfaces.',skillsC1:'CORE FRONT-END',skillsC2:'DESIGN',skillsC3:'DEVELOPMENT',lvlA:'Advanced',lvlA2:'Advanced',lvlB:'Intermediate–Advanced',lvlA3:'Advanced',expLabel:'FRONT-END EXPERTISE',expTitle:'What I build best.',exp1t:'Interactive Websites',exp1d:'Modern responsive interfaces with animations and polished interactions.',exp2t:'Business Dashboards',exp2d:'Professional dashboards for workflows, finance and data visualization.',exp3t:'Responsive Interfaces',exp3d:'Interfaces optimized for desktop, tablet and mobile.',exp4t:'UI Systems',exp4d:'Reusable components, spacing, typography and consistent visual language.',exp5t:'JavaScript Experiences',exp5d:'Filters, search, forms, CRUD interfaces and client-side functionality.',exp6t:'Premium Landing Pages',exp6d:'High-conversion landing pages with strong visual hierarchy.',projLabel:'FEATURED PROJECTS',projTitle:'10 frontend case studies.',projSub:'Portfolio concepts & personal projects — honest scope, real interfaces. No fake clients or metrics.',servLabel:'SERVICES',servTitle:'What I can build for you.',serv1t:'Responsive Websites',serv1d:'Modern websites that adapt across devices.',serv2t:'Landing Pages',serv2d:'Premium high-conversion landing pages.',serv3t:'Business Dashboards',serv3d:'Professional dashboards for business applications.',serv4t:'Interactive UI',serv4d:'Dynamic interfaces with JavaScript.',serv5t:'Website Redesign',serv5d:'Modernize outdated web interfaces.',serv6t:'Front-End Prototyping',serv6d:'Turn ideas into polished interactive prototypes.',procLabel:'HOW I BUILD',procTitle:'Design philosophy & process.',procSub:'Goal: clean code · clear UI · responsive design · smooth interaction · good usability.',proc1t:'Understand',proc1d:'Clarify goals, users and content first.',proc2t:'Plan',proc2d:'Structure pages, components and states.',proc3t:'Design',proc3d:'Spacing, type and color systems.',proc4t:'Build',proc4d:'Semantic HTML, clean CSS, vanilla JS.',proc5t:'Test',proc5d:'Devices, keyboard, contrast, motion.',proc6t:'Refine',proc6d:'Polish micro-interactions & performance.',stackLabel:'TECHNOLOGY STACK',stackTitle:'Frontend-only toolkit.',jourLabel:'JOURNEY',jourTitle:'A development journey, not fake employment.',jour1t:'Learning the fundamentals',jour1d:'HTML semantics, CSS layout, JavaScript basics and responsive thinking.',jour2t:'Building real projects',jour2d:'Dashboards, stores, landing pages and business interfaces as portfolio case studies.',jour3t:'Improving UI / UX',jour3d:'Hierarchy, spacing systems, accessibility and interaction polish.',jour4t:'Advanced front-end interfaces',jour4d:'3D touches, motion, filtering, modals, themes and client-side architecture.',jour5t:'Professional portfolio',jour5d:'This site — a cohesive identity for a serious front-end developer.',contactLabel:'CONTACT',contactTitle:"LET'S BUILD SOMETHING GREAT.",contactSub:"Have a project, idea, or website that needs a modern frontend experience? Let's talk.",formTitle:'Project brief',formHint:'This form prepares an email in your mail app. No form data is stored on this site.',formName:'Your name',formMsg:'Project idea',formSend:'Compose email'},
 ar:{skip:'تخطَّ إلى المحتوى',loaderSub:'مطوّر واجهات أمامية',brandSub:'مطوّر واجهات أمامية',navHome:'الرئيسية',navAbout:'من أنا',navSkills:'المهارات',navProjects:'المشاريع',navServices:'الخدمات',navContact:'تواصل',navCta:'لنتحدث',heroLabel:'مطوّر واجهات أمامية — FRONT-END',heroTag:'أبني تجارب ويب عصرية.',heroDesc:'مطوّر واجهات أمامية متخصص في إنشاء مواقع عصرية ومتجاوبة وتفاعلية وسهلة الاستخدام باستخدام HTML وCSS وJavaScript.',heroBtn1:'شاهد أعمالي',heroBtn2:'لنتواصل',heroMeta1:'التخصص الأساسي',heroMeta2:'دراسات حالة',heroMeta3:'متجاوب وتفاعلي',heroHint:'حرّك المؤشر — المشهد يستجيب · مرّر للعمق',heroRotPre:'متخصص في',aboutLabel:'من أنا',aboutTitle:'تركيز على الواجهات. هوس بالتفاصيل.',aboutLead:'أنا محمد زملّوط، مطوّر واجهات أمامية متخصص في بناء مواقع عصرية ومتجاوبة وسهلة الاستخدام باستخدام HTML وCSS وJavaScript. أستمتع بتحويل الأفكار إلى تجارب ويب نظيفة وعملية وأطوّر مهاراتي باستمرار عبر مشاريع واقعية.',aboutP1t:'مطوّر يركز على الواجهات',aboutP1d:'واجهات بتسلسل واضح وأنظمة تباعد وخطوط مقروءة.',aboutP2t:'تجاوب افتراضي',aboutP2d:'تخطيطات مدروسة لسطح المكتب والتابلت والموبايل.',aboutP3t:'تفاعل بجافاسكربت',aboutP3d:'DOM وLocalStorage وربط APIs وفلاتر ولوحات تحكم وواجهات ديناميكية.',aboutCardStatus:'متاح للمشاريع',aboutCardRole:'مطوّر واجهات أمامية · HTML / CSS / JS',copyEmail:'نسخ البريد',skillsLabel:'المهارات',skillsTitle:'قدرات مصنّفة بدون أرقام وهمية.',skillsSub:'تجميع صادق لما أستخدمه لتصميم وبناء واجهات حقيقية.',skillsC1:'الأساس',skillsC2:'التصميم',skillsC3:'التطوير',lvlA:'متقدم',lvlA2:'متقدم',lvlB:'متوسط–متقدم',lvlA3:'متقدم',expLabel:'الخبرة',expTitle:'ما أبنيه بأفضل صورة.',exp1t:'مواقع تفاعلية',exp1d:'واجهات متجاوبة عصرية بحركات وتفاعلات مصقولة.',exp2t:'لوحات تحكم للأعمال',exp2d:'لوحات احترافية لسير العمل والمالية وعرض البيانات.',exp3t:'واجهات متجاوبة',exp3d:'واجهات محسّنة لسطح المكتب والتابلت والموبايل.',exp4t:'أنظمة واجهات',exp4d:'مكونات قابلة لإعادة الاستخدام وأنظمة تباعد وخطوط ولغة بصرية متسقة.',exp5t:'تجارب جافاسكربت',exp5d:'فلاتر وبحث ونماذج وواجهات CRUD ووظائف تعمل داخل المتصفح.',exp6t:'صفحات هبوط فاخرة',exp6d:'صفحات هبوط عالية التحويل بتسلسل بصري قوي.',projLabel:'مشاريع مختارة',projTitle:'10 دراسات حالة في الواجهات.',projSub:'مفاهيم ومشاريع شخصية — نطاق صادق وواجهات حقيقية. بدون عملاء أو أرقام وهمية.',servLabel:'الخدمات',servTitle:'ما يمكنني بناؤه لك.',serv1t:'مواقع متجاوبة',serv1d:'مواقع عصرية تتكيف مع كل الأجهزة.',serv2t:'صفحات هبوط',serv2d:'صفحات هبوط فاخرة عالية التحويل.',serv3t:'لوحات تحكم للأعمال',serv3d:'لوحات احترافية لتطبيقات الأعمال.',serv4t:'واجهات تفاعلية',serv4d:'واجهات ديناميكية بجافاسكربت.',serv5t:'إعادة تصميم المواقع',serv5d:'تحديث الواجهات القديمة بتصميم عصري.',serv6t:'نماذج أولية',serv6d:'تحويل الأفكار إلى نماذج تفاعلية مصقولة.',procLabel:'كيف أبني',procTitle:'فلسفة التصميم والعملية.',procSub:'الهدف: كود نظيف · واجهة واضحة · تصميم متجاوب · تفاعل سلس · سهولة استخدام.',proc1t:'الفهم',proc1d:'توضيح الأهداف والمستخدمين والمحتوى أولًا.',proc2t:'التخطيط',proc2d:'هيكلة الصفحات والمكونات والحالات.',proc3t:'التصميم',proc3d:'أنظمة التباعد والخطوط والألوان.',proc4t:'البناء',proc4d:'HTML دلالي وCSS نظيف وJS خام.',proc5t:'الاختبار',proc5d:'الأجهزة ولوحة المفاتيح والتباين والحركة.',proc6t:'التحسين',proc6d:'صقل التفاعلات الدقيقة والأداء.',stackLabel:'التقنيات',stackTitle:'أدوات الواجهات فقط.',jourLabel:'الرحلة',jourTitle:'رحلة تطوير وليست وظائف وهمية.',jour1t:'تعلم الأساسيات',jour1d:'دلالات HTML وتخطيط CSS وأساسيات جافاسكربت والتفكير المتجاوب.',jour2t:'بناء مشاريع حقيقية',jour2d:'لوحات تحكم ومتاجر وصفحات هبوط وواجهات أعمال كدراسات حالة.',jour3t:'تحسين UI / UX',jour3d:'التسلسل وأنظمة التباعد وإمكانية الوصول وصقل التفاعل.',jour4t:'واجهات أمامية متقدمة',jour4d:'لمسات ثلاثية الأبعاد وحركة وفلاتر ونوافذ وثيمات وهيكلة عميلة.',jour5t:'معرض أعمال احترافي',jour5d:'هذا الموقع — هوية متماسكة لمطوّر واجهات جاد.',contactLabel:'تواصل',contactTitle:'لنبنِ شيئًا عظيمًا.',contactSub:'هل لديك مشروع أو فكرة أو موقع يحتاج تجربة واجهات عصرية؟ لنتحدث.',formTitle:'ملخص المشروع',formHint:'النموذج يجهز رسالة في تطبيق البريد لديك. لا يتم تخزين بياناته على هذا الموقع.',formName:'اسمك',formMsg:'فكرة المشروع',formSend:'إنشاء البريد'}
 };
-/* Portfolio redesign copy — bilingual labels for the refreshed hero and project cards. */
-I18N.en.aboutLead = "I’m Mohammed Zomlot, a web developer building responsive interfaces and full-stack applications with React, JavaScript, Node.js and Laravel. I care about clean UI, useful functionality and details that make products easier to use.";
-I18N.ar.aboutLead = 'أنا محمد زملوط، مطوّر ويب أبني واجهات متجاوبة وتطبيقات متكاملة باستخدام React وJavaScript وNode.js وLaravel، مع اهتمام بوضوح التصميم وفائدة الوظائف والتفاصيل التي تحسّن تجربة الاستخدام.';
-I18N.en.aboutCardRole = 'Front-End & Full-Stack Developer · React / Node / Laravel';
-I18N.ar.aboutCardRole = 'مطوّر واجهات أمامية وخلفية · React / Node / Laravel';
-I18N.en.heroNamePrefix = 'Hi, I’m';
-I18N.en.heroName = 'Mohammed Zomlot';
-I18N.en.heroLabel = 'FRONT-END & FULL-STACK DEVELOPER';
-I18N.en.heroTag = 'TURNING IDEAS INTO DIGITAL PRODUCTS.';
-I18N.en.heroDesc = 'I build modern web applications and responsive interfaces with React, JavaScript and Laravel — focused on clean UI, useful features and thoughtful details.';
-I18N.en.heroMeta1 = 'Projects built';
-I18N.en.heroMeta2 = 'Modern web stack';
-I18N.en.heroMeta3 = 'Freelance & collaboration';
-I18N.en.projTitle = 'Selected work, built for real use.';
-I18N.en.projSub = 'A selection of product interfaces and platform concepts I’ve been building.';
-I18N.en.wkBtn = 'Explore all projects';
-I18N.en.projectFeatured = 'Featured project';
-I18N.en.projectCaseStudy = 'Case study';
-I18N.en.projectConcept = 'Product concept';
-I18N.en.projectDetails = 'View project';
-I18N.en.projectSource = 'Source code';
-I18N.en.projectExplore = 'Explore work';
-I18N.en.projectTradeonDesc = 'A B2B business network for company profiles, product discovery, sourcing requests and professional connections.';
-I18N.en.projectAccountingDesc = 'An enterprise accounting interface concept for financial workflows, invoices, purchases and reports.';
-I18N.en.projectGoldDesc = 'A specialized retail workflow concept built around karat, weight, gram price, craftsmanship and sales.';
-I18N.en.projectMadrasatiDesc = 'A school management system concept for organizing students, classes, attendance and day-to-day school workflows.';
-I18N.en.projectPhoneDesc = 'A cinematic 3D phone experience exploring product presentation, depth, motion and exploded-view storytelling.';
-I18N.en.projectFootnote = 'Project pages distinguish working previews from concepts and case studies.';
-I18N.en.navExperience = 'Experience';
-
-I18N.ar.heroNamePrefix = 'مرحبًا، أنا';
-I18N.ar.heroName = 'محمد زملوط';
-I18N.ar.heroLabel = 'مطوّر واجهات أمامية وخلفية';
-I18N.ar.heroTag = 'أحوّل الأفكار إلى منتجات رقمية.';
-I18N.ar.heroDesc = 'أبني تطبيقات ويب عصرية وواجهات متجاوبة باستخدام React وJavaScript وLaravel، مع تركيز على وضوح التصميم وفائدة الميزات وجودة التفاصيل.';
-I18N.ar.heroMeta1 = 'مشاريع تم بناؤها';
-I18N.ar.heroMeta2 = 'تقنيات ويب حديثة';
-I18N.ar.heroMeta3 = 'عمل حر وتعاون';
-I18N.ar.projTitle = 'مشاريع مختارة صُممت للاستخدام الحقيقي.';
-I18N.ar.projSub = 'مجموعة من واجهات المنتجات ومفاهيم المنصات التي أعمل على تطويرها.';
-I18N.ar.wkBtn = 'استكشف جميع المشاريع';
-I18N.ar.projectFeatured = 'مشروع مميز';
-I18N.ar.projectCaseStudy = 'دراسة حالة';
-I18N.ar.projectConcept = 'مفهوم منتج';
-I18N.ar.projectDetails = 'عرض المشروع';
-I18N.ar.projectSource = 'الكود المصدري';
-I18N.ar.projectExplore = 'استكشف العمل';
-I18N.ar.projectTradeonDesc = 'شبكة أعمال بين الشركات لملفات الشركات واكتشاف المنتجات وطلبات التوريد والتواصل المهني.';
-I18N.ar.projectAccountingDesc = 'تصوّر لواجهة محاسبية للشركات يغطي الإجراءات المالية والفواتير والمشتريات والتقارير.';
-I18N.ar.projectGoldDesc = 'تصوّر لنظام بيع متخصص في الذهب يعتمد على العيار والوزن وسعر الغرام والمصنعية والمبيعات.';
-I18N.ar.projectMadrasatiDesc = 'تصوّر لنظام إدارة مدارس لتنظيم الطلاب والصفوف والحضور وسير العمل اليومي.';
-I18N.ar.projectPhoneDesc = 'تجربة هاتف ثلاثية الأبعاد بطابع سينمائي تستعرض المنتج والعمق والحركة ومشهد تفكيك المكوّنات.';
-I18N.ar.projectFootnote = 'توضّح صفحات المشاريع الفرق بين المعاينات العاملة والمفاهيم ودراسات الحالة.';
-I18N.ar.navExperience = 'الخبرة';
-
 var lang = 'en';
 try { lang = localStorage.getItem('mz-lang') || 'en'; } catch (e) {}
 function applyLang(l) {
@@ -159,7 +102,7 @@ function applyLang(l) {
   });
   var lt = $('#lang-toggle');
   if (lt) lt.textContent = lang === 'ar' ? 'EN' : 'عربي';
-  document.title = lang === 'ar' ? 'محمد زملوط — مطوّر واجهات أمامية وخلفية' : 'Mohammed Zomlot — Front-End & Full-Stack Developer';
+  document.title = lang === 'ar' ? 'محمد زملّوط — مطوّر واجهات أمامية' : 'Mohammed Zomlot — Front-End Web Developer';
   try { localStorage.setItem('mz-lang', lang); } catch (e) {}
   renderProjects(); // re-render cards in active language
 }
@@ -878,7 +821,7 @@ window.__mzEnhance3D=initSite3D;
 I18N.en.navLab = '3D Lab';
 I18N.en.achBtn = 'Open the interactive timeline';
 I18N.en.wkTease = 'All ten works now live on their own interactive timeline page — horizontal scroll, one case study at a time.';
-I18N.en.wkBtn = 'Explore all projects';
+I18N.en.wkBtn = 'Open the Works timeline';
 I18N.en.tradeonCaseStudy = 'View Tradeon case study';
 I18N.en.navFaq = 'FAQ';
 I18N.en.cvBtn = 'Download CV';
@@ -898,7 +841,7 @@ I18N.en.faq5a = 'Send a brief through the contact form below — type, goals and
 I18N.ar.navLab = 'مختبر 3D';
 I18N.ar.achBtn = 'افتح الخط الزمني التفاعلي';
 I18N.ar.wkTease = 'الأعمال العشرة تعيش الآن في صفحة خط زمني تفاعلية خاصة — سكرول أفقي، دراسة حالة واحدة كل مرة.';
-I18N.ar.wkBtn = 'استكشف جميع المشاريع';
+I18N.ar.wkBtn = 'افتح خط الأعمال الزمني';
 I18N.ar.tradeonCaseStudy = 'عرض دراسة مشروع Tradeon';
 I18N.ar.navFaq = 'الأسئلة الشائعة';
 I18N.ar.cvBtn = 'تحميل السيرة الذاتية';

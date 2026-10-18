@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace https://YOUR-DOMAIN/ with the real deployed domain, e.g. https://mohammed-zomlot.vercel.app/ -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-DOMAIN/</loc>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/works.html</loc>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/works.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/achievements.html</loc>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/achievements.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/lab3d.html</loc>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/lab3d.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR-DOMAIN/resume.html</loc>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/resume.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://portfolio-mohammed-zomlot.vercel.app/projects/tradeon.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -15,6 +15,27 @@ A responsive, Arabic-first portfolio built with plain HTML, CSS, and JavaScript.
 - Progressive Web App manifest and a small same-origin service worker cache.
 - Static frontend: no package installation or build step is required.
 
+## Featured projects
+
+### [Tradeon — B2B business platform](https://github.com/MohammedZomlot2007/Tradeon)
+A business networking product with company profiles, business posts, sourcing requests/RFQs, messaging, and subscription billing. The repository documents its application flows and Laravel/React implementation.
+
+**Stack:** Laravel · PHP · React · Inertia.js · Vite · Tailwind CSS · MySQL/Redis · Reverb · Paddle  
+**[Read the project case study](projects/tradeon.html)** · **[Source repository](https://github.com/MohammedZomlot2007/Tradeon)**
+
+### [Interactive Portfolio & 3D Lab](https://portfolio-mohammed-zomlot.vercel.app/)
+This repository: a bilingual RTL/LTR portfolio, selected-work timeline, and browser-based 3D experiments.
+- [Open selected projects](https://portfolio-mohammed-zomlot.vercel.app/works.html)
+- [Open the 3D lab](https://portfolio-mohammed-zomlot.vercel.app/lab3d.html)
+- [Inspect the front-end source](https://github.com/MohammedZomlot2007/portfolio)
+
+### [Arabic Dental Clinic — live preview](https://dental-clinic-eight-blush.vercel.app/)
+An Arabic-first RTL clinic-site project focused on service information and appointment requests. The source repository is private, so the public preview is linked instead of claiming the source is open.
+
+**Stack documented for that project:** Next.js · React · TypeScript · Tailwind CSS · Supabase
+
+> The current portfolio's visual project covers are designed in CSS; they are not captured browser screenshots. Use the live previews above to inspect the actual interfaces.
+
 ## Pages
 
 | Path | Purpose |

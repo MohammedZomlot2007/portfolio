@@ -1,5 +1,5 @@
 /* MZ Portfolio — offline cache (same-origin GET only) */
-var CACHE = 'mz-portfolio-v3';
+var CACHE = 'mz-portfolio-v4';
 var CORE = [
   './',
   'index.html',
@@ -10,6 +10,10 @@ var CORE = [
   'script.js',
   'manifest.webmanifest',
   'assets/profile.jpg',
+  'projects/tradeon.html',
+  'Mohammed-Zomlot-CV.pdf',
+  'sitemap.xml',
+  'robots.txt',
   'resume.html',
   '404.html'
 ];

@@ -18,23 +18,37 @@ A responsive, Arabic-first portfolio built with plain HTML, CSS, and JavaScript.
 ## Featured projects
 
 ### [Tradeon — B2B business platform](https://github.com/MohammedZomlot2007/Tradeon)
+
+[![Tradeon case-study preview](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-mohammed-zomlot.vercel.app%2Fprojects%2Ftradeon.html?w=1200)](https://portfolio-mohammed-zomlot.vercel.app/projects/tradeon.html)
+
 A business networking product with company profiles, business posts, sourcing requests/RFQs, messaging, and subscription billing. The repository documents its application flows and Laravel/React implementation.
 
 **Stack:** Laravel · PHP · React · Inertia.js · Vite · Tailwind CSS · MySQL/Redis · Reverb · Paddle  
 **[Read the project case study](projects/tradeon.html)** · **[Source repository](https://github.com/MohammedZomlot2007/Tradeon)**
 
 ### [Interactive Portfolio & 3D Lab](https://portfolio-mohammed-zomlot.vercel.app/)
+
+[![Portfolio home preview](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-mohammed-zomlot.vercel.app?w=1200)](https://portfolio-mohammed-zomlot.vercel.app/)
+
 This repository: a bilingual RTL/LTR portfolio, selected-work timeline, and browser-based 3D experiments.
+
+[![Selected work page preview](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-mohammed-zomlot.vercel.app%2Fworks.html?w=1200)](https://portfolio-mohammed-zomlot.vercel.app/works.html)
+
+[![Interactive 3D lab preview](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportfolio-mohammed-zomlot.vercel.app%2Flab3d.html?w=1200)](https://portfolio-mohammed-zomlot.vercel.app/lab3d.html)
+
 - [Open selected projects](https://portfolio-mohammed-zomlot.vercel.app/works.html)
 - [Open the 3D lab](https://portfolio-mohammed-zomlot.vercel.app/lab3d.html)
 - [Inspect the front-end source](https://github.com/MohammedZomlot2007/portfolio)
 
 ### [Arabic Dental Clinic — live preview](https://dental-clinic-eight-blush.vercel.app/)
+
+[![Dental Clinic website preview](https://s.wordpress.com/mshots/v1/https%3A%2F%2Fdental-clinic-eight-blush.vercel.app?w=1200)](https://dental-clinic-eight-blush.vercel.app/)
+
 An Arabic-first RTL clinic-site project focused on service information and appointment requests. The source repository is private, so the public preview is linked instead of claiming the source is open.
 
 **Stack documented for that project:** Next.js · React · TypeScript · Tailwind CSS · Supabase
 
-> The current portfolio's visual project covers are designed in CSS; they are not captured browser screenshots. Use the live previews above to inspect the actual interfaces.
+> Preview images are generated from the live pages by the external WordPress.com mShots service rather than stored as static image files in this repository. The service may show a temporary placeholder on its first request while generating a thumbnail; reload after a short while if a preview is not ready.
 
 ## Pages
 

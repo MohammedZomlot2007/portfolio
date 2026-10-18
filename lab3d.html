@@ -119,10 +119,11 @@ import * as THREE from 'three';
   var canvas = document.getElementById('webgl');
   if(!canvas || !window.WebGLRenderingContext) return;
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lowPower = !!(navigator.deviceMemory && navigator.deviceMemory <= 4) || matchMedia('(max-width: 768px)').matches;
   var renderer;
   try { renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true}); }
   catch(e){ canvas.style.display='none'; return; }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, lowPower ? 1.25 : 1.75));
   renderer.setSize(innerWidth, innerHeight);
   var scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x05060d, 0.05);
@@ -134,7 +135,7 @@ import * as THREE from 'three';
   var p2 = new THREE.PointLight(0x22d3ee, 60, 45); p2.position.set(6,-2,3); scene.add(p2);
   var p3 = new THREE.PointLight(0x7c3aed, 65, 45); p3.position.set(0,5,-4); scene.add(p3);
   var world = new THREE.Group(); scene.add(world);
-  var N = 1500, pos = new Float32Array(N*3), col = new Float32Array(N*3);
+  var N = lowPower ? 600 : 1500, pos = new Float32Array(N*3), col = new Float32Array(N*3);
   var palette = [new THREE.Color(0x2f7bff), new THREE.Color(0x22d3ee), new THREE.Color(0xa78bfa)];
   for(var i=0;i<N;i++){
     pos[i*3]=(Math.random()-0.5)*36; pos[i*3+1]=(Math.random()-0.5)*22; pos[i*3+2]=(Math.random()-0.5)*20-2;
@@ -147,19 +148,22 @@ import * as THREE from 'three';
   var pts = new THREE.Points(pg, new THREE.PointsMaterial({size:0.055, vertexColors:true, transparent:true, opacity:0.9, depthWrite:false, blending:THREE.AdditiveBlending}));
   world.add(pts);
   var knot = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(2.15, 0.55, 140, 24),
+    new THREE.TorusKnotGeometry(2.15, 0.55, lowPower ? 80 : 140, lowPower ? 16 : 24),
     new THREE.MeshStandardMaterial({color:0x0b1530, emissive:0x112244, emissiveIntensity:0.6, roughness:0.22, metalness:0.88})
   );
   knot.position.set(4.6, 0.3, -2.5); world.add(knot);
-  var knotW = new THREE.Mesh(new THREE.TorusKnotGeometry(2.15, 0.55, 90, 12), new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:0.17}));
+  var knotW = new THREE.Mesh(new THREE.TorusKnotGeometry(2.15, 0.55, lowPower ? 50 : 90, lowPower ? 8 : 12), new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:0.17}));
   knotW.position.copy(knot.position); world.add(knotW);
-  var grid = new THREE.GridHelper(56, 56, 0x2a5cff, 0x0e1b3d);
+  var grid = new THREE.GridHelper(lowPower ? 32 : 56, lowPower ? 32 : 56, 0x2a5cff, 0x0e1b3d);
   grid.position.y = -5.4; grid.material.transparent = true; grid.material.opacity = 0.4; scene.add(grid);
   var mx=0,my=0,tx=0,ty=0;
   addEventListener('mousemove',function(e){ tx=(e.clientX/innerWidth-0.5)*2; ty=(e.clientY/innerHeight-0.5)*2; },{passive:true});
-  addEventListener('resize',function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+  addEventListener('resize',function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); if(reduced) renderer.render(scene,camera); });
   var clock = new THREE.Clock();
+  var rafId = 0;
   function frame(){
+    rafId = 0;
+    if (reduced || document.hidden) return;
     var t = clock.getElapsedTime();
     mx += (tx-mx)*0.045; my += (ty-my)*0.045;
     knot.rotation.x = t*0.12; knot.rotation.y = t*0.16; knotW.rotation.copy(knot.rotation);
@@ -168,10 +172,21 @@ import * as THREE from 'three';
     camera.position.y = -scrollY*0.0016 + (-my*0.6);
     camera.lookAt(1.2,0,-2);
     renderer.render(scene,camera);
-    if(!reduced && !document.hidden) requestAnimationFrame(frame);
+    rafId = requestAnimationFrame(frame);
   }
-  if(reduced){ renderer.render(scene,camera); } else frame();
-  document.addEventListener('visibilitychange', function(){ if(!reduced && !document.hidden) frame(); });
+  function startLoop(){
+    if (reduced) { renderer.render(scene,camera); return; }
+    if (!document.hidden && !rafId) rafId = requestAnimationFrame(frame);
+  }
+  function stopLoop(){
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+  if (reduced) renderer.render(scene,camera); else startLoop();
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) { stopLoop(); clock.stop(); }
+    else { clock.start(); startLoop(); }
+  });
 })();
 </script>
 
@@ -180,6 +195,11 @@ import * as THREE from 'three';
 (function(){
 'use strict';
 var demos = [];
+var gridVisible = false;
+function registerDemo(demo){
+  demos.push(demo);
+  if (!gridVisible) { try { demo.pause(); } catch(e) {} }
+}
 function isAR(){ return document.documentElement.getAttribute('lang') === 'ar'; }
 function loadScript(src){
   return new Promise(function(res, rej){
@@ -214,7 +234,7 @@ function initBabylon(){
     engine.runRenderLoop(loop);
     if(typeof ResizeObserver !== 'undefined'){ new ResizeObserver(function(){ try{ engine.resize(); }catch(e){} }).observe(canvas.parentElement); }
     noteDone(canvas);
-    demos.push({ pause: function(){ try{ engine.stopRenderLoop(); }catch(e){} }, play: function(){ try{ engine.runRenderLoop(loop); }catch(e){} } });
+    registerDemo({ pause: function(){ try{ engine.stopRenderLoop(); }catch(e){} }, play: function(){ try{ engine.runRenderLoop(loop); }catch(e){} } });
   }).catch(function(){ noteFail(canvas); });
 }
 
@@ -255,7 +275,7 @@ function initPlayCanvas(){
       orb.setPosition(Math.cos(t)*1.7, Math.sin(t*1.3)*0.7, Math.sin(t)*1.7);
     });
     noteDone(canvas);
-    demos.push({ pause: function(){ try{ app.timeScale = 0; }catch(e){} }, play: function(){ try{ app.timeScale = 1; }catch(e){} } });
+    registerDemo({ pause: function(){ try{ app.timeScale = 0; }catch(e){} }, play: function(){ try{ app.timeScale = 1; }catch(e){} } });
   }).catch(function(){ noteFail(canvas); });
 }
 
@@ -263,7 +283,7 @@ function initAFrame(){
   var sceneEl = document.querySelector('a-scene');
   return loadScript('https://aframe.io/releases/1.5.0/aframe.min.js').then(function(){
     noteDone(sceneEl);
-    demos.push({ pause: function(){ try{ sceneEl.pause(); }catch(e){} }, play: function(){ try{ sceneEl.play(); }catch(e){} } });
+    registerDemo({ pause: function(){ try{ sceneEl.pause(); }catch(e){} }, play: function(){ try{ sceneEl.play(); }catch(e){} } });
   }).catch(function(){ noteFail(sceneEl); });
 }
 
@@ -323,7 +343,7 @@ function initRapier(){
           ctx.fill();
         }
       }
-      var live = true, running = false;
+      var live = true, running = false, spawnTimer = null;
       function frame(){
         running = true;
         if(!live){ running = false; return; }
@@ -331,15 +351,31 @@ function initRapier(){
         draw();
         requestAnimationFrame(frame);
       }
+      function startSpawnTimer(){
+        if (spawnTimer !== null || document.hidden || !live) return;
+        spawnTimer = setInterval(function(){
+          if(live && !document.hidden && balls.length < 40) spawn(W/2 + (Math.random()-0.5)*W*0.5, 1);
+        }, 900);
+      }
+      function stopSpawnTimer(){
+        if (spawnTimer !== null) { clearInterval(spawnTimer); spawnTimer = null; }
+      }
+      document.addEventListener('visibilitychange', function(){
+        if (document.hidden) stopSpawnTimer();
+        else startSpawnTimer();
+      });
       canvas.addEventListener('pointerdown', function(e){
         var r = canvas.getBoundingClientRect();
         spawn(e.clientX - r.left, 5);
       });
-      setInterval(function(){ if(live && !document.hidden && balls.length < 40) spawn(W/2 + (Math.random()-0.5)*W*0.5, 1); }, 900);
+      startSpawnTimer();
       spawn(W/2, 8);
       frame();
       noteDone(canvas);
-      demos.push({ pause: function(){ live = false; }, play: function(){ live = true; if(!running) frame(); } });
+      registerDemo({
+        pause: function(){ live = false; stopSpawnTimer(); },
+        play: function(){ live = true; startSpawnTimer(); if(!running) frame(); }
+      });
     });
   }).catch(function(){ noteFail(canvas); });
 }
@@ -358,11 +394,13 @@ if('IntersectionObserver' in window){
   starter.observe(document.querySelector('.grid'));
   var gate = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
+      gridVisible = en.isIntersecting;
       demos.forEach(function(dd){ try{ en.isIntersecting ? dd.play() : dd.pause(); }catch(e){} });
     });
   }, { threshold: 0.05 });
   gate.observe(document.querySelector('.grid'));
 }else{
+  gridVisible = true;
   initBabylon(); initPlayCanvas(); initAFrame(); initRapier();
 }
 

@@ -484,7 +484,7 @@ function initHero3D() {
   }
 
   function buildParticles() {
-    if (!ctx || reduced) return;
+    if (!ctx || reduced || document.hidden) { particleRaf = 0; return; }
     var count = Math.max(28, Math.min(72, Math.floor((width * height) / 5200)));
     particles = Array.from({ length: count }, function (_, i) {
       return {
@@ -636,7 +636,7 @@ function initHero3D() {
   }
 
   function renderWebGL(timeMs) {
-    if (!gl || !glScene || reduced) return;
+    if (!gl || !glScene || reduced || document.hidden) { glRaf = 0; return; }
     var t=timeMs*0.001;
     var vp=glScene.vp;
     mat4Perspective(vp, Math.PI/3, Math.max(0.5,width/Math.max(1,height)), 0.1, 20);
@@ -713,16 +713,26 @@ function initHero3D() {
   glScene = makeGlData();
   if (glScene && !reduced) {
     resizeCanvas();
-    cancelAnimationFrame(glRaf);
-    glRaf = requestAnimationFrame(renderWebGL);
+    if (!document.hidden) glRaf = requestAnimationFrame(renderWebGL);
   } else if (glCanvas) {
     glCanvas.style.display = 'none';
   }
 
-  if (!reduced && ctx) {
-    cancelAnimationFrame(particleRaf);
+  if (!reduced && ctx && !document.hidden) {
     particleRaf = requestAnimationFrame(drawParticles);
   }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      if (particleRaf) cancelAnimationFrame(particleRaf);
+      if (glRaf) cancelAnimationFrame(glRaf);
+      particleRaf = 0;
+      glRaf = 0;
+      return;
+    }
+    if (!reduced && ctx && !particleRaf) particleRaf = requestAnimationFrame(drawParticles);
+    if (!reduced && glScene && !glRaf) glRaf = requestAnimationFrame(renderWebGL);
+  });
 
   if (window.DeviceOrientationEvent && isMobile && !reduced) {
     window.addEventListener('deviceorientation', function (e) {

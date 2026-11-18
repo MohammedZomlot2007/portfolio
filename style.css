@@ -827,3 +827,38 @@ footer,
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
+
+
+/* ============================================================
+   SCROLL-LENGTH GRADIENT
+   The gradient belongs to the full document, not the viewport.
+   At page top it is green; scrolling reveals progressively
+   darker parts of the same background, ending in black.
+   ============================================================ */
+html {
+  min-height: 100%;
+  background: #000 !important;
+  background-attachment: scroll !important;
+}
+
+body,
+html[data-theme="light"] body,
+html[data-theme="dark"] body {
+  min-height: 100vh;
+  background-color: #000 !important;
+  background-image: linear-gradient(
+    180deg,
+    #bbf7d0 0%,
+    #86efac 16%,
+    #4ade80 30%,
+    #22a653 43%,
+    #166534 58%,
+    #064e3b 73%,
+    #052e16 86%,
+    #000000 100%
+  ) !important;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-size: 100% 100% !important;
+  background-attachment: scroll !important;
+}

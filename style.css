@@ -747,3 +747,83 @@ html[data-fx="lite"] #tsparticles-contact{display:none}
 .wt-numbers{display:flex;flex-wrap:wrap;gap:8px}
 .wt-numbers span{font-family:var(--font-m);font-size:12px;padding:8px 0;width:46px;text-align:center;border-radius:11px;
   border:1px solid var(--line2);color:var(--accent2);background:rgba(47,123,255,.08)}
+
+
+/* ============================================================
+   MOHAMMED ZOMLOT — CLEAN GREEN TO BLACK PAGE BACKGROUND
+   Keep the portfolio content; remove decorative background FX.
+   ============================================================ */
+html,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  min-height: 100%;
+  background: #000;
+}
+body,
+html[data-theme="light"] body,
+html[data-theme="dark"] body {
+  min-height: 100vh;
+  color-scheme: dark;
+  background: linear-gradient(
+    180deg,
+    #dcfce7 0%,
+    #bbf7d0 13%,
+    #4ade80 32%,
+    #166534 58%,
+    #052e16 78%,
+    #000000 100%
+  ) !important;
+  background-attachment: fixed !important;
+}
+
+/* Remove the full-page WebGL scene, grids, floating geometry and glow layers. */
+#webgl,
+#webgl-stack,
+.content-veil,
+.page-glow,
+.float-shapes,
+.hero-bg,
+.hero-grid,
+.hero-glow,
+.hero-noise,
+#tsparticles-contact {
+  display: none !important;
+}
+
+/* Keep all page sections on the same uninterrupted gradient. */
+.hero,
+.section,
+.section-alt,
+.contact-section,
+footer,
+[data-theme="dark"] .contact-section,
+[data-theme="dark"] footer,
+[data-theme="light"] .section-alt,
+[data-theme="light"] .contact-section,
+[data-theme="light"] footer {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Remove the decorative orbital rings behind the profile photo. */
+.hp-rings {
+  display: none !important;
+}
+
+/* The hero no longer contains an interactive 3D background scene. */
+.scene-hint {
+  display: none !important;
+}
+
+/* Keep the navigation legible over the new light-to-dark gradient. */
+#navbar,
+#navbar.scrolled,
+[data-theme="dark"] #navbar,
+[data-theme="light"] #navbar {
+  background: rgba(255, 255, 255, .24) !important;
+  border-bottom-color: rgba(15, 23, 42, .12) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}

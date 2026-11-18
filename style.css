@@ -559,9 +559,7 @@ main,header,footer{position:relative;z-index:2}
 .scene-wrap::after{content:"LIVE 3D · WebGL";position:absolute;bottom:10px;right:14px;z-index:6;font-family:var(--font-m);font-size:10px;letter-spacing:.14em;color:rgba(160,190,255,.75)}
 /* modal 3D entrance */
 #project-modal{transform:perspective(1000px) rotateX(4deg);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 70px rgba(47,123,255,.2)}
-/* glowing scrollbar */
-::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:#070a13}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#2f7bff,#22d3ee,#7c3aed);border-radius:8px}
+/* Use the browser's native scrollbar; no custom gradient thumb. */
 @media(prefers-reduced-motion:reduce){.fs{display:none}#webgl{display:none}}
 
 /* ============================================================

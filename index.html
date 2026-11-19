@@ -143,19 +143,15 @@ window.MZ_CONFIG = Object.assign({
         <div class="meta-item"><strong>RESPONSIVE-FIRST</strong><small data-i18n="heroMeta3">Responsive & interactive</small></div>
       </div>
     </div>
-    <div class="hero-visual reveal">
-      <div class="hero-photo" id="hero-photo">
-        <div class="hp-rings" aria-hidden="true"><span class="hp-ring r1"></span><span class="hp-ring r2"></span><span class="hp-ring r3"></span></div>
-        <div class="hp-frame">
-          <img class="hp-img" src="assets/profile.jpg" alt="Mohammed Zomlot — Front-End Web Developer" fetchpriority="high" onerror="this.closest('.hp-frame').classList.add('no-photo');this.remove()" />
-          <span class="hp-fallback" aria-hidden="true">MZ</span>
-        </div>
-        <span class="hp-status"><i></i><b data-i18n="aboutCardStatus">Available for projects</b></span>
-        <div class="hp-badge hp-a" aria-hidden="true"><span class="pf-ic">&lt;/&gt;</span><span class="pf-tx"><strong>Clean Code</strong><small>Semantic HTML</small></span></div>
-        <div class="hp-badge hp-b" aria-hidden="true"><span class="pf-ic">#</span><span class="pf-tx"><strong>Responsive</strong><small>All devices</small></span></div>
-        <div class="hp-badge hp-c" aria-hidden="true"><span class="pf-ic">JS</span><span class="pf-tx"><strong>Interactive</strong><small>JavaScript UI</small></span></div>
-      </div>
-      <p class="scene-hint" data-i18n="heroHint">Move your cursor — the 3D background responds · Scroll for depth</p>
+    <div class="hero-visual hero-visual-static">
+      <img
+        class="hero-static-image"
+        src="assets/hero-static.jpg"
+        alt="Mohammed Zomlot — Front-End Web Developer"
+        width="908"
+        height="821"
+        fetchpriority="high"
+      />
     </div>
   </div>
   <a href="#about" class="scroll-indicator" aria-label="Scroll to about"><span></span></a>

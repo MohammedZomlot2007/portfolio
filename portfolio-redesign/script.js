@@ -1,0 +1,58 @@
+const copy={
+ar:{
+navHome:"الرئيسية",navAbout:"عني",navSkills:"المهارات",navProjects:"المشاريع",navContact:"تواصل",contactMe:"تواصل معي ↗",available:"متاح لمشاريع مختارة",hello:"مرحباً، أنا",role:"مطور واجهات أمامية",heroDescription:"أبني واجهات ويب حديثة وسريعة بأفضل التقنيات، مع تركيز على تجربة مستخدم احترافية وتصميم عصري متجاوب مع جميع الأجهزة.",viewProjects:"استكشف أعمالي ↗",aboutButton:"نبذة عني",factReact:"واجهات تفاعلية",factLaravel:"تطبيقات ويب",factUX:"تجربة المستخدم",scroll:"اكتشف المزيد",
+aboutKicker:"تعرف عليّ أكثر",aboutTitle:"أصنع تجارب رقمية <em>لها معنى</em>",aboutLead:"أهتم بالتفاصيل التي تجعل الموقع سريعاً، واضحاً، وسهل الاستخدام.",aboutSub:"من الفكرة إلى واجهة متكاملة",aboutText:"أنا محمد زملط، مطور ويب أركز على بناء واجهات أمامية أنيقة وتجارب رقمية عملية. أعمل على تحويل الأفكار إلى صفحات ومنتجات منظمة، مع الاهتمام بالتفاصيل البصرية وسهولة الاستخدام والاستجابة لمختلف الشاشات.",location:"الموقع",palestine:"فلسطين",email:"البريد الإلكتروني",focus:"مجال التركيز",focusValue:"تطوير الويب وتجربة المستخدم",github:"استكشف حسابي على GitHub ↗",
+skillsKicker:"الأدوات التي أستخدمها",skillsTitle:"مهاراتي <em>التقنية</em>",skillsLead:"مجموعة أدوات تساعدني على بناء واجهات وتجارب رقمية متكاملة.",skillHtml:"بنية صفحات واضحة ودلالية",skillCss:"تصميم متجاوب وحركات سلسة",skillJs:"تفاعلات ومنطق الواجهة",skillReact:"مكونات وواجهات ديناميكية",skillTs:"كود أوضح وأكثر موثوقية",skillTailwind:"بناء واجهات بسرعة واتساق",skillNode:"أساسيات تطوير جانب الخادم",skillLaravel:"تطبيقات وخدمات ويب",skillGit:"إدارة الإصدارات والعمل المنظم",
+projectsKicker:"نماذج من عملي",projectsTitle:"معرض <em>المشاريع</em>",projectsLead:"مجموعة من الأفكار والمنتجات التي أعمل على تطويرها وتصميم تجاربها الرقمية.",all:"الكل",websites:"مواقع ويب",saas:"أنظمة SaaS",dashboards:"لوحات تحكم",website:"موقع ويب",concept:"تصور تصميمي",inProgress:"قيد التطوير",accounting:"نظام محاسبي",athiraText:"واجهة فاخرة لعلامة عطور، بهوية سوداء وذهبية وتجربة عرض تركّز على المنتج.",accountingText:"نظام محاسبي وإداري متعدد الأنشطة لإدارة الفواتير والعملاء والمخزون والمشتريات.",dentalText:"منصة لإدارة عيادات الأسنان والمواعيد والمرضى والعمليات اليومية من لوحة موحدة.",details:"عرض التفاصيل ↗",note:"ملاحظة: الحالات المعروضة تعبّر عن وضع كل مشروع الحالي، وبعض الصور تمثيل بصري للواجهة وليست لقطات تشغيل فعلية.",
+processKicker:"كيف أعمل",processTitle:"خطوات واضحة، <em>نتيجة أفضل</em>",processLead:"أتعامل مع كل مشروع بخطوات مرتبة تجعل الهدف واضحاً من البداية.",step1:"فهم الفكرة",step1p:"تحديد الهدف والجمهور والوظائف الأساسية قبل البدء.",step2:"تصميم التجربة",step2p:"ترتيب المحتوى والعناصر لصناعة تجربة واضحة ومريحة.",step3:"التطوير",step3p:"كتابة كود منظم وتنفيذ الواجهة لتعمل على مختلف الأجهزة.",step4:"الاختبار والإطلاق",step4p:"مراجعة التفاصيل وتحسين الأداء وتجهيز الموقع للنشر.",
+contactKicker:"هل لديك فكرة؟",contactTitle:"لنحوّل فكرتك إلى <em>شيء حقيقي</em>",contactLead:"يسعدني التعرف على مشروعك ومناقشة كيف يمكننا بناء تجربة رقمية مميزة.",send:"ابدأ محادثة ↗",footer:"صُنع بشغف واهتمام بالتفاصيل.",discuss:"ناقش المشروع معي ↗",
+projects:{athira:{title:"ATHIRA | أثيرة",description:"تصور لواجهة متجر عطور راقٍ يركّز على الهوية البصرية، إبراز المنتج، وتجربة تسوق بسيطة. يمكن تطويره لاحقاً ليشمل صفحات المنتجات وسلة التسوق وإدارة الطلبات.",stack:["HTML","CSS","JavaScript","Responsive UI"]},accounting:{title:"Accounting Pro",description:"مشروع نظام محاسبي وإداري متعدد الأنشطة. تشمل الفكرة إدارة الفواتير والعملاء والمخزون والمشتريات، مع اختيار نوع النشاط لتخصيص تجربة النظام حسب طبيعة الشركة.",stack:["React","TypeScript","Laravel","MySQL"]},dental:{title:"Dental Clinic SaaS",description:"فكرة منصة لإدارة عيادات الأسنان عبر لوحة موحدة لتنظيم المرضى والمواعيد والعمليات اليومية، مع واجهة سهلة الاستخدام قابلة للتوسع.",stack:["React","Supabase","Tailwind CSS","SaaS"]}}
+},
+en:{
+navHome:"Home",navAbout:"About",navSkills:"Skills",navProjects:"Projects",navContact:"Contact",contactMe:"Contact me ↗",available:"Open to selected projects",hello:"Hello, I'm",role:"Front-End Developer",heroDescription:"I build modern, fast web interfaces with a focus on polished user experiences and responsive layouts that work beautifully across devices.",viewProjects:"Explore my work ↗",aboutButton:"About me",factReact:"Interactive interfaces",factLaravel:"Web applications",factUX:"User experience",scroll:"Scroll to explore",
+aboutKicker:"A little about me",aboutTitle:"I build digital experiences <em>with purpose</em>",aboutLead:"I care about the details that make a website fast, clear, and easy to use.",aboutSub:"From an idea to a complete interface",aboutText:"I'm Mohammed Zomlot, a web developer focused on elegant front-end interfaces and practical digital experiences. I turn ideas into organized pages and products, paying attention to visual details, usability, and responsive behavior across screens.",location:"Location",palestine:"Palestine",email:"Email",focus:"Focus",focusValue:"Web development & UX",github:"Explore my GitHub profile ↗",
+skillsKicker:"Tools I work with",skillsTitle:"Technical <em>skills</em>",skillsLead:"A toolkit that helps me build polished interfaces and complete digital experiences.",skillHtml:"Clear, semantic page structure",skillCss:"Responsive layouts and smooth motion",skillJs:"Interface logic and interactions",skillReact:"Dynamic components and interfaces",skillTs:"Clearer, more reliable code",skillTailwind:"Consistent UI, built efficiently",skillNode:"Server-side development fundamentals",skillLaravel:"Web applications and services",skillGit:"Version control and collaboration",
+projectsKicker:"Selected work",projectsTitle:"Project <em>gallery</em>",projectsLead:"A selection of ideas and products I'm designing and developing.",all:"All",websites:"Websites",saas:"SaaS",dashboards:"Dashboards",website:"Website",concept:"Design concept",inProgress:"In development",accounting:"Accounting system",athiraText:"A luxury perfume storefront concept with a black-and-gold identity and product-focused presentation.",accountingText:"A multi-business accounting and management system for invoices, customers, inventory, and purchases.",dentalText:"A platform concept for managing dental clinics, appointments, patients, and daily operations in one dashboard.",details:"View details ↗",note:"Note: Status labels reflect each project's current stage. Some visuals are interface concepts rather than screenshots of a live product.",
+processKicker:"My workflow",processTitle:"Clear steps, <em>better outcomes</em>",processLead:"I approach each project with a structured process that keeps the goal clear from day one.",step1:"Understand",step1p:"Define the goal, audience, and core requirements before starting.",step2:"Design the experience",step2p:"Organize content and interface elements into a clear, comfortable experience.",step3:"Build",step3p:"Write organized code and implement a responsive interface.",step4:"Test & launch",step4p:"Review details, improve performance, and prepare the site for release.",
+contactKicker:"Have an idea?",contactTitle:"Let's turn your idea into <em>something real</em>",contactLead:"I'd love to hear about your project and discuss how we can build a memorable digital experience.",send:"Start a conversation ↗",footer:"Made with passion and attention to detail.",discuss:"Discuss this project ↗",
+projects:{athira:{title:"ATHIRA | Athira",description:"A luxury perfume storefront concept focused on visual identity, product presentation, and a simple shopping experience. It can be extended with product pages, a cart, and order management.",stack:["HTML","CSS","JavaScript","Responsive UI"]},accounting:{title:"Accounting Pro",description:"A multi-business accounting and management system concept. It covers invoices, customers, inventory, and purchases, with business-type selection to tailor the experience to each company's needs.",stack:["React","TypeScript","Laravel","MySQL"]},dental:{title:"Dental Clinic SaaS",description:"A clinic-management platform concept with one dashboard for organizing patients, appointments, and daily operations through an interface designed to grow over time.",stack:["React","Supabase","Tailwind CSS","SaaS"]}}
+}}
+let lang="ar";
+const root=document.documentElement;
+const langButton=document.getElementById("languageSwitch");
+function setLanguage(next){
+ lang=next;root.lang=next;root.dir=next==="ar"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const value=copy[next][el.dataset.i18n];if(typeof value==="string")el.innerHTML=value;});
+ langButton.innerHTML=next==="ar"?'EN <span>◎</span>':'AR <span>◎</span>';
+ document.title=next==="ar"?"Mohammed Zomlot | معرض الأعمال":"Mohammed Zomlot | Developer Portfolio";
+}
+langButton.addEventListener("click",()=>setLanguage(lang==="ar"?"en":"ar"));
+const toggle=document.getElementById("menuToggle"),mobile=document.getElementById("mobileNav");
+function closeMenu(){toggle.classList.remove("open");toggle.setAttribute("aria-expanded","false");mobile.classList.remove("open");}
+toggle.addEventListener("click",()=>{const open=mobile.classList.toggle("open");toggle.classList.toggle("open",open);toggle.setAttribute("aria-expanded",String(open));});
+mobile.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
+document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
+ document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));button.classList.add("active");
+ const category=button.dataset.filter;document.querySelectorAll(".project").forEach(card=>card.classList.toggle("is-hidden",category!=="all"&&card.dataset.category!==category));
+}));
+const dialog=document.getElementById("projectDialog"),backdrop=document.getElementById("dialogBackdrop");
+function closeDialog(){dialog.close();backdrop.classList.remove("show");document.body.style.overflow="";}
+document.querySelectorAll(".details").forEach(button=>button.addEventListener("click",()=>{
+ const data=copy[lang].projects[button.dataset.project];
+ document.getElementById("dialogTitle").textContent=data.title;
+ document.getElementById("dialogDescription").textContent=data.description;
+ document.getElementById("dialogStack").innerHTML=data.stack.map(item=>"<span>"+item+"</span>").join("");
+ document.getElementById("dialogLabel").textContent=lang==="ar"?"تفاصيل المشروع":"PROJECT OVERVIEW";
+ dialog.showModal();backdrop.classList.add("show");document.body.style.overflow="hidden";
+}));
+document.getElementById("dialogClose").addEventListener("click",closeDialog);
+backdrop.addEventListener("click",closeDialog);
+dialog.addEventListener("click",event=>{if(event.target===dialog)closeDialog();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dialog.open)closeDialog();});
+const revealObserver=new IntersectionObserver((entries,observer)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
+const links=[...document.querySelectorAll(".desktop-nav a")],sections=[...document.querySelectorAll("main section[id]")];
+const activeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));}),{rootMargin:"-35% 0px -55% 0px"});
+sections.forEach(section=>activeObserver.observe(section));
+document.getElementById("year").textContent=new Date().getFullYear();
+setLanguage("ar");
